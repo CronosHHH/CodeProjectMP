@@ -1,0 +1,62 @@
+\doxysection{Array\+Location.\+cpp}
+\hypertarget{ArrayLocation_8cpp_source}{}\label{ArrayLocation_8cpp_source}\index{src/ArrayLocation.cpp@{src/ArrayLocation.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <string>}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <cmath>}\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ArrayLocation_8h}{ArrayLocation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00017}\mbox{\hyperlink{ArrayLocation_8h_a0459e33c716f4d41555505fd6d8b08f7}{00017}}\ \textcolor{keywordtype}{void}\ PrintArrayLocation(\textcolor{keyword}{const}\ \mbox{\hyperlink{classLocation}{Location}}\ arrayLocations[],\ \textcolor{keywordtype}{int}\ nLocs)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00018}00018\ \ \ \ \ std::cout\ <<\ nLocs\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00019}00019\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00020}00020\ \ \ \ \ \ \ \ \ std::cout\ <<\ arrayLocations[i].\mbox{\hyperlink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{toString}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00022}00022\ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00037}\mbox{\hyperlink{ArrayLocation_8h_abf09b1b412ecff1f9ff2fdcdc77efab0}{00037}}\ \textcolor{keywordtype}{void}\ ReadArrayLocation(\mbox{\hyperlink{classLocation}{Location}}\ arrayLocations[],\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{int}\&\ nLocs)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00038}00038\ \ \ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00039}00039\ \ \ \ \ std::cin\ >>\ n;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ nLocs\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ReadArrayLocation:\ n\ es\ negativo"{}});}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ capacity)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ nLocs\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ReadArrayLocation:\ n\ supera\ la\ capacidad\ del\ array"{}});}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00050}00050\ \ \ \ \ nLocs\ =\ n;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ arrayLocations[i].\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(std::cin);}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00069}\mbox{\hyperlink{ArrayLocation_8h_a6608c3010ebbdbda0944f44c84e203e9}{00069}}\ \textcolor{keywordtype}{void}\ ToArrayLocation(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\&\ vector,\ \mbox{\hyperlink{classLocation}{Location}}\ arrayLocations[],\ \textcolor{keywordtype}{int}\ capacity,\ \textcolor{keywordtype}{int}\&\ nLocs)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (vector.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}()\ >\ capacity)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ nLocs\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ToArrayLocation:\ el\ VectorLocation\ supera\ la\ capacidad\ del\ array"{}});}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00075}00075\ \ \ \ \ nLocs\ =\ vector.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00076}00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00077}00077\ \ \ \ \ \ \ \ \ arrayLocations[i]\ =\ vector.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i);}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00091}\mbox{\hyperlink{ArrayLocation_8h_a520c5461f1e279491aebff9b4a63d736}{00091}}\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ ToVectorLocation(\textcolor{keyword}{const}\ \mbox{\hyperlink{classLocation}{Location}}\ arrayLocations[],\ \textcolor{keywordtype}{int}\ nLocs)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (nLocs\ <\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ToVectorLocation:\ nLocs\ es\ negativo"{}});}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00096}00096\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ result;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{append}}(arrayLocations[i]);}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00100}00100\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{ArrayLocation_8cpp_source_l00101}00101\ \}}
+
+\end{DoxyCode}

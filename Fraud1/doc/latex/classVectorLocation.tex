@@ -1,0 +1,679 @@
+\doxysection{Vector\+Location Class Reference}
+\hypertarget{classVectorLocation}{}\label{classVectorLocation}\index{VectorLocation@{VectorLocation}}
+
+
+A \doxylink{classVectorLocation}{Vector\+Location} object contains a vector of \doxylink{classLocation}{Location} objects. It has a capacity (maximun number of Locations that can be stored in the vector) and a size (number of Locations the vector currently contains). The public methods of this class do not allow a \doxylink{classVectorLocation}{Vector\+Location} to contain two \doxylink{classLocation}{Location} objects with identical names. This class uses an array of \doxylink{classLocation}{Location} objects with a fixed capacity to store the set of locations.  
+
+
+
+
+{\ttfamily \#include $<$Vector\+Location.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVectorLocation_a70e2a2acd80156665d44cfd7a3c0212d}{Vector\+Location}} (int size=0)
+\begin{DoxyCompactList}\small\item\em It builds a \doxylink{classVectorLocation}{Vector\+Location} object (vector of \doxylink{classLocation}{Location} objects) with a size equal to the provided value ({\ttfamily size}). Each element in the vector is initialized with the default \doxylink{classLocation}{Location} constructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of elements in the vector of this object Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVectorLocation_ace39d553ba00f8e35f08bb31fe579735}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Gets the capacity of the vector in this object Query method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classVectorLocation_a225b6306345bb813f40198850a65a813}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Obtains a string with information about this \doxylink{classVectorLocation}{Vector\+Location} object, in the following format\+: \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVectorLocation_af12deaaa9b848d3f777b0950848699ab}{find\+Location}} (const \mbox{\hyperlink{classLocation}{Location}} \&location) const
+\begin{DoxyCompactList}\small\item\em Searches the provided \doxylink{classLocation}{Location} in the array of locations in this object. If found, it returns the position where it was found. If not, it returns -\/1. We consider that position 0 is the first location in the list of locations and this-\/\texorpdfstring{$>$}{>}\doxylink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{get\+Size()}-\/1 the last location. In order to find a location consider only equality in the name field. Query method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \mbox{\hyperlink{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f}{select}} (const \mbox{\hyperlink{classLocation}{Location}} \&bottom\+Left, const \mbox{\hyperlink{classLocation}{Location}} \&top\+Right) const
+\begin{DoxyCompactList}\small\item\em Returns a \doxylink{classVectorLocation}{Vector\+Location} object with those locations whose positions are inside the area determined by the two given Locations. Query method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Removes all the elements in this object, leaving the container with a size equal to 0. It only needs to set the number of elements (\+\_\+size field) to zero. Modifier method. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classLocation}{Location}} \& \mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}} (int pos) const
+\begin{DoxyCompactList}\small\item\em Gets a const reference to the \doxylink{classLocation}{Location} element at the given position Query method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLocation}{Location}} \& \mbox{\hyperlink{classVectorLocation_ab792d5173e80e5245f6f669386cc0ac4}{at}} (int pos)
+\begin{DoxyCompactList}\small\item\em Gets a reference to the \doxylink{classLocation}{Location} element at the given position. Modifier method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{append}} (const \mbox{\hyperlink{classLocation}{Location}} \&location)
+\begin{DoxyCompactList}\small\item\em Appends a copy of the given \doxylink{classLocation}{Location} object at the first free position in the array of \doxylink{classLocation}{Location} in this object. The location is not appended to this object if it was already found in this object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorLocation_acc2892fd5902dc4cb5515f552c48a507}{join}} (const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&locations)
+\begin{DoxyCompactList}\small\item\em Appends to this \doxylink{classVectorLocation}{Vector\+Location} object, the list of \doxylink{classLocation}{Location} objects contained in the provided \doxylink{classVectorLocation}{Vector\+Location} object that are not found (using Vector\+Location\+::find\+Location(\+Location)) in this object. This method could be implemented with the help of the method \doxylink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{Vector\+Location\+::append(const Location \& location)}, to append to this object, the Locations of the provided \doxylink{classVectorLocation}{Vector\+Location} object. Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorLocation_a7594392a03fe1c5cf162ed4f1dc76a17}{sort}} ()
+\item 
+int \mbox{\hyperlink{classVectorLocation_add3509b819a7807a0c8a3b6f3a60f541}{nearest}} (\mbox{\hyperlink{classLocation}{Location}} location)
+\begin{DoxyCompactList}\small\item\em Gets the position in this vector of the \doxylink{classLocation}{Location} object nearest to the provided location Query method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorLocation_ac557b314b796314253cc04c2ec4482ac}{assign}} (\mbox{\hyperlink{classLocation}{Location}} location)
+\item 
+void \mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}} (std\+::istream \&is)
+\begin{DoxyCompactList}\small\item\em Reads from the provided input stream the information to fill this \doxylink{classVectorLocation}{Vector\+Location} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classVectorLocation}{Vector\+Location} object contains a vector of \doxylink{classLocation}{Location} objects. It has a capacity (maximun number of Locations that can be stored in the vector) and a size (number of Locations the vector currently contains). The public methods of this class do not allow a \doxylink{classVectorLocation}{Vector\+Location} to contain two \doxylink{classLocation}{Location} objects with identical names. This class uses an array of \doxylink{classLocation}{Location} objects with a fixed capacity to store the set of locations. 
+
+Definition at line \mbox{\hyperlink{VectorLocation_8h_source_l00030}{30}} of file \mbox{\hyperlink{VectorLocation_8h_source}{Vector\+Location.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVectorLocation_a70e2a2acd80156665d44cfd7a3c0212d}\label{classVectorLocation_a70e2a2acd80156665d44cfd7a3c0212d} 
+\index{VectorLocation@{VectorLocation}!VectorLocation@{VectorLocation}}
+\index{VectorLocation@{VectorLocation}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{VectorLocation()}{VectorLocation()}}
+{\footnotesize\ttfamily Vector\+Location\+::\+Vector\+Location (\begin{DoxyParamCaption}\item[{int}]{size = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+It builds a \doxylink{classVectorLocation}{Vector\+Location} object (vector of \doxylink{classLocation}{Location} objects) with a size equal to the provided value ({\ttfamily size}). Each element in the vector is initialized with the default \doxylink{classLocation}{Location} constructor. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if {\ttfamily size} \texorpdfstring{$<$}{<} 0 or size\texorpdfstring{$>$}{>}DIM\+\_\+\+VECTOR\+\_\+\+LOCATIONS \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size for the vector of \doxylink{classLocation}{Location} in this object. Input parameter\\
+\hline
+\end{DoxyParams}
+static const int DIM\+\_\+\+VECTOR\+\_\+\+LOCATIONS = 100;
+
+\doxylink{classLocation}{Location} \+\_\+locations\mbox{[}DIM\+\_\+\+VECTOR\+\_\+\+LOCATIONS\mbox{]};
+
+int \+\_\+size;
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if {\ttfamily size} \texorpdfstring{$<$}{<} 0 or size\texorpdfstring{$>$}{>}DIM\+\_\+\+VECTOR\+\_\+\+LOCATIONS \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size for the vector of \doxylink{classLocation}{Location} in this object. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ <\ 0\ ||\ size\ >\ DIM\_VECTOR\_LOCATIONS)\ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation:\ size\ invalido,\ que\ sea\ entre\ 1\ y\ 100"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \_size\ =\ size;}
+\DoxyCodeLine{00044\ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ "{}Each\ element\ in\ the\ vector\ is\ initialized\ with\ the\ default\ Location\ constructor"{}\ }}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ ya\ se\ cumple\ solo\ por\ ser\ un\ array\ de\ objetos\ (\ ya\ que\ el\ constructor\ por\ }}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ defecto\ de\ Location\ ya\ hace\ \_x\ =\ \_y\ =\ 0\ y\ \_name\ =\ "{}"{}.)}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ OJO\ en\ uno\ de\ punteros\ si\ que\ habria\ que\ inicializarlo}}
+\DoxyCodeLine{00049\ \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}\label{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466} 
+\index{VectorLocation@{VectorLocation}!append@{append}}
+\index{append@{append}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily bool Vector\+Location\+::append (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{location }\end{DoxyParamCaption})}
+
+
+
+Appends a copy of the given \doxylink{classLocation}{Location} object at the first free position in the array of \doxylink{classLocation}{Location} in this object. The location is not appended to this object if it was already found in this object. 
+
+Appends a copy of the given \doxylink{classLocation}{Location} object at the first free position in the array of \doxylink{classLocation}{Location} in this object. The location is only appended to this object if\+: 0-\/---it was not already found in this object 0-\/---its name is an empty string.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the provided location is going to be appended but the array of \doxylink{classLocation}{Location} was full (its capacity was full). If the provided location is not going to be appended because it was already found in this object or its name is an empty string, then no exception is thrown. Modifier method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the new \doxylink{classLocation}{Location} object to be appended. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the given \doxylink{classLocation}{Location} could be inserted in this \doxylink{classVectorLocation}{Vector\+Location} object; false otherwise (the location was already found in this object)
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em } & \\
+\hline
+\end{DoxyExceptions}
+1---std\+::out\+\_\+of\+\_\+range Throws a std\+::out\+\_\+of\+\_\+range exception if the provided location is going to be appended but the array of \doxylink{classLocation}{Location} was full (its capacity was full).
+
+2---If the provided location is not going to be appended because it was already found in this object or its name is an empty string, then no exception is thrown.
+
+Modifier method 
+\begin{DoxyParams}{Parameters}
+{\em value} & the new \doxylink{classLocation}{Location} object to be appended. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the given \doxylink{classLocation}{Location} could be inserted in this \doxylink{classVectorLocation}{Vector\+Location} object; false otherwise (the location was already found in this object) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00225}{225}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{comment}{//\ 0-\/-\/-\/-\/\ Si\ el\ nombre\ esta\ vacio,\ no\ anadimos}}
+\DoxyCodeLine{00227\ \ \ \ \ \textcolor{keywordflow}{if}\ (location.\mbox{\hyperlink{classLocation_aaedb2823c1fbb3abc28971d9be5b002e}{getName}}().empty())\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00229\ \ \ \ \ \}}
+\DoxyCodeLine{00230\ }
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//\ 0-\/-\/-\/-\/\ Si\ ya\ existe\ una\ Location\ con\ ese\ nombre,\ no\ anadimos}}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classVectorLocation_af12deaaa9b848d3f777b0950848699ab}{findLocation}}(location)\ !=\ -\/1)\ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ \ \ \ \ \textcolor{comment}{//\ 1.\ Si\ el\ array\ esta\ lleno,\ lanzamos\ excepcion}}
+\DoxyCodeLine{00237\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ >=\ DIM\_VECTOR\_LOCATIONS)\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::append\ el\ array\ esta\ lleno"{}});}
+\DoxyCodeLine{00239\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{comment}{//\ 2.\ Todo\ ok:\ anadimos\ la\ location\ en\ la\ siguiente\ posicion\ libre}}
+\DoxyCodeLine{00242\ \ \ \ \ \_locations[\_size]\ =\ location;}
+\DoxyCodeLine{00243\ \ \ \ \ \_size++;}
+\DoxyCodeLine{00244\ }
+\DoxyCodeLine{00245\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00246\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{classVectorLocation_ac557b314b796314253cc04c2ec4482ac}\label{classVectorLocation_ac557b314b796314253cc04c2ec4482ac} 
+\index{VectorLocation@{VectorLocation}!assign@{assign}}
+\index{assign@{assign}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily void Vector\+Location\+::assign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLocation}{Location}}}]{location }\end{DoxyParamCaption})}
+
+Assigns the provided value to all the elements in this vector Modifier method 
+\begin{DoxyParams}{Parameters}
+{\em location} & A \doxylink{classLocation}{Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00323}{323}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \_locations[i]\ =\ location;}
+\DoxyCodeLine{00327\ \ \ \ \ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_ab792d5173e80e5245f6f669386cc0ac4}\label{classVectorLocation_ab792d5173e80e5245f6f669386cc0ac4} 
+\index{VectorLocation@{VectorLocation}!at@{at}}
+\index{at@{at}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLocation}{Location}} \& Vector\+Location\+::at (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Gets a reference to the \doxylink{classLocation}{Location} element at the given position. Modifier method. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws an std\+::out\+\_\+of\+\_\+range exception if the given position is not valid \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & position in the \doxylink{classVectorLocation}{Vector\+Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the \doxylink{classLocation}{Location} element at the given position. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00194}{194}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ <\ 0\ ||\ pos\ >=\ \_size)\ \{}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::at\ posicion\ invalida"{}});}
+\DoxyCodeLine{00197\ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \textcolor{keywordflow}{return}\ \_locations[pos];\ }
+\DoxyCodeLine{00199\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}\label{classVectorLocation_ac71b79efab849c9b66de42d3657448ae} 
+\index{VectorLocation@{VectorLocation}!at@{at}}
+\index{at@{at}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classLocation}{Location}} \& Vector\+Location\+::at (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption}) const}
+
+
+
+Gets a const reference to the \doxylink{classLocation}{Location} element at the given position Query method. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws an std\+::out\+\_\+of\+\_\+range exception if the given position is not valid. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & position in the \doxylink{classVectorLocation}{Vector\+Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A const reference to the \doxylink{classLocation}{Location} element at the given position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ <\ 0\ ||\ pos\ >=\ \_size)\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::at\ posicion\ invalida"{}});}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \textcolor{keywordflow}{return}\ \_locations[pos];\ }
+\DoxyCodeLine{00180\ \ \ \ \ \textcolor{comment}{//\ recordar\ que\ \_locations[]\ es\ un\ vecotr\ de\ location}}
+\DoxyCodeLine{00181\ \ \ \ \ \textcolor{comment}{//\ aunque\ lo\ que\ devuelve\ no\ es\ una\ referencia\ constante\ de}}
+\DoxyCodeLine{00182\ \ \ \ \ \textcolor{comment}{//\ un\ elemento\ de\ Localicon}}
+\DoxyCodeLine{00183\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}\label{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48} 
+\index{VectorLocation@{VectorLocation}!clear@{clear}}
+\index{clear@{clear}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Vector\+Location\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes all the elements in this object, leaving the container with a size equal to 0. It only needs to set the number of elements (\+\_\+size field) to zero. Modifier method. 
+
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00160}{160}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \_size\ =\ 0;}
+\DoxyCodeLine{00162\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_af12deaaa9b848d3f777b0950848699ab}\label{classVectorLocation_af12deaaa9b848d3f777b0950848699ab} 
+\index{VectorLocation@{VectorLocation}!findLocation@{findLocation}}
+\index{findLocation@{findLocation}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{findLocation()}{findLocation()}}
+{\footnotesize\ttfamily int Vector\+Location\+::find\+Location (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{location }\end{DoxyParamCaption}) const}
+
+
+
+Searches the provided \doxylink{classLocation}{Location} in the array of locations in this object. If found, it returns the position where it was found. If not, it returns -\/1. We consider that position 0 is the first location in the list of locations and this-\/\texorpdfstring{$>$}{>}\doxylink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{get\+Size()}-\/1 the last location. In order to find a location consider only equality in the name field. Query method. 
+
+Searches the provided \doxylink{classLocation}{Location} in the array of locations in this object. If found, it returns the position where it was found. If not, it returns -\/1.
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & A \doxylink{classLocation}{Location}. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If found, it returns the position where the location was found. Otherwise it returns -\/1
+\end{DoxyReturn}
+We consider that position 0 is the first location in the list of locations and this-\/\texorpdfstring{$>$}{>}\doxylink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{get\+Size()}-\/1 the last location.
+
+In order to find a location consider only equality in the name field.
+
+Query method 
+\begin{DoxyParams}{Parameters}
+{\em location} & A \doxylink{classLocation}{Location}. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If found, it returns the position where the location was found. Otherwise it returns -\/1 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00121}{121}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i=0;\ i<\_size;\ i++)\{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_locations[i].getName()\ ==\ location.\mbox{\hyperlink{classLocation_aaedb2823c1fbb3abc28971d9be5b002e}{getName}}()\ )\ \textcolor{keywordflow}{return}\ i;}
+\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00126\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classVectorLocation_ace39d553ba00f8e35f08bb31fe579735}\label{classVectorLocation_ace39d553ba00f8e35f08bb31fe579735} 
+\index{VectorLocation@{VectorLocation}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily int Vector\+Location\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the capacity of the vector in this object Query method. 
+
+\begin{DoxyReturn}{Returns}
+The capacity of the vector in this object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{return}\ DIM\_VECTOR\_LOCATIONS;}
+\DoxyCodeLine{00068\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_a0c681e3b6626273809594914ff2612fe}\label{classVectorLocation_a0c681e3b6626273809594914ff2612fe} 
+\index{VectorLocation@{VectorLocation}!getSize@{getSize}}
+\index{getSize@{getSize}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Vector\+Location\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of elements in the vector of this object Query method. 
+
+\begin{DoxyReturn}{Returns}
+The number of elements
+
+The number of elements -\/\texorpdfstring{$>$}{>} \+\_\+size 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00056}{56}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{return}\ \_size;}
+\DoxyCodeLine{00058\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_acc2892fd5902dc4cb5515f552c48a507}\label{classVectorLocation_acc2892fd5902dc4cb5515f552c48a507} 
+\index{VectorLocation@{VectorLocation}!join@{join}}
+\index{join@{join}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{join()}{join()}}
+{\footnotesize\ttfamily void Vector\+Location\+::join (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&}]{locations }\end{DoxyParamCaption})}
+
+
+
+Appends to this \doxylink{classVectorLocation}{Vector\+Location} object, the list of \doxylink{classLocation}{Location} objects contained in the provided \doxylink{classVectorLocation}{Vector\+Location} object that are not found (using Vector\+Location\+::find\+Location(\+Location)) in this object. This method could be implemented with the help of the method \doxylink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{Vector\+Location\+::append(const Location \& location)}, to append to this object, the Locations of the provided \doxylink{classVectorLocation}{Vector\+Location} object. Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em crime\+Set} & A \doxylink{classVectorLocation}{Vector\+Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00260}{260}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00261\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)\ \{}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{append}}(locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i));}
+\DoxyCodeLine{00263\ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}\label{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd} 
+\index{VectorLocation@{VectorLocation}!load@{load}}
+\index{load@{load}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Vector\+Location\+::load (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is }\end{DoxyParamCaption})}
+
+
+
+Reads from the provided input stream the information to fill this \doxylink{classVectorLocation}{Vector\+Location} object. 
+
+\begin{DoxyNote}{Note}
+This method should remove any \doxylink{classLocation}{Location} previously contained in the provided \doxylink{classVectorLocation}{Vector\+Location} object. See files \texorpdfstring{$\ast$}{*}.loc in the folder Data\+Sets as examples of this kind of file. 
+
+This operator throws an exception in some error cases (see below). Before throwing the corresponding exception, this method clears the object (it calls to \doxylink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{clear()} method) to leave the object in a consistent state. Modifier method 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of \doxylink{classLocation}{Location} read from the input stream is negative. \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations read from the input stream is greater than the capacity of this \doxylink{classVectorLocation}{Vector\+Location} object. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Input stream. Input/output parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00352}{352}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00353\ }
+\DoxyCodeLine{00354\ \ \ \ \ \mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{VectorLocation::clear}}();}
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00356\ \ \ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{00357\ \ \ \ \ is\ >>\ n;}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0)\ \{}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{VectorLocation::clear}}();}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::load:\ numero\ de\ locations\ negativo"{}});}
+\DoxyCodeLine{00362\ \ \ \ \ \}}
+\DoxyCodeLine{00363\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ DIM\_VECTOR\_LOCATIONS)\ \{}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{VectorLocation::clear}}();}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::load:\ numero\ de\ locations\ supera\ la\ capacidad"{}});}
+\DoxyCodeLine{00366\ \ \ \ \ \}}
+\DoxyCodeLine{00367\ }
+\DoxyCodeLine{00368\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{00369\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ templocation;}
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ templocation.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(is);}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{VectorLocation::append}}(templocation);}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ recordar\ q\ el\ append\ tenia\ excepciones\ capacidad\ superada,}}
+\DoxyCodeLine{00373\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ nombre\ repetido\ o\ sin\ nombre;}}
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ y\ aparte\ es\ un\ metodo\ de\ tipo\ bunealno,\ pero\ su\ principal\ }}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ funcion\ es\ añadir\ un\ elemento\ al\ final\ y\ aumentar\ 1\ \_size}}
+\DoxyCodeLine{00376\ \ \ \ \ \}}
+\DoxyCodeLine{00377\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{classVectorLocation_add3509b819a7807a0c8a3b6f3a60f541}\label{classVectorLocation_add3509b819a7807a0c8a3b6f3a60f541} 
+\index{VectorLocation@{VectorLocation}!nearest@{nearest}}
+\index{nearest@{nearest}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{nearest()}{nearest()}}
+{\footnotesize\ttfamily int Vector\+Location\+::nearest (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLocation}{Location}}}]{location }\end{DoxyParamCaption})}
+
+
+
+Gets the position in this vector of the \doxylink{classLocation}{Location} object nearest to the provided location Query method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & A \doxylink{classLocation}{Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the position of the \doxylink{classLocation}{Location} object nearest to the provided location. If returns -\/1 if this vector is empty 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00296}{296}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00297\ \ \ \ \ }
+\DoxyCodeLine{00298\ }
+\DoxyCodeLine{00299\ \ \ \ \ \textcolor{comment}{//\ en\ verdad\ se\ podria\ usar\ el\ metodo\ distance\ en\ vez\ de\ squaredistance}}
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{comment}{//,\ pero\ seria\ mas\ computo}}
+\DoxyCodeLine{00301\ \ \ \ \ }
+\DoxyCodeLine{00302\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ ==\ 0)\ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00303\ }
+\DoxyCodeLine{00304\ \ \ \ \ \textcolor{keywordtype}{int}\ posNearest\ =\ 0;}
+\DoxyCodeLine{00305\ \ \ \ \ \textcolor{keywordtype}{double}\ minDist\ =\ \_locations[0].\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(location);}
+\DoxyCodeLine{00306\ }
+\DoxyCodeLine{00307\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ \_locations[i].\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(location);}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ <\ minDist)\ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ minDist\ =\ dist;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ posNearest\ =\ i;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \}}
+\DoxyCodeLine{00314\ \ \ \ \ \textcolor{keywordflow}{return}\ posNearest;}
+\DoxyCodeLine{00315\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f}\label{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f} 
+\index{VectorLocation@{VectorLocation}!select@{select}}
+\index{select@{select}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} Vector\+Location\+::select (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{bottom\+Left,  }\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{top\+Right }\end{DoxyParamCaption}) const}
+
+
+
+Returns a \doxylink{classVectorLocation}{Vector\+Location} object with those locations whose positions are inside the area determined by the two given Locations. Query method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bottom\+Left} & The \doxylink{classLocation}{Location} of the bottom left point. Input parameter \\
+\hline
+{\em top\+Right} & The \doxylink{classLocation}{Location} of the top right point. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classVectorLocation}{Vector\+Location} with the selected Locations.
+\end{DoxyReturn}
+conviene usar is\+Inside\+Area \&\& append
+
+
+\begin{DoxyParams}{Parameters}
+{\em bottom\+Left} & The \doxylink{classLocation}{Location} of the bottom left point. Input parameter \\
+\hline
+{\em top\+Right} & The \doxylink{classLocation}{Location} of the top right point. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classVectorLocation}{Vector\+Location} with the selected Locations. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00141}{141}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ vector\_result;}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Si\ la\ location\ esta\ dentro\ del\ area,\ la\ anadimos\ al\ resultado}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_locations[i].isInsideArea(bottomLeft,\ topRight))\ \{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ vector\_result.\mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{append}}(\_locations[i]);}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordflow}{return}\ vector\_result;}
+\DoxyCodeLine{00150\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{classVectorLocation_a7594392a03fe1c5cf162ed4f1dc76a17}\label{classVectorLocation_a7594392a03fe1c5cf162ed4f1dc76a17} 
+\index{VectorLocation@{VectorLocation}!sort@{sort}}
+\index{sort@{sort}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{sort()}{sort()}}
+{\footnotesize\ttfamily void Vector\+Location\+::sort (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Sorts the array of locations in this object by increasing alphabetical order of the name of its location (a string). Modifier method 
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00274}{274}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size\ -\/\ 1;\ i++)\ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_size\ -\/\ 1\ -\/\ i;\ j++)\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_locations[j].getName()\ >\ \_locations[j+1].getName())\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ temp\ =\ \_locations[j];}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_locations[j]\ =\ \_locations[j+1];}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_locations[j+1]\ =\ temp;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00283\ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorLocation_a225b6306345bb813f40198850a65a813}\label{classVectorLocation_a225b6306345bb813f40198850a65a813} 
+\index{VectorLocation@{VectorLocation}!toString@{toString}}
+\index{toString@{toString}!VectorLocation@{VectorLocation}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Vector\+Location\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtains a string with information about this \doxylink{classVectorLocation}{Vector\+Location} object, in the following format\+: 
+
+
+\begin{DoxyItemize}
+\item First line, the number of \doxylink{classLocation}{Location} objects in this vector converted to a string (using the to\+\_\+string(int) C++ function).
+\item For each \doxylink{classLocation}{Location}, a line with its x and y coordinates, converted to a string (using the to\+\_\+string(int) C++ function) and separated by a whitespace. Query method \begin{DoxyReturn}{Returns}
+string with information about this \doxylink{classVectorLocation}{Vector\+Location} object
+\begin{DoxyItemize}
+\item First line, the number of \doxylink{classLocation}{Location} objects in this vector, converted to a string (using the to\+\_\+string(int) C++ function).
+\item For each \doxylink{classLocation}{Location}, a line with its information, converted to a string with the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method.
+\end{DoxyItemize}
+\end{DoxyReturn}
+For example, the following is the content of the string for a \doxylink{classVectorLocation}{Vector\+Location} object with 4 locations\+: 4 24.\+8 14.\+9 Quadrangle 25.\+6 14.\+9 Ivy 26.\+4 14.\+9 Cottage 27.\+3 14.\+5 Cap \& Gown Query method \begin{DoxyReturn}{Returns}
+string with information about this \doxylink{classVectorLocation}{Vector\+Location} object 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00089}{89}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ std::string\ result\ =\ std::to\_string(\_size)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ he\ modificado\ esta\ linea\ de\ abajo\ porque\ sino\ no\ funcionaba}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ya\ que\ std::to\_string\ no\ acepta\ un\ Location}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ,me\ suena\ que\ lo\ menciono\ en\ clase\ o\ en\ un\ correo.}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ result\ +=\ std::to\_string(\_locations[i])\ +\ "{}\(\backslash\)n"{};}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ BIEN:\ Location\ ya\ tiene\ su\ propio\ metodo\ de\ toString()}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ result\ +=\ \_locations[i].\mbox{\hyperlink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{toString}}()\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00101\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{VectorLocation_8h}{Vector\+Location.\+h}}\item 
+src/Vector\+Location.\+cpp\end{DoxyCompactItemize}

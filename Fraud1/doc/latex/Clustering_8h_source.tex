@@ -1,0 +1,74 @@
+\doxysection{Clustering.\+h}
+\hypertarget{Clustering_8h_source}{}\label{Clustering_8h_source}\index{include/Clustering.h@{include/Clustering.h}}
+\mbox{\hyperlink{Clustering_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00002}00002\ \textcolor{comment}{\ *\ Metodología\ de\ la\ Programación}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00003}00003\ \textcolor{comment}{\ *\ Curso\ 2025/2026}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00004}00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00015}00015\ \textcolor{preprocessor}{\#ifndef\ CLUSTERING\_H}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00016}00016\ \textcolor{preprocessor}{\#define\ CLUSTERING\_H}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorInt_8h}{VectorInt.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorLocation_8h}{VectorLocation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00037}\mbox{\hyperlink{classClustering}{00037}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classClustering}{Clustering}}\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00038}00038\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00048}00048\ \ \ \ \ \mbox{\hyperlink{classClustering_ac2b89030ef2f080689740a152fca50e7}{Clustering}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00049}00049\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00055}00055\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00056}00056\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\&\ \mbox{\hyperlink{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}{getCentroids}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00064}00064\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00072}00072\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{isDone}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00073}00073\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00084}00084\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a12786a2a6f40833089cb3e35465843fc}{getNumLocations}}()\textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00085}00085\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00099}00099\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}{clusterOf}}(\textcolor{keywordtype}{int}\ locationIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00100}00100\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00110}00110\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00122}00122\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00141}00141\ \ \ \ \ std::string\ \mbox{\hyperlink{classClustering_a9745f28464a8c1dccd04fa3a933d161a}{clusterInfo}}(\textcolor{keywordtype}{int}\ cluster)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00152}00152\ \ \ \ \ std::string\ \mbox{\hyperlink{classClustering_a871ad2a337f8068dfb07c14af709befa}{getStatistics}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00168}00168\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classClustering_a75df6dc49572b0a122421d5c052ed673}{isEquivalentTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\&\ other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00222}00222\ \ \ \ \ std::string\ \mbox{\hyperlink{classClustering_ae2d59326d01555deff1d3db41e9d3956}{toString}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00223}00223\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00242}00242\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classClustering_a4fae0dea4e83af494e8f064092f618b7}{set}}(\mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ locations,\ \textcolor{keywordtype}{int}\ K,\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00243}00243\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed=DEFAULT\_RANDOM\_SEED);}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00244}00244\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00276}00276\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00277}00277\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00278}00278\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00283}00283\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ DEFAULT\_RANDOM\_SEED=1761560597U;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00284}00284\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00289}00289\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \_locations;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00290}00290\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00294}00294\ \ \ \ \ \textcolor{keywordtype}{int}\ \_K;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00295}00295\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00302}00302\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \_clusters;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00303}00303\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00307}00307\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \_centroids;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00308}00308\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00314}00314\ \ \ \ \ \textcolor{keywordtype}{bool}\ \_isDone;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00315}00315\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00320}00320\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \_seed;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00321}00321\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00334}00334\ \ \ \ \ \textcolor{keywordtype}{double}\ \_sumWCV;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00335}00335\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00342}00342\ \ \ \ \ \textcolor{keywordtype}{int}\ \_numIterations;}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00343}00343\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00353}00353\ \ \ \ \ \textcolor{keywordtype}{void}\ initialClusterAssignment();}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00354}00354\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00364}00364\ \ \ \ \ \textcolor{keywordtype}{double}\ calculateSumWCV();}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00365}00365\ \};\ \textcolor{comment}{//\ end\ of\ class\ Clustering}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00367}00367\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ CLUSTERING\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{Clustering_8h_source_l00368}00368\ }
+
+\end{DoxyCode}

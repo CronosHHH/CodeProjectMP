@@ -1,0 +1,104 @@
+\doxysection{Vector\+Int.\+cpp}
+\hypertarget{VectorInt_8cpp_source}{}\label{VectorInt_8cpp_source}\index{src/VectorInt.cpp@{src/VectorInt.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}\ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorInt_8h}{VectorInt.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00046}\mbox{\hyperlink{classVectorInt_ab6c0905e573d92a209c83f35e0058ae3}{00046}}\ \mbox{\hyperlink{classVectorInt_ab6c0905e573d92a209c83f35e0058ae3}{VectorInt::VectorInt}}(\textcolor{keywordtype}{int}\ size)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00047}00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ <\ 0\ ||\ size\ >\ DIM\_VECTOR\_VALUES)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorInt:\ size\ invalido,\ que\ sea\ entre\ 1\ y\ 100"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00050}00050\ \ \ \ \ \_size\ =\ size;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00051}00051\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ size;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \_values[i]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00055}00055\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00062}\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{00062}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{VectorInt::getSize}}()\textcolor{keyword}{const}\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{return}\ \_size;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00064}00064\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00073}\mbox{\hyperlink{classVectorInt_aa7dab639c69bc92097f17639c6a449cf}{00073}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_aa7dab639c69bc92097f17639c6a449cf}{VectorInt::getCapacity}}()\textcolor{keyword}{const}\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{return}\ DIM\_VECTOR\_VALUES;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00075}00075\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00093}00093\ \textcolor{comment}{//\ otro\ que\ como\ es\ query\ method\ le\ pongo\ el\ const}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00094}\mbox{\hyperlink{classVectorInt_ab29c2dfedd84cea82685d0661d619a4a}{00094}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_ab29c2dfedd84cea82685d0661d619a4a}{VectorInt::countIdenticalElements}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\&\ other)\textcolor{keyword}{const}\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{int}\ cont=\ 0;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ !=\ other.\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}())\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}countIdenticalElements:\ tamanios\ diferentes"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<\_size\ ;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_values[i]\ ==\ other.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i))\ cont++;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{return}\ cont;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00105}00105\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00117}00117\ \textcolor{comment}{//\ es\ una\ query,\ aniadir\ const\ }}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00118}\mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{00118}}\ std::string\ \mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{VectorInt::toString}}()\textcolor{keyword}{const}\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00119}00119\ \ \ \ \ std::string\ result\ =\ std::to\_string(\_size)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ std::string\ espacio\ =\ (\ i\ ==\ \_size\ -\/1)\ ?\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ :\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00122}00122\ \ \ \ \ \ \ \ \ result\ +=\ std::to\_string(\_values[i])\ +\ espacio;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00125}00125\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00142}\mbox{\hyperlink{classVectorInt_ab08b8c0008a52708d02ae63954339e76}{00142}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classVectorInt_ab08b8c0008a52708d02ae63954339e76}{VectorInt::distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\&\ other)\textcolor{keyword}{const}\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ !=\ other.\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}())\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}distance:\ tamanios\ diferentes"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00145}00145\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00146}00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}distance:\ tamanio\ es\ cero"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00148}00148\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00149}00149\ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ sum\ +=\ std::pow(\_values[i]\ -\/\ other.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i),\ 2);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(sum);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00154}00154\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00161}\mbox{\hyperlink{classVectorInt_a4f6aa55d8b6a5fc5244c458148d5365c}{00161}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVectorInt_a4f6aa55d8b6a5fc5244c458148d5365c}{VectorInt::assign}}(\textcolor{keywordtype}{int}\ value)\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00162}00162\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \_values[i]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00165}00165\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00175}\mbox{\hyperlink{classVectorInt_a399db1d990b4867697a3ac99637c18ae}{00175}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVectorInt_a399db1d990b4867697a3ac99637c18ae}{VectorInt::append}}(\textcolor{keywordtype}{int}\ value)\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00176}00176\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ >=\ DIM\_VECTOR\_VALUES)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorInt::append\ el\ array\ esta\ lleno"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00178}00178\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00179}00179\ \ \ \ \ \_values[\_size]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00180}00180\ \ \ \ \ \_size++;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00181}00181\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00189}\mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{00189}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{VectorInt::clear}}()\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00190}00190\ \ \ \ \ \_size\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00191}00191\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00202}\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{00202}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{VectorInt::at}}(\textcolor{keywordtype}{int}\ pos)\textcolor{keyword}{const}\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00203}00203\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ <\ 0\ ||\ pos\ >=\ \_size)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::at\ posicion\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00205}00205\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00206}00206\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[pos];\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00207}00207\ \};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00217}\mbox{\hyperlink{classVectorInt_ac237b35c4cee235393be8d3f1b744ae8}{00217}}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{VectorInt::at}}(\textcolor{keywordtype}{int}\ pos)\{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00218}00218\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ <\ 0\ ||\ pos\ >=\ \_size)\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::at\ posicion\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00220}00220\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00221}00221\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[pos];\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8cpp_source_l00222}00222\ \};}
+
+\end{DoxyCode}

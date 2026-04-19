@@ -1,0 +1,68 @@
+\doxysection{include/\+Location.h File Reference}
+\hypertarget{Location_8h}{}\label{Location_8h}\index{include/Location.h@{include/Location.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Location.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classLocation}{Location}}
+\begin{DoxyCompactList}\small\item\em It stores data about a location where people spend money on some service or product. A location contains data about the x and y position (double values) in the 2D space and the name of the location (a string that can contain several words). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{Location_8h_a64b042637fe611c801668dca049c4ab8}{Trim}} (std\+::string \&my\+String)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 6 de octubre de 2025, 12\+:27 
+
+Definition in file \mbox{\hyperlink{Location_8h_source}{Location.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Location_8h_a64b042637fe611c801668dca049c4ab8}\label{Location_8h_a64b042637fe611c801668dca049c4ab8} 
+\index{Location.h@{Location.h}!Trim@{Trim}}
+\index{Trim@{Trim}!Location.h@{Location.h}}
+\doxysubsubsection{\texorpdfstring{Trim()}{Trim()}}
+{\footnotesize\ttfamily void Trim (\begin{DoxyParamCaption}\item[{std\+::string \&}]{my\+String }\end{DoxyParamCaption})}
+
+Removes spaces and \textbackslash{}t characters at the beginning and at the end of the provided string {\ttfamily my\+String}. If the provided string {\ttfamily my\+String} is empty or contains only spaces or \textbackslash{}t characters then {\ttfamily my\+String} will contain an empty string after calling to this function. \begin{DoxyNote}{Note}
+This function can be easily implemented using the methods find\+\_\+first\+\_\+not\+\_\+of(string) and find\+\_\+last\+\_\+not\+\_\+of(string) of class string. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em my\+String} & a string. Input/\+Output parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00200}{200}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ first\ =\ myString.find\_first\_not\_of(\textcolor{stringliteral}{"{}\ \(\backslash\)t"{}});}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordflow}{if}\ (first\ ==\ std::string::npos)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ myString=\textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ last\ =\ myString.find\_last\_not\_of(\textcolor{stringliteral}{"{}\ \(\backslash\)t"{}});}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ myString\ =\ myString.substr(first,\ last\ -\/\ first\ +\ 1);}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \}}
+
+\end{DoxyCode}

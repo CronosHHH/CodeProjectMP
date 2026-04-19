@@ -1,0 +1,64 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ Metodología\ de\ la\ Programación}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ Curso\ 2025/2026}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Location_8h}{Location.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorLocation_8h}{VectorLocation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{ArrayLocation_8h}{ArrayLocation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}\mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00061}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_NLOCATIONS\ =\ 20;\ \ \ \textcolor{comment}{//\ capacity\ of\ the\ location\ arrays}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ bottomLeft1,\ topRight1,\ \textcolor{comment}{//\ coordinates\ that\ define\ the\ first\ input\ area}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ bottomLeft2,\ topRight2;\ \ \ \ \ \ \textcolor{comment}{//\ coordinates\ that\ define\ the\ second\ input\ area}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ locations,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ VectorLocation\ with\ all\ the\ locations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ selectedLocations1,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ first\ vector\ of\ selected\ locations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ selectedLocations2;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ second\ vector\ of\ selected\ locations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ arrayLocations[MAX\_NLOCATIONS],\ \textcolor{comment}{//\ array\ used\ to\ read\ all\ the\ input\ locations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ arrayUnionLocations[MAX\_NLOCATIONS];\ \textcolor{comment}{//\ array\ to\ store\ the\ resulting\ union}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordtype}{int}\ nLocs,\ \textcolor{comment}{//\ number\ of\ locations\ in\ arrayLocations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ nUnionLocs;\ \textcolor{comment}{//\ number\ of\ locations\ in\ arrayUnionLocations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Read\ bottomLeft1\ and\ topRight1\ from\ standard\ input}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ \ \ \ \ bottomLeft1.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075\ \ \ \ \ topRight1.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Read\ bottomLeft2\ and\ topRight2\ from\ standard\ input}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078\ \ \ \ \ bottomLeft2.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079\ \ \ \ \ topRight2.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Read\ from\ standard\ input\ all\ the\ locations\ and\ insert\ them\ in\ arrayLocations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ \ \ \ \ ReadArrayLocation(arrayLocations,\ MAX\_NLOCATIONS,\ nLocs);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ Insert\ the\ locations\ in\ arrayLocations\ in\ the\ locations\ object\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085\ \ \ \ \ locations\ =\ ToVectorLocation(arrayLocations,\ nLocs);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ Take\ from\ the\ locations\ object\ the\ locations\ within\ each\ area\ and\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ insert\ them\ in\ selectedLocations1\ and\ selectedLocations2\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089\ \ \ \ \ selectedLocations1\ =\ locations.\mbox{\hyperlink{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f}{select}}(bottomLeft1,\ topRight1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090\ \ \ \ \ selectedLocations2\ =\ locations.\mbox{\hyperlink{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f}{select}}(bottomLeft2,\ topRight2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ union\ of\ selectedLocations1\ and\ selectedLocations2\ }}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ \ \ \ \ selectedLocations1.\mbox{\hyperlink{classVectorLocation_acc2892fd5902dc4cb5515f552c48a507}{join}}(selectedLocations2);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//\ Sort\ the\ resulting\ VectorLocation\ object}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \ \ selectedLocations1.\mbox{\hyperlink{classVectorLocation_a7594392a03fe1c5cf162ed4f1dc76a17}{sort}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ sorted\ VectorLocation\ object\ to\ an\ array\ of\ Location\ objects}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \ \ \ \ ToArrayLocation(selectedLocations1,\ arrayUnionLocations,\ MAX\_NLOCATIONS,\ nUnionLocs);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ Print\ the\ resulting\ array\ of\ Location\ objects\ in\ the\ standard\ output}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ \ \ \ \ PrintArrayLocation(arrayUnionLocations,\ nUnionLocs);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \}}
+
+\end{DoxyCode}

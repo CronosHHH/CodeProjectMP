@@ -1,0 +1,455 @@
+\doxysection{Location Class Reference}
+\hypertarget{classLocation}{}\label{classLocation}\index{Location@{Location}}
+
+
+It stores data about a location where people spend money on some service or product. A location contains data about the x and y position (double values) in the 2D space and the name of the location (a string that can contain several words).  
+
+
+
+
+{\ttfamily \#include $<$Location.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLocation_a87790c14997fd8cdd12080c78c9794bb}{Location}} ()
+\begin{DoxyCompactList}\small\item\em Constructor that builds a \doxylink{classLocation}{Location} object with a value of 0 for the x and y coordinates, and an empty string for the name. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Returns the x-\/coordinate of this location Query method. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Returns the y-\/coordinate of this location Query method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLocation_aaedb2823c1fbb3abc28971d9be5b002e}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Returns the name of this location Query method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLocation_a41258f5091172703d69734276f93f21a}{is\+Inside\+Area}} (const \mbox{\hyperlink{classLocation}{Location}} \&bottom\+Left, const \mbox{\hyperlink{classLocation}{Location}} \&top\+Right) const
+\begin{DoxyCompactList}\small\item\em Checks if the position of this object is inside the area determined by the two given locations\+: \doxylink{classLocation}{Location} A ({\ttfamily bottom\+Left}) and B ({\ttfamily top\+Right}). \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squared\+Distance}} (const \mbox{\hyperlink{classLocation}{Location}} \&location) const
+\begin{DoxyCompactList}\small\item\em Calculates the square of the Euclidean distante from this location to the provided location. That is, it loc1 and loc2 are two \doxylink{classLocation}{Location} objects, then this method returns\+: $ (loc1.x - loc2.x)^2 + (loc1.y - loc2.y)^2 $ Query method. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classLocation_a25e07c099b36db080d412b9e657d110b}{distance}} (const \mbox{\hyperlink{classLocation}{Location}} \&location) const
+\begin{DoxyCompactList}\small\item\em Calculates the Euclidean distante from this location to the provided location. That is, it loc1 and loc2 are two \doxylink{classLocation}{Location} objects, then this method returns\+: $ \sqrt{ (loc1.x - loc2.x)^2 + (loc1.y - loc2.y)^2 } $ Note that this method can be implemented using the \doxylink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squared\+Distance()} method. Query method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Obtains a string with the x and y coordinates and the name (whitespace separated). If the name is an empty string, then only the x and y coordinates are included in the resulting string. To convert the x and y coordinates to a string you must use the std\+::to\+\_\+string(int) C++ function. Query method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLocation_a8eb37eee2b6c26e334848a4f44164378}{setX}} (double x)
+\begin{DoxyCompactList}\small\item\em Sets the x-\/coordinate in this object Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLocation_a0e4ec1ffdf93365edca5b15843243d31}{setY}} (double y)
+\begin{DoxyCompactList}\small\item\em Sets the y-\/coordinate in this object Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLocation_ae6a31591385c715627828ff069568dcd}{set\+Name}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Sets the name in this object Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLocation_add50f23df7b3ff22b780b3834143ff6f}{set}} (double x, double y, const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Sets the x and y coordinates, and the the name in this object Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}} (std\+::istream \&is)
+\begin{DoxyCompactList}\small\item\em Reads from the provided input stream the information to fill this \doxylink{classLocation}{Location} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+It stores data about a location where people spend money on some service or product. A location contains data about the x and y position (double values) in the 2D space and the name of the location (a string that can contain several words). 
+
+Definition at line \mbox{\hyperlink{Location_8h_source_l00028}{28}} of file \mbox{\hyperlink{Location_8h_source}{Location.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLocation_a87790c14997fd8cdd12080c78c9794bb}\label{classLocation_a87790c14997fd8cdd12080c78c9794bb} 
+\index{Location@{Location}!Location@{Location}}
+\index{Location@{Location}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{Location()}{Location()}}
+{\footnotesize\ttfamily Location\+::\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor that builds a \doxylink{classLocation}{Location} object with a value of 0 for the x and y coordinates, and an empty string for the name. 
+
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \_x\ =\ \_y\ =\ 0;}
+\DoxyCodeLine{00017\ \ \ \ \ \_name\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00018\ \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLocation_a25e07c099b36db080d412b9e657d110b}\label{classLocation_a25e07c099b36db080d412b9e657d110b} 
+\index{Location@{Location}!distance@{distance}}
+\index{distance@{distance}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}}
+{\footnotesize\ttfamily double Location\+::distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{location }\end{DoxyParamCaption}) const}
+
+
+
+Calculates the Euclidean distante from this location to the provided location. That is, it loc1 and loc2 are two \doxylink{classLocation}{Location} objects, then this method returns\+: $ \sqrt{ (loc1.x - loc2.x)^2 + (loc1.y - loc2.y)^2 } $ Note that this method can be implemented using the \doxylink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squared\+Distance()} method. Query method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & A \doxylink{classLocation}{Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Euclidean distante from this location to the provided location. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(location));}
+\DoxyCodeLine{00112\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{classLocation_aaedb2823c1fbb3abc28971d9be5b002e}\label{classLocation_aaedb2823c1fbb3abc28971d9be5b002e} 
+\index{Location@{Location}!getName@{getName}}
+\index{getName@{getName}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string Location\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the name of this location Query method. 
+
+\begin{DoxyReturn}{Returns}
+The name of this location 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00043}{43}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordflow}{return}\ \_name;}
+\DoxyCodeLine{00045\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}\label{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7} 
+\index{Location@{Location}!getX@{getX}}
+\index{getX@{getX}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily double Location\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the x-\/coordinate of this location Query method. 
+
+\begin{DoxyReturn}{Returns}
+The x-\/coordinate of this location 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordflow}{return}\ \_x;}
+\DoxyCodeLine{00027\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classLocation_a2223613f9dee0209c7f0378ce79045de}\label{classLocation_a2223613f9dee0209c7f0378ce79045de} 
+\index{Location@{Location}!getY@{getY}}
+\index{getY@{getY}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily double Location\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the y-\/coordinate of this location Query method. 
+
+\begin{DoxyReturn}{Returns}
+The y-\/coordinate of this location 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{return}\ \_y;}
+\DoxyCodeLine{00036\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classLocation_a41258f5091172703d69734276f93f21a}\label{classLocation_a41258f5091172703d69734276f93f21a} 
+\index{Location@{Location}!isInsideArea@{isInsideArea}}
+\index{isInsideArea@{isInsideArea}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{isInsideArea()}{isInsideArea()}}
+{\footnotesize\ttfamily bool Location\+::is\+Inside\+Area (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{bottom\+Left,  }\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{top\+Right }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the position of this object is inside the area determined by the two given locations\+: \doxylink{classLocation}{Location} A ({\ttfamily bottom\+Left}) and B ({\ttfamily top\+Right}). 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+(B)}
+\DoxyCodeLine{\ \ \ |\ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ |\ \ \ \ \ \ \ \ \ \ \ |\ \ +(O3)}
+\DoxyCodeLine{\ \ \ |\ \ \ \ \ \ \ \ \ \ \ |\ }
+\DoxyCodeLine{\ \ \ |\ \ \ \ +(O2)\ \ |}
+\DoxyCodeLine{\ \ \ |\ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{\ \ \ |\ \ \ \ \ \ \ \ \ \ \ |}
+\DoxyCodeLine{(A)+-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}
+\DoxyCodeLine{\ \ \ \ \ \ +(O1)}
+
+\end{DoxyCode}
+ Examples of returning false\+:
+\begin{DoxyItemize}
+\item Object O3 is outside the given area (O3.\+x \texorpdfstring{$>$}{>} B.\+x)
+\item Object O1 is outside the given area (O1.\+y \texorpdfstring{$<$}{<} A.\+y) Example of returning true\+:
+\item Object O2 is inside the given area
+\item Object A is inside the given area
+\item Object B is inside the given area
+\end{DoxyItemize}
+
+Query method. 
+\begin{DoxyParams}{Parameters}
+{\em bottom\+Left} & The \doxylink{classLocation}{Location} of the bottom left point. Input parameter \\
+\hline
+{\em top\+Right} & The \doxylink{classLocation}{Location} of the top right point. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the \doxylink{classLocation}{Location} of this object is inside the area determined by the two given Locations 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordflow}{return}\ \ bottomLeft.\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}()<=\_x\ \&\&\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ topRight.\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}()>=\_x\ \&\&}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ bottomLeft.\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}()<=\_y\ \&\&\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ topRight.\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}()>=\_y;}
+\DoxyCodeLine{00081\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classLocation_a684a059d3b704a43bfdf46c6326228d0}\label{classLocation_a684a059d3b704a43bfdf46c6326228d0} 
+\index{Location@{Location}!load@{load}}
+\index{load@{load}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Location\+::load (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is }\end{DoxyParamCaption})}
+
+
+
+Reads from the provided input stream the information to fill this \doxylink{classLocation}{Location} object. 
+
+\begin{DoxyNote}{Note}
+This method reads two double values (space separated) from the input stream that are used to set the x and y coordinates of this object. Then, it reads the string that can be formed from the current position of the input stream to the end of the line. This string is then trimmed (see the Trim(string) function) to remove its spaces at the beginning and at the end. The resulting string is used to set the name of this \doxylink{classLocation}{Location} object. Note that the name can have several words separated by whitespaces. 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em is} & Input stream. Input/output parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00186}{186}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{comment}{//\ Paso\ 1:\ Leemos\ las\ dos\ coordenadas\ del\ flujo\ de\ entrada}}
+\DoxyCodeLine{00188\ \ \ \ \ is\ >>\ \_x;}
+\DoxyCodeLine{00189\ \ \ \ \ is\ >>\ \_y;}
+\DoxyCodeLine{00190\ }
+\DoxyCodeLine{00191\ \ \ \ \ \textcolor{comment}{//\ Paso\ 2:\ Leemos\ el\ resto\ de\ la\ linea\ (el\ nombre,\ que\ puede\ tener\ espacios)}}
+\DoxyCodeLine{00192\ \ \ \ \ \textcolor{comment}{//\ getline\ lee\ desde\ la\ posicion\ actual\ hasta\ el\ fin\ de\ linea}}
+\DoxyCodeLine{00193\ \ \ \ \ std::getline(is,\ \_name);}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{comment}{//\ Paso\ 3:\ Quitamos\ espacios/tabs\ sobrantes\ al\ inicio\ y\ al\ final\ del\ nombre}}
+\DoxyCodeLine{00196\ \ \ \ \ \mbox{\hyperlink{Location_8h_a64b042637fe611c801668dca049c4ab8}{Trim}}(\_name);}
+\DoxyCodeLine{00197\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{classLocation_add50f23df7b3ff22b780b3834143ff6f}\label{classLocation_add50f23df7b3ff22b780b3834143ff6f} 
+\index{Location@{Location}!set@{set}}
+\index{set@{set}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Location\+::set (\begin{DoxyParamCaption}\item[{double}]{x,  }\item[{double}]{y,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Sets the x and y coordinates, and the the name in this object Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The new value for the x-\/coordinate. Input parameter \\
+\hline
+{\em y} & The new value for the y-\/coordinate. Input parameter \\
+\hline
+{\em name} & A string with the new value for the name. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \mbox{\hyperlink{classLocation_a8eb37eee2b6c26e334848a4f44164378}{setX}}(x);}
+\DoxyCodeLine{00169\ \ \ \ \ \mbox{\hyperlink{classLocation_a0e4ec1ffdf93365edca5b15843243d31}{setY}}(y);}
+\DoxyCodeLine{00170\ \ \ \ \ \mbox{\hyperlink{classLocation_ae6a31591385c715627828ff069568dcd}{setName}}(name);}
+\DoxyCodeLine{00171\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{classLocation_ae6a31591385c715627828ff069568dcd}\label{classLocation_ae6a31591385c715627828ff069568dcd} 
+\index{Location@{Location}!setName@{setName}}
+\index{setName@{setName}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void Location\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Sets the name in this object Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & A string with the new value for the name. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00156}{156}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ this-\/>\_name\ =\ name;}
+\DoxyCodeLine{00158\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classLocation_a8eb37eee2b6c26e334848a4f44164378}\label{classLocation_a8eb37eee2b6c26e334848a4f44164378} 
+\index{Location@{Location}!setX@{setX}}
+\index{setX@{setX}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{setX()}{setX()}}
+{\footnotesize\ttfamily void Location\+::setX (\begin{DoxyParamCaption}\item[{double}]{x }\end{DoxyParamCaption})}
+
+
+
+Sets the x-\/coordinate in this object Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The new value for the x-\/coordinate. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00138}{138}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ this-\/>\_x\ =\ x;}
+\DoxyCodeLine{00140\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classLocation_a0e4ec1ffdf93365edca5b15843243d31}\label{classLocation_a0e4ec1ffdf93365edca5b15843243d31} 
+\index{Location@{Location}!setY@{setY}}
+\index{setY@{setY}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{setY()}{setY()}}
+{\footnotesize\ttfamily void Location\+::setY (\begin{DoxyParamCaption}\item[{double}]{y }\end{DoxyParamCaption})}
+
+
+
+Sets the y-\/coordinate in this object Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em y} & The new value for the y-\/coordinate. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00147}{147}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ this-\/>\_y\ =\ y;}
+\DoxyCodeLine{00149\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classLocation_a2d57811d4ca4178008f2c181d87d36bc}\label{classLocation_a2d57811d4ca4178008f2c181d87d36bc} 
+\index{Location@{Location}!squaredDistance@{squaredDistance}}
+\index{squaredDistance@{squaredDistance}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{squaredDistance()}{squaredDistance()}}
+{\footnotesize\ttfamily double Location\+::squared\+Distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}} \&}]{location }\end{DoxyParamCaption}) const}
+
+
+
+Calculates the square of the Euclidean distante from this location to the provided location. That is, it loc1 and loc2 are two \doxylink{classLocation}{Location} objects, then this method returns\+: $ (loc1.x - loc2.x)^2 + (loc1.y - loc2.y)^2 $ Query method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em location} & A \doxylink{classLocation}{Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns the square of the Euclidean distante from this location to the provided location. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00093}{93}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordflow}{return}\ std::pow(\_x\ -\/\ location.\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}(),\ 2)\ +\ std::pow(\_y\ -\/\ location.\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}(),2\ );}
+\DoxyCodeLine{00095\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}\label{classLocation_a8acfe3b137ecc53b8c4f33197ab63511} 
+\index{Location@{Location}!toString@{toString}}
+\index{toString@{toString}!Location@{Location}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Location\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtains a string with the x and y coordinates and the name (whitespace separated). If the name is an empty string, then only the x and y coordinates are included in the resulting string. To convert the x and y coordinates to a string you must use the std\+::to\+\_\+string(int) C++ function. Query method. 
+
+\begin{DoxyReturn}{Returns}
+string with information about this \doxylink{classLocation}{Location} object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Location_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{Location_8cpp_source}{Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ std::string\ output;}
+\DoxyCodeLine{00127\ \ \ \ \ output\ +=\ std::to\_string(\_x)\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ std::to\_string(\_y);}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{if}(!\_name.empty())\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ output\ +=\ \textcolor{stringliteral}{"{}\ "{}}\ +\ \mbox{\hyperlink{classLocation_aaedb2823c1fbb3abc28971d9be5b002e}{getName}}();}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordflow}{return}\ output;}
+\DoxyCodeLine{00131\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Location_8h}{Location.\+h}}\item 
+src/Location.\+cpp\end{DoxyCompactItemize}

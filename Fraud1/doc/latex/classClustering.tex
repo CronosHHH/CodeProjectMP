@@ -1,0 +1,684 @@
+\doxysection{Clustering Class Reference}
+\hypertarget{classClustering}{}\label{classClustering}\index{Clustering@{Clustering}}
+
+
+This class is used to obtain a clustering of a given set of locations (\doxylink{classLocation}{Location} objects). A clustering algorithm groups the input locations into K disjoint groups (clusters). The clustering algorithm used in this class is the K-\/\+Means algorithm. Each group will consist of a disjunct subset of the original location set and a representative location (centroid), which is calculated as the vector of the means of the locations in the group. The \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method in this class executes the algorithm. An example of use is the following\+: \doxylink{classVectorLocation}{Vector\+Location} locations; Suppose here code to fill the vector of locations \doxylink{classClustering}{Clustering} clustering; clustering.\+set(locations, 5); clustering.\+run();.  
+
+
+
+
+{\ttfamily \#include $<$Clustering.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classClustering_ac2b89030ef2f080689740a152fca50e7}{Clustering}} ()
+\begin{DoxyCompactList}\small\item\em Constructor that builds a \doxylink{classClustering}{Clustering} object initializing the field (\+\_\+K) for the number of clusters with 0; the field (\+\_\+is\+Done) that tells whether the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method has already been executed with false; the fields \+\_\+sum\+WCV and \+\_\+num\+Iterations with 0 and the field \+\_\+seed with DEFAULT\+\_\+\+RANDOM\+\_\+\+SEED. The fields (\+\_\+locations, \+\_\+clusters, \+\_\+centroids) are initialized with the default constructor of their classes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of clusters Query method. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \& \mbox{\hyperlink{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}{get\+Centroids}} () const
+\begin{DoxyCompactList}\small\item\em Gets the current vector of centroids Query method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{is\+Done}} () const
+\begin{DoxyCompactList}\small\item\em Indicates whether the clustering algorithm (\doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method) has already been executed for this \doxylink{classClustering}{Clustering} object. Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classClustering_a12786a2a6f40833089cb3e35465843fc}{get\+Num\+Locations}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of locations in the set of locations of this \doxylink{classClustering}{Clustering} object. Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}{cluster\+Of}} (int location\+Index) const
+\begin{DoxyCompactList}\small\item\em Gets the cluster number for the \doxylink{classLocation}{Location} determined by the ~\newline
+ provided integer ({\ttfamily location\+Index}) Query method. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{get\+Sum\+WCV}} () const
+\begin{DoxyCompactList}\small\item\em Gets the value of the sum of the within-\/cluster variances of this \doxylink{classClustering}{Clustering}. This value is obtained from the field \+\_\+sum\+WCV. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{get\+Num\+Iterations}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of iterations used in the KMeans algorithm until no cluster assignment change occurs. It obtains the number of iterations (field \+\_\+number\+Iterations) used in the KMeans algorithm until no cluster change occurred. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classClustering_a9745f28464a8c1dccd04fa3a933d161a}{cluster\+Info}} (int cluster) const
+\begin{DoxyCompactList}\small\item\em Gets a string with information about the provided cluster (index of a cluster). That string contains a line for each location in the given cluster. The information of each location consists of an integer with its location index (whithin the \+\_\+location field), a whitespace, and the information returned by the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method for that location. An example is the following (a cluster with three locations)\+: 0 3.\+300000 9.\+100000 Graduate College 6 12.\+600000 17.\+500000 Admission Information Center 7 12.\+500000 20.\+000000 Rockefeller College Query method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classClustering_a871ad2a337f8068dfb07c14af709befa}{get\+Statistics}} () const
+\begin{DoxyCompactList}\small\item\em Obtains a string with the some statistics data about this \doxylink{classClustering}{Clustering} object. The first line contains the value of K; the second line contains the value of the sum of within-\/cluster variances; the third line contains the number of iterations used in the KMeans algorithm. Query method. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classClustering_a75df6dc49572b0a122421d5c052ed673}{is\+Equivalent\+To}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&other) const
+\begin{DoxyCompactList}\small\item\em Indicates whether this \doxylink{classClustering}{Clustering} object is equivalent to the provided \doxylink{classClustering}{Clustering} object ({\ttfamily other}). Two \doxylink{classClustering}{Clustering} objects are considered equivalent if they have the same K value, the same sum of within-\/cluster variances and the same number of iterations in the KMeans algorithm. If either this \doxylink{classClustering}{Clustering} object or the provided \doxylink{classClustering}{Clustering} object ({\ttfamily other}) has not yet run the clustering algorithm (the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method), then they are not considered equivalent. Query method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classClustering_ae2d59326d01555deff1d3db41e9d3956}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Metodo de consulta. Obtiene un string con los datos del objeto\+: valores de \doxylink{classClustering_a871ad2a337f8068dfb07c14af709befa}{get\+Statistics()}, informacion sobre el numero de cluster de cada localizacion y de cada centroide y informacion de las localizacioens de cada cluster. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClustering_a4fae0dea4e83af494e8f064092f618b7}{set}} (\mbox{\hyperlink{classVectorLocation}{Vector\+Location}} locations, int K, unsigned int seed=DEFAULT\+\_\+\+RANDOM\+\_\+\+SEED)
+\begin{DoxyCompactList}\small\item\em Sets the vector of locations ({\itshape locations), the value of K (\+\_\+K) ~\newline
+ and the seed (\+\_\+seed) with the provided values. The fields \+\_\+is\+Done, \+\_\+clusters and \+\_\+centroids} are also initialized appropriately\+: \+\_\+is\+Done is set to false; \+\_\+clusters is initialized with a \doxylink{classVectorInt}{Vector\+Int} object with size equal to the number of locations; \+\_\+centroids is initialized with a \doxylink{classVectorLocation}{Vector\+Location} object with size K; the fields \+\_\+sum\+WCV and \+\_\+num\+Iterations are set to 0. Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run the clustering algorithm. The clustering algorithm implemented ~\newline
+ in this method is the KMeans algorithm. After running this method the following postcondition should be verified\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is used to obtain a clustering of a given set of locations (\doxylink{classLocation}{Location} objects). A clustering algorithm groups the input locations into K disjoint groups (clusters). The clustering algorithm used in this class is the K-\/\+Means algorithm. Each group will consist of a disjunct subset of the original location set and a representative location (centroid), which is calculated as the vector of the means of the locations in the group. The \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method in this class executes the algorithm. An example of use is the following\+: \doxylink{classVectorLocation}{Vector\+Location} locations; Suppose here code to fill the vector of locations \doxylink{classClustering}{Clustering} clustering; clustering.\+set(locations, 5); clustering.\+run();. 
+
+Definition at line \mbox{\hyperlink{Clustering_8h_source_l00037}{37}} of file \mbox{\hyperlink{Clustering_8h_source}{Clustering.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classClustering_ac2b89030ef2f080689740a152fca50e7}\label{classClustering_ac2b89030ef2f080689740a152fca50e7} 
+\index{Clustering@{Clustering}!Clustering@{Clustering}}
+\index{Clustering@{Clustering}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{Clustering()}{Clustering()}}
+{\footnotesize\ttfamily Clustering\+::\+Clustering (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructor that builds a \doxylink{classClustering}{Clustering} object initializing the field (\+\_\+K) for the number of clusters with 0; the field (\+\_\+is\+Done) that tells whether the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method has already been executed with false; the fields \+\_\+sum\+WCV and \+\_\+num\+Iterations with 0 and the field \+\_\+seed with DEFAULT\+\_\+\+RANDOM\+\_\+\+SEED. The fields (\+\_\+locations, \+\_\+clusters, \+\_\+centroids) are initialized with the default constructor of their classes. 
+
+Constructor de la clase \doxylink{classClustering}{Clustering}. Inicializa los campos a 0 o false, y el campo \+\_\+seed con DEFAULT\+\_\+\+RANDOM\+\_\+\+SEED. 
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ :\ \_K(0),\ \_isDone(\textcolor{keyword}{false}),}
+\DoxyCodeLine{00031\ \_sumWCV(0),\ \_numIterations(0),\ \_seed(DEFAULT\_RANDOM\_SEED)\{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classClustering_a9745f28464a8c1dccd04fa3a933d161a}\label{classClustering_a9745f28464a8c1dccd04fa3a933d161a} 
+\index{Clustering@{Clustering}!clusterInfo@{clusterInfo}}
+\index{clusterInfo@{clusterInfo}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{clusterInfo()}{clusterInfo()}}
+{\footnotesize\ttfamily std\+::string Clustering\+::cluster\+Info (\begin{DoxyParamCaption}\item[{int}]{cluster }\end{DoxyParamCaption}) const}
+
+
+
+Gets a string with information about the provided cluster (index of a cluster). That string contains a line for each location in the given cluster. The information of each location consists of an integer with its location index (whithin the \+\_\+location field), a whitespace, and the information returned by the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method for that location. An example is the following (a cluster with three locations)\+: 0 3.\+300000 9.\+100000 Graduate College 6 12.\+600000 17.\+500000 Admission Information Center 7 12.\+500000 20.\+000000 Rockefeller College Query method. 
+
+Metodo de consulta. Devuelve un string con la informacion que solicita el parametro de entrada "{}int cluster"{}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cluster} & An integer, that defines the index of a cluster. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Gets a string with information about the provided cluster. If the clustering algorithm has not been run (\+\_\+is\+Done is false) or an invalid value of cluster is provide, then it returns an empty string.
+
+Un string con la informacion del cluster 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00133}{133}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00134\ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//Creamos\ la\ variable\ que\ almacenara\ el\ resultado.}}
+\DoxyCodeLine{00136\ \ \ \ \ std::string\ result\_clusterInfo;}
+\DoxyCodeLine{00137\ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//Si\ no\ se\ cumple\ alguna\ de\ las\ condiciones\ de\ seguridad\ del\ metodo,\ devuelve\ empty.}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordflow}{if}(!\_isDone\ ||\ cluster\ <\ 0\ ||\ cluster\ >=\ \_K)\{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ result\_clusterInfo\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00142\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Se\ ejecuta\ un\ bucle\ donde\ se\ repasan\ todas\ las\ localizaciones.}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Si\ el\ cluster\ de\ entrada\ coincide\ con\ el\ valor\ de\ cluster\ de\ la\ localizacion,\ se\ ejecuta.}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cluster\ ==\ \_clusters.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i))}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Se\ almacena\ en\ el\ string\ la\ location\ y\ sus\ datos.}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\_clusterInfo\ +=\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\_clusterInfo\ +=\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{toString}}();}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\_clusterInfo\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{keywordflow}{return}\ result\_clusterInfo;}
+\DoxyCodeLine{00160\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}\label{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272} 
+\index{Clustering@{Clustering}!clusterOf@{clusterOf}}
+\index{clusterOf@{clusterOf}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{clusterOf()}{clusterOf()}}
+{\footnotesize\ttfamily int Clustering\+::cluster\+Of (\begin{DoxyParamCaption}\item[{int}]{location\+Index }\end{DoxyParamCaption}) const}
+
+
+
+Gets the cluster number for the \doxylink{classLocation}{Location} determined by the ~\newline
+ provided integer ({\ttfamily location\+Index}) Query method. 
+
+Metodo de consulta. Nos dice el numero de cluster de una localizacion determinado por location\+Index.
+
+
+\begin{DoxyParams}{Parameters}
+{\em location\+Index} & An integer that determines the position of a location in the vector of \doxylink{classLocation}{Location} objects. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The cluster number for the \doxylink{classLocation}{Location} determined by the provided integer ({\ttfamily location\+Index}). If the clustering algorithm has not been run (\+\_\+is\+Done is false), then it returns -\/1. le he añadido el const ya que solo consulta, no modifica nada\+:
+
+Si es false, -\/1. Si es true, el numero de cluster correspondiente a location\+Index. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordflow}{if}(\_isDone)}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_clusters.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(locationIndex);}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}El\ algoritmo\ aun\ no\ ha\ sido\ ejecutado"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}\label{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4} 
+\index{Clustering@{Clustering}!getCentroids@{getCentroids}}
+\index{getCentroids@{getCentroids}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{getCentroids()}{getCentroids()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \& Clustering\+::get\+Centroids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the current vector of centroids Query method. 
+
+Nos devuelve el vector de centroides. Es un metodo de consulta, asi que aniadimos "{}const"{} al final.
+
+\begin{DoxyReturn}{Returns}
+A const reference to the vector of centroids (a \doxylink{classVectorLocation}{Vector\+Location} object).
+
+Vector de centroides. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordflow}{return}\ \_centroids;}
+\DoxyCodeLine{00049\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classClustering_a80787e3f759cddb27cda96c64dcf3f25}\label{classClustering_a80787e3f759cddb27cda96c64dcf3f25} 
+\index{Clustering@{Clustering}!getK@{getK}}
+\index{getK@{getK}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{getK()}{getK()}}
+{\footnotesize\ttfamily int Clustering\+::getK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of clusters Query method. 
+
+Nos devuelve el numero de clusters. Es un metodo de consulta, asi que aniadimos "{}const"{} al final.
+
+\begin{DoxyReturn}{Returns}
+The number of clusters
+
+Numero de clusters. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{return}\ \_K;}
+\DoxyCodeLine{00040\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}\label{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5} 
+\index{Clustering@{Clustering}!getNumIterations@{getNumIterations}}
+\index{getNumIterations@{getNumIterations}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{getNumIterations()}{getNumIterations()}}
+{\footnotesize\ttfamily int Clustering\+::get\+Num\+Iterations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of iterations used in the KMeans algorithm until no cluster assignment change occurs. It obtains the number of iterations (field \+\_\+number\+Iterations) used in the KMeans algorithm until no cluster change occurred. 
+
+Metodo de consulta. Devuelve el numero de interacciones que ha usado el algoritmo KMeans.
+
+\begin{DoxyNote}{Note}
+The returned value will likely be a garbage value if the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method has not yet been executed (\+\_\+is\+Done is false) Query method 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+The number of iterations used in the KMeans algorithm
+
+Si el algoritmo aun no ha sido ejecutado, controlamos el error y devuelve -\/1. Si ya ha sido ejecutado, devuelve \+\_\+num\+Iterations. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{if}(!\_isDone)\{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}El\ algoritmo\ aun\ no\ ha\ sido\ ejecutado"{}});}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{return}\ \_numIterations;}
+\DoxyCodeLine{00125\ \ \ \ \ \}}
+\DoxyCodeLine{00126\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classClustering_a12786a2a6f40833089cb3e35465843fc}\label{classClustering_a12786a2a6f40833089cb3e35465843fc} 
+\index{Clustering@{Clustering}!getNumLocations@{getNumLocations}}
+\index{getNumLocations@{getNumLocations}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{getNumLocations()}{getNumLocations()}}
+{\footnotesize\ttfamily int Clustering\+::get\+Num\+Locations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of locations in the set of locations of this \doxylink{classClustering}{Clustering} object. Query method. 
+
+Nos devuelve el numero de ubicaciones. Es un metodo de consulta, así que aniadimos "{}const"{} al final.
+
+\begin{DoxyReturn}{Returns}
+The number of locations in the set of locations of this \doxylink{classClustering}{Clustering} le he quitado el const y el \& del principio , ya q devuelve referencia a temporal\+:
+
+Numero de ubicaciones. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{return}\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();}
+\DoxyCodeLine{00075\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{classClustering_a871ad2a337f8068dfb07c14af709befa}\label{classClustering_a871ad2a337f8068dfb07c14af709befa} 
+\index{Clustering@{Clustering}!getStatistics@{getStatistics}}
+\index{getStatistics@{getStatistics}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{getStatistics()}{getStatistics()}}
+{\footnotesize\ttfamily std\+::string Clustering\+::get\+Statistics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtains a string with the some statistics data about this \doxylink{classClustering}{Clustering} object. The first line contains the value of K; the second line contains the value of the sum of within-\/cluster variances; the third line contains the number of iterations used in the KMeans algorithm. Query method. 
+
+Metodo de consulta. Devuelve algunas estadisticas sobre el objeto\+: valor de k, valor de la suma de with-\/in cluster variances, valor del numero de iteraciones usados en Kmeans.
+
+\begin{DoxyReturn}{Returns}
+A string with the content described above
+
+Un string con lo ya descrito. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00168}{168}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00169\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}K="{}}\ +\ std::to\_string(\_K)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Sum\ of\ within-\/cluster\ variances:\ "{}}\ +\ std::to\_string(\_sumWCV)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Number\ of\ iterations:\ "{}}\ +\ std::to\_string(\_numIterations);}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classClustering_a2d105d0597213381ac3b7eb50d814423}\label{classClustering_a2d105d0597213381ac3b7eb50d814423} 
+\index{Clustering@{Clustering}!getSumWCV@{getSumWCV}}
+\index{getSumWCV@{getSumWCV}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{getSumWCV()}{getSumWCV()}}
+{\footnotesize\ttfamily double Clustering\+::get\+Sum\+WCV (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the value of the sum of the within-\/cluster variances of this \doxylink{classClustering}{Clustering}. This value is obtained from the field \+\_\+sum\+WCV. 
+
+Metodo de consuta. Devuelve el valor del sumatorio de las variaciones dentro del cluster.
+
+\begin{DoxyNote}{Note}
+The returned value will likely be a garbage value if the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method has not yet been executed (\+\_\+is\+Done is false) Query method 
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+A double with the sum of within-\/cluster variances of this \doxylink{classClustering}{Clustering}
+
+Si el metodo aun no ha sido ejectuado, el sumatorio devuelve -\/1 (para evitar que devuelva basura). Si \+\_\+is\+Done = true, devuelve el sumatorio. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00102}{102}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordflow}{if}(!\_isDone)\{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}El\ algoritmo\ aun\ no\ ha\ sido\ ejecutado"{}});}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordflow}{return}\ \_sumWCV;}
+\DoxyCodeLine{00109\ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classClustering_a3e71c339ac69df5389f104ea719c1be3}\label{classClustering_a3e71c339ac69df5389f104ea719c1be3} 
+\index{Clustering@{Clustering}!isDone@{isDone}}
+\index{isDone@{isDone}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{isDone()}{isDone()}}
+{\footnotesize\ttfamily bool Clustering\+::is\+Done (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Indicates whether the clustering algorithm (\doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method) has already been executed for this \doxylink{classClustering}{Clustering} object. Query method. 
+
+Metodo de constulta (const). Mira si el algoritmo ya ha sido ejecutado.
+
+\begin{DoxyReturn}{Returns}
+true if the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method has already been executed for this \doxylink{classClustering}{Clustering} object; false otherwise
+
+true si \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} ya ha sido ejecutado. En caso contrario, false. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{if}(\_isDone)}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ }
+\DoxyCodeLine{00066\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classClustering_a75df6dc49572b0a122421d5c052ed673}\label{classClustering_a75df6dc49572b0a122421d5c052ed673} 
+\index{Clustering@{Clustering}!isEquivalentTo@{isEquivalentTo}}
+\index{isEquivalentTo@{isEquivalentTo}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{isEquivalentTo()}{isEquivalentTo()}}
+{\footnotesize\ttfamily bool Clustering\+::is\+Equivalent\+To (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Indicates whether this \doxylink{classClustering}{Clustering} object is equivalent to the provided \doxylink{classClustering}{Clustering} object ({\ttfamily other}). Two \doxylink{classClustering}{Clustering} objects are considered equivalent if they have the same K value, the same sum of within-\/cluster variances and the same number of iterations in the KMeans algorithm. If either this \doxylink{classClustering}{Clustering} object or the provided \doxylink{classClustering}{Clustering} object ({\ttfamily other}) has not yet run the clustering algorithm (the \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method), then they are not considered equivalent. Query method. 
+
+Metodo de consulta. Pregunta si dos objetos clustering son equivalentes. Para ello, comprueba si sus metodos \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} ya han sido ejecutados, y si sus valores de \+\_\+K, \+\_\+sum\+WCV y \+\_\+num\+Iterations coinciden.
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & A \doxylink{classClustering}{Clustering} object. Input parameter\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this \doxylink{classClustering}{Clustering} object is equivalent to the provided \doxylink{classClustering}{Clustering} object ({\ttfamily other}); false otherwise
+
+Devuelve true si son equivalentes (se cumple lo ya mencionado); falso si no se cumple. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00182}{182}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\ \textcolor{comment}{//PONER\ CONST}}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordtype}{bool}\ result\_equivalence\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keywordflow}{if}(\_isDone\ \&\&\ other.\_isDone}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}()\ ==\ other.\mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}()}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \&\&\ \_sumWCV\ ==\ other.\_sumWCV}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \&\&\ \_numIterations\ ==\ other.\_numIterations)\{}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ result\_equivalence\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordflow}{return}\ result\_equivalence;}
+\DoxyCodeLine{00194\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{classClustering_a17977c6467960744c8bc71ffb97aa9fc}\label{classClustering_a17977c6467960744c8bc71ffb97aa9fc} 
+\index{Clustering@{Clustering}!run@{run}}
+\index{run@{run}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Clustering\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the clustering algorithm. The clustering algorithm implemented ~\newline
+ in this method is the KMeans algorithm. After running this method the following postcondition should be verified\+: 
+
+Metodo run. Realiza el algoritmo KMeans. Para ello, inicializa clusters aleatorios a las localizaciones. Posteriormente, recalcula los centroides haciendo una media de las localizaciones de cada cluster. Finalmente, reasigna cada localizacion a su centroide mas cercano. Esto se repite hasta que los centroides estan en la posicion perfecta y ninguna localizacion cambia de cluster.
+
+\begin{DoxyPostcond}{Postcondition}
+The \+\_\+centroids field should contain the vector of the means of locations in each group 
+
+\+\_\+clusters (a \doxylink{classVectorInt}{Vector\+Int} object) should contain the cluster number ~\newline
+ for each location in the vector of locations (\+\_\+locations) 
+
+The \+\_\+is\+Done field should be set to true 
+
+The \+\_\+sum\+WCV field should be set to the sum of the within-\/cluster variances using the claculate\+Sum\+Within\+Cluster\+Variances() method. 
+
+The \+\_\+number\+Iterations field should be set to the number of ~\newline
+ iterations used by the KMeans algorithm.
+\end{DoxyPostcond}
+A brief description of the KMeans algorithm is the following\+:
+
+
+\begin{DoxyEnumerate}
+\item Perform an initial assignment of a cluster to each of the \doxylink{classLocation}{Location} objects. This must be done by initializing the random number generator using srand(seed); Then, for each location i, assign cluster number rand() \% \+\_\+K to that location. Note that this step is done by modifying the \+\_\+clusters field.
+\item Repeat while any location changes its cluster number\+:
+\begin{DoxyItemize}
+\item For each cluster, recalculate its centroid (update \+\_\+centroids field).
+\item Assign each location to a cluster (update \+\_\+clusters field). Each location is assigned to the cluster that provides the shortest distance to its centroid.
+\end{DoxyItemize}
+\end{DoxyEnumerate}
+
+Query method
+
+\begin{DoxyReturn}{Returns}
+No devuelve nada. Sin embargo, modifica lso valores de \+\_\+num\+Iterations y \+\_\+is\+Done; además de lo ya mencionado. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00253}{253}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{comment}{//Asignamos\ clusters\ aleatorios\ a\ las\ localizaciones.}}
+\DoxyCodeLine{00256\ \ \ \ \ initialClusterAssignment();}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \textcolor{comment}{//Inicializamos}}
+\DoxyCodeLine{00259\ \ \ \ \ \textcolor{keywordtype}{bool}\ repetir\_interaccion\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00260\ \ \ \ \ \_numIterations\ =\ 0;}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \textcolor{keywordflow}{while}(repetir\_interaccion)}
+\DoxyCodeLine{00263\ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \_numIterations++;}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Apartado\ 1.\ Vamos\ a\ recalcular\ los\ centroides.\ Para\ ello,}}
+\DoxyCodeLine{00267\ \textcolor{comment}{\ \ \ \ \ \ \ \ acumulamos\ la\ suma\ de\ coordenadas\ de\ cada\ cluster*/}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Inicializamos\ variables.}}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ nuevo\_centroide(\_K);}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ contador(\_K);}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Sumamos\ todas\ las\ coordenadas\ de\ cada\ cluster.}}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ \_clusters.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i);}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo\_centroide.at(j).setX(nuevo\_centroide.at(j).getX()\ +\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}());}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo\_centroide.at(j).setY(nuevo\_centroide.at(j).getY()\ +\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}());}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ contador.at(j)++;}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00281\ }
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Hacenmos\ la\ media}}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_K;\ j++)}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(contador.at(j)\ >\ 0)}
+\DoxyCodeLine{00286\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a8eb37eee2b6c26e334848a4f44164378}{setX}}(nuevo\_centroide.at(j).getX()\ /\ contador.at(j));}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a0e4ec1ffdf93365edca5b15843243d31}{setY}}(nuevo\_centroide.at(j).getY()\ /\ contador.at(j));}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00291\ }
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Aoartado\ 2.\ Vamos\ a\ reasignar\ cada\ localizacion\ a\ su\ centroide\ mas\ cercano.}}
+\DoxyCodeLine{00293\ \textcolor{comment}{\ \ \ \ \ \ \ \ Entonces,\ si\ algun\ parametro\ ha\ cambiado,\ el\ repetir\_interaccion\ se\ mantiene\ en\ true\ }}
+\DoxyCodeLine{00294\ \textcolor{comment}{\ \ \ \ \ \ \ \ y\ aumentaremos\ el\ \_numIterations.*/}}
+\DoxyCodeLine{00295\ }
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ repetir\_interaccion\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00300\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mejor\_cluster\ =\ 0;}
+\DoxyCodeLine{00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mejor\_dist\ =\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(\_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(0));}
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <\ \_K;\ j++)}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(\_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j));}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Si\ su\ distancia\ es\ menor,\ se\ establece\ como\ el\ mejor.}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dist\ <\ mejor\_dist)}
+\DoxyCodeLine{00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mejor\_dist\ =\ dist;}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mejor\_cluster\ =\ j;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00314\ }
+\DoxyCodeLine{00315\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_clusters.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i)\ !=\ mejor\_cluster)\{}
+\DoxyCodeLine{00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_clusters.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i)\ =\ mejor\_cluster;}
+\DoxyCodeLine{00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repetir\_interaccion\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00318\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00320\ \ \ \ \ \}}
+\DoxyCodeLine{00321\ }
+\DoxyCodeLine{00322\ \ \ \ \ calculateSumWCV();}
+\DoxyCodeLine{00323\ \ \ \ \ \_isDone\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00324\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{classClustering_a4fae0dea4e83af494e8f064092f618b7}\label{classClustering_a4fae0dea4e83af494e8f064092f618b7} 
+\index{Clustering@{Clustering}!set@{set}}
+\index{set@{set}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily void Clustering\+::set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVectorLocation}{Vector\+Location}}}]{locations,  }\item[{int}]{K,  }\item[{unsigned int}]{seed = {\ttfamily DEFAULT\+\_\+RANDOM\+\_\+SEED} }\end{DoxyParamCaption})}
+
+
+
+Sets the vector of locations ({\itshape locations), the value of K (\+\_\+K) ~\newline
+ and the seed (\+\_\+seed) with the provided values. The fields \+\_\+is\+Done, \+\_\+clusters and \+\_\+centroids} are also initialized appropriately\+: \+\_\+is\+Done is set to false; \+\_\+clusters is initialized with a \doxylink{classVectorInt}{Vector\+Int} object with size equal to the number of locations; \+\_\+centroids is initialized with a \doxylink{classVectorLocation}{Vector\+Location} object with size K; the fields \+\_\+sum\+WCV and \+\_\+num\+Iterations are set to 0. Modifier method. 
+
+Establecer\+: Guardar \+\_\+locations = locations Guardar \+\_\+K = K y lanzar std\+::invalid\+\_\+argument si K \texorpdfstring{$<$}{<}= 0 Guardar \+\_\+seed = seed Inicializar \+\_\+is\+Done = false Inicializar \+\_\+clusters con un \doxylink{classVectorInt}{Vector\+Int} del tamaño del vector de ubicaciones Inicializar \+\_\+centroids con un \doxylink{classVectorLocation}{Vector\+Location} de tamaño K Inicializar \+\_\+sum\+WCV = 0 y \+\_\+num\+Iterations = 0.
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Throws an std\+::invalid\+\_\+argument exception if K\texorpdfstring{$<$}{<}=0 \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em locations} & The vector of locations to used in the clustering algorithm. Input parameter \\
+\hline
+{\em K} & The parameter K for the K-\/\+Means algorithm. Input parameter \\
+\hline
+{\em seed} & The seed used to initialize the random number generator (with srand(seed)) in the initial\+Cluster\+Assignment() method. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00228}{228}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00229\ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{keywordflow}{if}(K\ <=\ 0)\{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Valor\ de\ K\ no\ correspondiente."{}});}
+\DoxyCodeLine{00232\ \ \ \ \ \}}
+\DoxyCodeLine{00233\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \_K\ =\ K;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \_locations\ =\ locations;}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \_seed\ =\ seed;}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \_isDone\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \_clusters\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \_centroids\ =\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}(K);}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \_sumWCV\ =\ 0;}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \_numIterations\ =\ 0;}
+\DoxyCodeLine{00242\ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{classClustering_ae2d59326d01555deff1d3db41e9d3956}\label{classClustering_ae2d59326d01555deff1d3db41e9d3956} 
+\index{Clustering@{Clustering}!toString@{toString}}
+\index{toString@{toString}!Clustering@{Clustering}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Clustering\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Metodo de consulta. Obtiene un string con los datos del objeto\+: valores de \doxylink{classClustering_a871ad2a337f8068dfb07c14af709befa}{get\+Statistics()}, informacion sobre el numero de cluster de cada localizacion y de cada centroide y informacion de las localizacioens de cada cluster. 
+
+\begin{DoxyVerb}   @brief Obtains a string with the fields of this Clustering object. 
+   The first line contains the value of K; the second line contains the
+   value of the sum of within-cluster variances; the third line contains
+   the number of iterations used in the KMeans algorithm.
+   In the next three lines, information about the cluster number for each
+   location.
+   If follows information about each centroid
+   Next, for each cluster, information about its locations
+   Here, an example is shown:
+\end{DoxyVerb}
+ K=5 Sum of within-\/cluster variances\+: 161.\+136889 Number of iterations\+: 5 Cluster number for each location\+: 21 0 2 2 2 2 2 1 1 1 1 1 4 4 4 4 4 4 4 4 4 3 Centroids\+: 5 3.\+300000 9.\+100000 14.\+880000 21.\+280000 12.\+600000 9.\+460000 18.\+500000 6.\+700000 26.\+088889 15.\+366667 Cluster 0 information\+: 0 3.\+300000 9.\+100000 Graduate College Cluster 1 information\+: 6 12.\+600000 17.\+500000 Admission Information Center 7 12.\+500000 20.\+000000 Rockefeller College 8 13.\+700000 22.\+800000 Art Museum Store 9 17.\+000000 23.\+300000 Princeton University Store 10 18.\+600000 22.\+800000 Labyrinth Books Cluster 2 information\+: 1 11.\+800000 6.\+900000 Wawa Public Restrooms 2 12.\+600000 7.\+300000 Princeton Station 3 10.\+100000 9.\+700000 Forbes College 4 13.\+300000 12.\+200000 Dinky Bar \& Kitchen 5 15.\+200000 11.\+200000 Whitman College Cluster 3 information\+: 20 18.\+500000 6.\+700000 Yeh College Cluster 4 information\+: 11 20.\+900000 15.\+400000 Frist Campus Center 12 23.\+700000 14.\+800000 Cannon Dial Elm 13 24.\+800000 14.\+900000 Quadrangle 14 25.\+600000 14.\+900000 Ivy 15 26.\+400000 14.\+900000 Cottage 16 27.\+300000 14.\+500000 Cap \& Gown 17 28.\+200000 15.\+000000 Cloister 18 29.\+100000 15.\+200000 Charter 19 28.\+800000 18.\+700000 Engineering Quadrangle Query method \begin{DoxyReturn}{Returns}
+A string with the content described above
+
+Un string con el contenido que se ha descrito. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00203}{203}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ std::string\ result\_toString\ =\ \mbox{\hyperlink{classClustering_a871ad2a337f8068dfb07c14af709befa}{getStatistics}}();}
+\DoxyCodeLine{00205\ \ \ \ \ result\_toString\ +=\ \textcolor{stringliteral}{"{}Cluster\ number\ for\ each\ location:\(\backslash\)n"{}};}
+\DoxyCodeLine{00206\ \ \ \ \ result\_toString\ +=\ \_clusters.\mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{toString}}();}
+\DoxyCodeLine{00207\ \ \ \ \ result\_toString\ +=\ \textcolor{stringliteral}{"{}Centroids:\(\backslash\)n"{}};}
+\DoxyCodeLine{00208\ \ \ \ \ result\_toString\ +=\ \_centroids.\mbox{\hyperlink{classVectorLocation_a225b6306345bb813f40198850a65a813}{toString}}();}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<\_K;\ i++)\{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ result\_toString\ +=\ \textcolor{stringliteral}{"{}Cluster\ "{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ information:\(\backslash\)n"{}};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ result\_toString\ +=\ \mbox{\hyperlink{classClustering_a9745f28464a8c1dccd04fa3a933d161a}{clusterInfo}}(i);}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
+\DoxyCodeLine{00214\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordflow}{return}\ result\_toString;}
+\DoxyCodeLine{00216\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{Clustering_8h}{Clustering.\+h}}\item 
+src/\mbox{\hyperlink{Clustering_8cpp}{Clustering.\+cpp}}\end{DoxyCompactItemize}

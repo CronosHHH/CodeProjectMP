@@ -1,0 +1,22 @@
+digraph "VectorLocation::load"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="VectorLocation::load",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Reads from the provided input stream the information to fill this VectorLocation object."];
+  Node1 -> Node2 [id="edge8_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="VectorLocation::append",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorLocation.html#afbf93b0cc61e83f981227b3b7526f466",tooltip="Appends a copy of the given Location object at the first free position in the array of Location in th..."];
+  Node2 -> Node3 [id="edge9_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="VectorLocation::findLocation",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorLocation.html#af12deaaa9b848d3f777b0950848699ab",tooltip="Searches the provided Location in the array of locations in this object. If found,..."];
+  Node3 -> Node4 [id="edge10_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Location::getName",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLocation.html#aaedb2823c1fbb3abc28971d9be5b002e",tooltip="Returns the name of this location Query method."];
+  Node2 -> Node4 [id="edge11_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge12_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="VectorLocation::clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorLocation.html#aa5eba8c0c77daa601a50a616b1076b48",tooltip="Removes all the elements in this object, leaving the container with a size equal to 0...."];
+  Node1 -> Node6 [id="edge13_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Location::load",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classLocation.html#a684a059d3b704a43bfdf46c6326228d0",tooltip="Reads from the provided input stream the information to fill this Location object."];
+  Node6 -> Node7 [id="edge14_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Trim",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$Location_8cpp.html#a64b042637fe611c801668dca049c4ab8",tooltip=" "];
+}

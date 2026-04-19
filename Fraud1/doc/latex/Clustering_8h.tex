@@ -1,0 +1,27 @@
+\doxysection{include/\+Clustering.h File Reference}
+\hypertarget{Clustering_8h}{}\label{Clustering_8h}\index{include/Clustering.h@{include/Clustering.h}}
+{\ttfamily \#include "{}Vector\+Int.\+h"{}}\newline
+{\ttfamily \#include "{}Vector\+Location.\+h"{}}\newline
+Include dependency graph for Clustering.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classClustering}{Clustering}}
+\begin{DoxyCompactList}\small\item\em This class is used to obtain a clustering of a given set of locations (\doxylink{classLocation}{Location} objects). A clustering algorithm groups the input locations into K disjoint groups (clusters). The clustering algorithm used in this class is the K-\/\+Means algorithm. Each group will consist of a disjunct subset of the original location set and a representative location (centroid), which is calculated as the vector of the means of the locations in the group. The \doxylink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run()} method in this class executes the algorithm. An example of use is the following\+: \doxylink{classVectorLocation}{Vector\+Location} locations; Suppose here code to fill the vector of locations \doxylink{classClustering}{Clustering} clustering; clustering.\+set(locations, 5); clustering.\+run();. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 22 de octubre de 2025, 11\+:57 
+
+Definition in file \mbox{\hyperlink{Clustering_8h_source}{Clustering.\+h}}.
+

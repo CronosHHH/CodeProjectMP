@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\color{white}
+\pagecolor{black}
+\usepackage{newunicodechar}
+  \makeatletter
+    \def\doxynewunicodechar#1#2{%
+    \@tempswafalse
+    \edef\nuc@tempa{\detokenize{#1}}%
+    \if\relax\nuc@tempa\relax
+      \nuc@emptyargerr
+    \else
+      \edef\@tempb{\expandafter\@car\nuc@tempa\@nil}%
+      \nuc@check
+      \if@tempswa
+        \@namedef{u8:\nuc@tempa}{#2}%
+      \fi
+    \fi
+  }
+  \makeatother
+  \doxynewunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \doxynewunicodechar{²}{${}^{2}$}% Superscript two
+  \doxynewunicodechar{³}{${}^{3}$}% Superscript three
+
+\pagestyle{empty}
+\begin{document}
+$ (loc1.x - loc2.x)^2 + (loc1.y - loc2.y)^2 $
+\pagebreak
+
+$ \sqrt{ (loc1.x - loc2.x)^2 + (loc1.y - loc2.y)^2 } $
+\pagebreak
+
+$ P=(p_1, p_2, ... , p_n) $
+\pagebreak
+
+$ Q=(q_1, q_2, ... , q_n) $
+\pagebreak
+
+$ R^n $
+\pagebreak
+
+$ d(P,Q)=\sqrt{ \sum_{i=1}^{n} (p_i-q_i)^{2} } $
+\pagebreak
+
+\end{document}

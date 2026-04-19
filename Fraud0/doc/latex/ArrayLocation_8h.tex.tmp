@@ -1,0 +1,224 @@
+\doxysection{include/\+Array\+Location.h File Reference}
+\hypertarget{ArrayLocation_8h}{}\label{ArrayLocation_8h}\index{include/ArrayLocation.h@{include/ArrayLocation.h}}
+{\ttfamily \#include "{}Location.\+h"{}}\newline
+Include dependency graph for Array\+Location.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{ArrayLocation_8h_a0459e33c716f4d41555505fd6d8b08f7}{Print\+Array\+Location}} (const \mbox{\hyperlink{classLocation}{Location}} array\+Locations\mbox{[}$\,$\mbox{]}, int n\+Locs)
+\begin{DoxyCompactList}\small\item\em Displays on the standard output an integer (the value in n\+Locs, number of locations in array\+Locations) and the content of the provided array of locations. Each location is displayed on a new line with the help of the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method. For example, here it is displayed an array with 4 locations\+: 4 24.\+8 14.\+9 Quadrangle 25.\+6 14.\+9 Ivy 26.\+4 14.\+9 Cottage 27.\+3 14.\+5 Cap \& Gown. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ArrayLocation_8h_abf09b1b412ecff1f9ff2fdcdc77efab0}{Read\+Array\+Location}} (\mbox{\hyperlink{classLocation}{Location}} array\+Locations\mbox{[}$\,$\mbox{]}, int capacity, int \&n\+Locs)
+\begin{DoxyCompactList}\small\item\em Reads from the standard input an integer n and then reads n \doxylink{classLocation}{Location} objects that are placed into the provided array of locations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{ArrayLocation_8h_a6608c3010ebbdbda0944f44c84e203e9}{To\+Array\+Location}} (const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&vector, \mbox{\hyperlink{classLocation}{Location}} array\+Locations\mbox{[}$\,$\mbox{]}, int capacity, int \&n\+Locs)
+\begin{DoxyCompactList}\small\item\em Places a copy of each \doxylink{classLocation}{Location} of the provided \doxylink{classVectorLocation}{Vector\+Location} object into the provided array of \doxylink{classLocation}{Location} (array\+Locations). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \mbox{\hyperlink{ArrayLocation_8h_a520c5461f1e279491aebff9b4a63d736}{To\+Vector\+Location}} (const \mbox{\hyperlink{classLocation}{Location}} array\+Locations\mbox{[}$\,$\mbox{]}, int n\+Locs)
+\begin{DoxyCompactList}\small\item\em Returns a \doxylink{classVectorLocation}{Vector\+Location} object filled with a copy of the objects from the provided array of \doxylink{classLocation}{Location} objects (array\+Location) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 22 de octubre de 2025, 11\+:57 
+
+Definition in file \mbox{\hyperlink{ArrayLocation_8h_source}{Array\+Location.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ArrayLocation_8h_a0459e33c716f4d41555505fd6d8b08f7}\label{ArrayLocation_8h_a0459e33c716f4d41555505fd6d8b08f7} 
+\index{ArrayLocation.h@{ArrayLocation.h}!PrintArrayLocation@{PrintArrayLocation}}
+\index{PrintArrayLocation@{PrintArrayLocation}!ArrayLocation.h@{ArrayLocation.h}}
+\doxysubsubsection{\texorpdfstring{PrintArrayLocation()}{PrintArrayLocation()}}
+{\footnotesize\ttfamily void Print\+Array\+Location (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}}}]{array\+Locations\mbox{[}$\,$\mbox{]},  }\item[{int}]{n\+Locs }\end{DoxyParamCaption})}
+
+
+
+Displays on the standard output an integer (the value in n\+Locs, number of locations in array\+Locations) and the content of the provided array of locations. Each location is displayed on a new line with the help of the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method. For example, here it is displayed an array with 4 locations\+: 4 24.\+8 14.\+9 Quadrangle 25.\+6 14.\+9 Ivy 26.\+4 14.\+9 Cottage 27.\+3 14.\+5 Cap \& Gown. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Locations} & An array of \doxylink{classLocation}{Location} objects. Input parameter \\
+\hline
+{\em n\+Locs} & Number of \doxylink{classLocation}{Location} objects in the array array\+Locations. Input parameter\\
+\hline
+\end{DoxyParams}
+Displays on the standard output an integer (the value in n\+Locs, number of locations in array\+Locations) and the content of the provided array of locations. Each location is displayed on a new line with the help of the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method. For example, here it is displayed an array with 4 locations\+: 4 24.\+8 14.\+9 Quadrangle 25.\+6 14.\+9 Ivy 26.\+4 14.\+9 Cottage 27.\+3 14.\+5 Cap \& Gown.
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Locations} & An array of \doxylink{classLocation}{Location} objects. Input parameter \\
+\hline
+{\em n\+Locs} & Number of \doxylink{classLocation}{Location} objects in the array array\+Locations. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ArrayLocation_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{ArrayLocation_8cpp_source}{Array\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ std::cout\ <<\ nLocs\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ std::cout\ <<\ arrayLocations[i].\mbox{\hyperlink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{toString}}()\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{ArrayLocation_8h_abf09b1b412ecff1f9ff2fdcdc77efab0}\label{ArrayLocation_8h_abf09b1b412ecff1f9ff2fdcdc77efab0} 
+\index{ArrayLocation.h@{ArrayLocation.h}!ReadArrayLocation@{ReadArrayLocation}}
+\index{ReadArrayLocation@{ReadArrayLocation}!ArrayLocation.h@{ArrayLocation.h}}
+\doxysubsubsection{\texorpdfstring{ReadArrayLocation()}{ReadArrayLocation()}}
+{\footnotesize\ttfamily void Read\+Array\+Location (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLocation}{Location}}}]{array\+Locations\mbox{[}$\,$\mbox{]},  }\item[{int}]{capacity,  }\item[{int \&}]{n\+Locs }\end{DoxyParamCaption})}
+
+
+
+Reads from the standard input an integer n and then reads n \doxylink{classLocation}{Location} objects that are placed into the provided array of locations. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Throws} & a std\+::out\+\_\+of\+\_\+range exception if the integer n read from standard input is negative. In that case, n\+Locs will be set to 0. \\
+\hline
+{\em Throws} & a std\+::out\+\_\+of\+\_\+range exception if the integer n read from standard input exceeds the array capacity. In that case, n\+Locs will be set to 0. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Locations} & An array of \doxylink{classLocation}{Location} objects. Output parameter \\
+\hline
+{\em capacity} & An integer with the capacity of array\+Locations. Input parameter \\
+\hline
+{\em n\+Locs} & An integer with the number of objects inserted in array\+Locations. Output parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ArrayLocation_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{ArrayLocation_8cpp_source}{Array\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ n;}
+\DoxyCodeLine{00039\ \ \ \ \ std::cin\ >>\ n;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0)\ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ nLocs\ =\ 0;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ReadArrayLocation:\ n\ es\ negativo"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ >\ capacity)\ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ nLocs\ =\ 0;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ReadArrayLocation:\ n\ supera\ la\ capacidad\ del\ array"{}});}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ nLocs\ =\ n;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ arrayLocations[i].\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(std::cin);}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{ArrayLocation_8h_a6608c3010ebbdbda0944f44c84e203e9}\label{ArrayLocation_8h_a6608c3010ebbdbda0944f44c84e203e9} 
+\index{ArrayLocation.h@{ArrayLocation.h}!ToArrayLocation@{ToArrayLocation}}
+\index{ToArrayLocation@{ToArrayLocation}!ArrayLocation.h@{ArrayLocation.h}}
+\doxysubsubsection{\texorpdfstring{ToArrayLocation()}{ToArrayLocation()}}
+{\footnotesize\ttfamily void To\+Array\+Location (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&}]{vector,  }\item[{\mbox{\hyperlink{classLocation}{Location}}}]{array\+Locations\mbox{[}$\,$\mbox{]},  }\item[{int}]{capacity,  }\item[{int \&}]{n\+Locs }\end{DoxyParamCaption})}
+
+
+
+Places a copy of each \doxylink{classLocation}{Location} of the provided \doxylink{classVectorLocation}{Vector\+Location} object into the provided array of \doxylink{classLocation}{Location} (array\+Locations). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Throws} & a std\+::out\+\_\+of\+\_\+range exception if the number of \doxylink{classLocation}{Location} objects in the provided \doxylink{classVectorLocation}{Vector\+Location} exceeds the array capacity. In that case, n\+Locs will be set to 0. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & A \doxylink{classVectorLocation}{Vector\+Location} object. Input parameter \\
+\hline
+{\em array\+Locations} & Array of \doxylink{classLocation}{Location} objects. Output parameter \\
+\hline
+{\em capacity} & An integer with the capacity of array\+Locations. Input parameter \\
+\hline
+{\em n\+Locs} & An integer with the number of objects inserted in array\+Locations. Output parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{ArrayLocation_8cpp_source_l00069}{69}} of file \mbox{\hyperlink{ArrayLocation_8cpp_source}{Array\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordflow}{if}\ (vector.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}()\ >\ capacity)\ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ nLocs\ =\ 0;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ToArrayLocation:\ el\ VectorLocation\ supera\ la\ capacidad\ del\ array"{}});}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ nLocs\ =\ vector.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ arrayLocations[i]\ =\ vector.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i);}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{ArrayLocation_8h_a520c5461f1e279491aebff9b4a63d736}\label{ArrayLocation_8h_a520c5461f1e279491aebff9b4a63d736} 
+\index{ArrayLocation.h@{ArrayLocation.h}!ToVectorLocation@{ToVectorLocation}}
+\index{ToVectorLocation@{ToVectorLocation}!ArrayLocation.h@{ArrayLocation.h}}
+\doxysubsubsection{\texorpdfstring{ToVectorLocation()}{ToVectorLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} To\+Vector\+Location (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLocation}{Location}}}]{array\+Locations\mbox{[}$\,$\mbox{]},  }\item[{int}]{n\+Locs }\end{DoxyParamCaption})}
+
+
+
+Returns a \doxylink{classVectorLocation}{Vector\+Location} object filled with a copy of the objects from the provided array of \doxylink{classLocation}{Location} objects (array\+Location) 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Throws} & a std\+::out\+\_\+of\+\_\+range exception if n\+Locs is negative. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Locations} & Array of \doxylink{classLocation}{Location} objects. Input parameter \\
+\hline
+{\em n\+Locs} & An integer with the number of objects in array\+Locations. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A \doxylink{classVectorLocation}{Vector\+Location} object filled with the objects from the provided array of \doxylink{classLocation}{Location} objects (array\+Location) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{ArrayLocation_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{ArrayLocation_8cpp_source}{Array\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordflow}{if}\ (nLocs\ <\ 0)\ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}ToVectorLocation:\ nLocs\ es\ negativo"{}});}
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ result;}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nLocs;\ i++)\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ result.\mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{append}}(arrayLocations[i]);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00101\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5

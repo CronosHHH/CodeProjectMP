@@ -1,0 +1,79 @@
+\doxysection{src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Vector\+Location.\+h"{}}\newline
+{\ttfamily \#include "{}Clustering.\+h"{}}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 24 de octubre de 2025, 9\+:27 
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+The purpose of this program is to read a set of locations from standard input, to cluster them into K clusters using the K-\/means algorithm, and to show the resulting clustering on the standard output.
+
+This program first reads an integer K from standard input, which indicates the number of clusters to be used in the clustering process. Then, it reads a set of \doxylink{classLocation}{Location} objects from standard input. After reading the data, it performs the K-\/means clustering algorithm to group the locations into K clusters. Finally, it displays the resulting clustering information, including the cluster assignments for each location and the centroids of each cluster.
+
+Be careful to show the output as in the below example.
+
+An example of data read from standard input is the following (see file Datasets/data\+P1/princeton.\+p1in)\+: 5 21 3.\+3 9.\+1 Graduate College 11.\+8 6.\+9 Wawa Public Restrooms 12.\+6 7.\+3 Princeton Station 10.\+1 9.\+7 Forbes College 13.\+3 12.\+2 Dinky Bar \& Kitchen 15.\+2 11.\+2 Whitman College 12.\+6 17.\+5 Admission Information Center 12.\+5 20 Rockefeller College 13.\+7 22.\+8 Art Museum Store 17 23.\+3 Princeton University Store 18.\+6 22.\+8 Labyrinth Books 20.\+9 15.\+4 Frist Campus Center 23.\+7 14.\+8 Cannon Dial Elm 24.\+8 14.\+9 Quadrangle 25.\+6 14.\+9 Ivy 26.\+4 14.\+9 Cottage 27.\+3 14.\+5 Cap \& Gown 28.\+2 15 Cloister 29.\+1 15.\+2 Charter 28.\+8 18.\+7 Engineering Quadrangle 18.\+5 6.\+7 Yeh College
+
+Running sintax\+: \begin{quote}
+build/\+Fraud1 \texorpdfstring{$<$}{<} \texorpdfstring{$<$}{<}input\+File.\+p1in\texorpdfstring{$>$}{>}
+
+Running example\+: build/\+Fraud1 \texorpdfstring{$<$}{<} ../\+Datasets/data\+P1/princeton.p1in \end{quote}
+K=5 Sum of within-\/cluster variances\+: 161.\+136889 Number of iterations\+: 5 Cluster number for each location\+: 21 0 2 2 2 2 2 1 1 1 1 1 4 4 4 4 4 4 4 4 4 3 Centroids\+: 5 3.\+300000 9.\+100000 14.\+880000 21.\+280000 12.\+600000 9.\+460000 18.\+500000 6.\+700000 26.\+088889 15.\+366667 Cluster 0 information\+: 0 3.\+300000 9.\+100000 Graduate College Cluster 1 information\+: 6 12.\+600000 17.\+500000 Admission Information Center 7 12.\+500000 20.\+000000 Rockefeller College 8 13.\+700000 22.\+800000 Art Museum Store 9 17.\+000000 23.\+300000 Princeton University Store 10 18.\+600000 22.\+800000 Labyrinth Books Cluster 2 information\+: 1 11.\+800000 6.\+900000 Wawa Public Restrooms 2 12.\+600000 7.\+300000 Princeton Station 3 10.\+100000 9.\+700000 Forbes College 4 13.\+300000 12.\+200000 Dinky Bar \& Kitchen 5 15.\+200000 11.\+200000 Whitman College Cluster 3 information\+: 20 18.\+500000 6.\+700000 Yeh College Cluster 4 information\+: 11 20.\+900000 15.\+400000 Frist Campus Center 12 23.\+700000 14.\+800000 Cannon Dial Elm 13 24.\+800000 14.\+900000 Quadrangle 14 25.\+600000 14.\+900000 Ivy 15 26.\+400000 14.\+900000 Cottage 16 27.\+300000 14.\+500000 Cap \& Gown 17 28.\+200000 15.\+000000 Cloister 18 29.\+100000 15.\+200000 Charter 19 28.\+800000 18.\+700000 Engineering Quadrangle 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00108}{108}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ locations;\ \textcolor{comment}{//\ VectorLocation\ object\ to\ store\ the\ input\ locations}}
+\DoxyCodeLine{00110\ \ \ \ \ \mbox{\hyperlink{classClustering}{Clustering}}\ clustering;\ \textcolor{comment}{//\ Clustering\ object}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ K;\ \textcolor{comment}{//\ number\ of\ clusters}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{comment}{//\ Read\ the\ number\ of\ clusters}}
+\DoxyCodeLine{00114\ \ \ \ \ cin\ >>\ K;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{comment}{//\ Read\ the\ locations\ directly\ into\ the\ VectorLocation\ object}}
+\DoxyCodeLine{00117\ \ \ \ \ locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(cin);}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{comment}{//\ Define\ the\ parameters\ of\ the\ clustering\ object}}
+\DoxyCodeLine{00120\ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a4fae0dea4e83af494e8f064092f618b7}{set}}(locations,\ K);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ clustering\ algorithm}}
+\DoxyCodeLine{00123\ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}}();}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ Show\ the\ resulting\ clustering\ in\ the\ standard\ output}}
+\DoxyCodeLine{00126\ \ \ \ \ cout\ <<\ clustering.\mbox{\hyperlink{classClustering_ae2d59326d01555deff1d3db41e9d3956}{toString}}();}
+\DoxyCodeLine{00127\ \ \ \ \ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00129\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1

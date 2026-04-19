@@ -1,0 +1,40 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ Metodología\ de\ la\ Programación}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ Curso\ 2025/2026}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorLocation_8h}{VectorLocation.h}}"{}}\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Clustering_8h}{Clustering.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}\mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00108}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ locations;\ \textcolor{comment}{//\ VectorLocation\ object\ to\ store\ the\ input\ locations}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110\ \ \ \ \ \mbox{\hyperlink{classClustering}{Clustering}}\ clustering;\ \textcolor{comment}{//\ Clustering\ object}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{int}\ K;\ \textcolor{comment}{//\ number\ of\ clusters}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113\ \ \ \ \ \textcolor{comment}{//\ Read\ the\ number\ of\ clusters}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114\ \ \ \ \ cin\ >>\ K;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ Read\ the\ locations\ directly\ into\ the\ VectorLocation\ object}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ \ \ \ \ locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(cin);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{comment}{//\ Define\ the\ parameters\ of\ the\ clustering\ object}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a4fae0dea4e83af494e8f064092f618b7}{set}}(locations,\ K);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//\ Execute\ the\ clustering\ algorithm}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ \ \ \ \ \textcolor{comment}{//\ Show\ the\ resulting\ clustering\ in\ the\ standard\ output}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ \ \ \ \ cout\ <<\ clustering.\mbox{\hyperlink{classClustering_ae2d59326d01555deff1d3db41e9d3956}{toString}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ \}}
+
+\end{DoxyCode}

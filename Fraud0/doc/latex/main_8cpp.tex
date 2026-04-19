@@ -1,0 +1,101 @@
+\doxysection{src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Location.\+h"{}}\newline
+{\ttfamily \#include "{}Vector\+Location.\+h"{}}\newline
+{\ttfamily \#include "{}Array\+Location.\+h"{}}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+estudiante1\+: Ramírez , Renato 
+
+estudiante2\+: Verger, Toni 
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+The purpose of this program is to obtain the union of two subsets of \doxylink{classLocation}{Location} objects. Each one of the two subsets is obtained by reading from the standard input a set of \doxylink{classLocation}{Location} objects and the coordinates of the corners of two rectangular subareas of interest (x and y coordinates of the bottom left and top right corners of the subarea). Each subset of locations is obtained by selecting those locations that are whithin the given subarea.
+
+This program first reads all the necessary data from the standard input; then it calculates the union of the two subsets of \doxylink{classLocation}{Location} objects; it sorts the resulting set of locations and finally it displays the sorted set in the standard output.
+
+Be careful to show the output as in the below example.
+
+An example of data read from standard input is the following (see file Datasets/data\+P0/princeton\+\_\+5locations.\+p0in)\+: 21.\+0 10.\+0 26.\+0 16.\+0 24.\+0 10.\+0 27.\+0 16.\+0 5 20.\+9 15.\+4 Frist Campus Center 23.\+7 14.\+8 Cannon Dial Elm 24.\+8 14.\+9 Quadrangle 25.\+6 14.\+9 Ivy 26.\+4 14.\+9 Cottage
+
+Running sintax\+: \begin{quote}
+build/\+Fraud0 \texorpdfstring{$<$}{<} \texorpdfstring{$<$}{<}input\+File.\+p0in\texorpdfstring{$>$}{>}
+
+Running example\+: build/\+Fraud0 \texorpdfstring{$<$}{<} ../\+Datasets/data\+P0/princeton\+\_\+5locations.p0in \end{quote}
+4 23.\+700000 14.\+800000 Cannon Dial Elm 26.\+400000 14.\+900000 Cottage 25.\+600000 14.\+900000 Ivy 24.\+800000 14.\+900000 Quadrangle 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MAX\_NLOCATIONS\ =\ 20;\ \ \ \textcolor{comment}{//\ capacity\ of\ the\ location\ arrays}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ bottomLeft1,\ topRight1,\ \textcolor{comment}{//\ coordinates\ that\ define\ the\ first\ input\ area}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ bottomLeft2,\ topRight2;\ \ \ \ \ \ \textcolor{comment}{//\ coordinates\ that\ define\ the\ second\ input\ area}}
+\DoxyCodeLine{00065\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ locations,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ VectorLocation\ with\ all\ the\ locations}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ selectedLocations1,\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ first\ vector\ of\ selected\ locations}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ selectedLocations2;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ second\ vector\ of\ selected\ locations}}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ arrayLocations[MAX\_NLOCATIONS],\ \textcolor{comment}{//\ array\ used\ to\ read\ all\ the\ input\ locations}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ arrayUnionLocations[MAX\_NLOCATIONS];\ \textcolor{comment}{//\ array\ to\ store\ the\ resulting\ union}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{int}\ nLocs,\ \textcolor{comment}{//\ number\ of\ locations\ in\ arrayLocations}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ nUnionLocs;\ \textcolor{comment}{//\ number\ of\ locations\ in\ arrayUnionLocations}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{comment}{//\ Read\ bottomLeft1\ and\ topRight1\ from\ standard\ input}}
+\DoxyCodeLine{00074\ \ \ \ \ bottomLeft1.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{00075\ \ \ \ \ topRight1.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{comment}{//\ Read\ bottomLeft2\ and\ topRight2\ from\ standard\ input}}
+\DoxyCodeLine{00078\ \ \ \ \ bottomLeft2.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{00079\ \ \ \ \ topRight2.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(cin);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{comment}{//\ Read\ from\ standard\ input\ all\ the\ locations\ and\ insert\ them\ in\ arrayLocations}}
+\DoxyCodeLine{00082\ \ \ \ \ ReadArrayLocation(arrayLocations,\ MAX\_NLOCATIONS,\ nLocs);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{comment}{//\ Insert\ the\ locations\ in\ arrayLocations\ in\ the\ locations\ object\ }}
+\DoxyCodeLine{00085\ \ \ \ \ locations\ =\ ToVectorLocation(arrayLocations,\ nLocs);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ Take\ from\ the\ locations\ object\ the\ locations\ within\ each\ area\ and\ }}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{comment}{//\ insert\ them\ in\ selectedLocations1\ and\ selectedLocations2\ }}
+\DoxyCodeLine{00089\ \ \ \ \ selectedLocations1\ =\ locations.\mbox{\hyperlink{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f}{select}}(bottomLeft1,\ topRight1);}
+\DoxyCodeLine{00090\ \ \ \ \ selectedLocations2\ =\ locations.\mbox{\hyperlink{classVectorLocation_ad90e65d4de8b95fe6bf80112c7e1dc3f}{select}}(bottomLeft2,\ topRight2);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ union\ of\ selectedLocations1\ and\ selectedLocations2\ }}
+\DoxyCodeLine{00093\ \ \ \ \ selectedLocations1.\mbox{\hyperlink{classVectorLocation_acc2892fd5902dc4cb5515f552c48a507}{join}}(selectedLocations2);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{comment}{//\ Sort\ the\ resulting\ VectorLocation\ object}}
+\DoxyCodeLine{00096\ \ \ \ \ selectedLocations1.\mbox{\hyperlink{classVectorLocation_a7594392a03fe1c5cf162ed4f1dc76a17}{sort}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ Convert\ the\ sorted\ VectorLocation\ object\ to\ an\ array\ of\ Location\ objects}}
+\DoxyCodeLine{00099\ \ \ \ \ ToArrayLocation(selectedLocations1,\ arrayUnionLocations,\ MAX\_NLOCATIONS,\ nUnionLocs);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{comment}{//\ Print\ the\ resulting\ array\ of\ Location\ objects\ in\ the\ standard\ output}}
+\DoxyCodeLine{00102\ \ \ \ \ PrintArrayLocation(arrayUnionLocations,\ nUnionLocs);}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00105\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1

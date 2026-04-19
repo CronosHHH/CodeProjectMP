@@ -1,0 +1,452 @@
+\doxysection{Vector\+Int Class Reference}
+\hypertarget{classVectorInt}{}\label{classVectorInt}\index{VectorInt@{VectorInt}}
+
+
+A \doxylink{classVectorInt}{Vector\+Int} object contains a vector of integer elements. It has a capacity (maximun number of elements that can be stored in the vector) and a size (number of elements the vector currently contains).  
+
+
+
+
+{\ttfamily \#include $<$Vector\+Int.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classVectorInt_ab6c0905e573d92a209c83f35e0058ae3}{Vector\+Int}} (int size=0)
+\begin{DoxyCompactList}\small\item\em It builds a \doxylink{classVectorInt}{Vector\+Int} object (vector of integers) with a size and capacity equal to the provided value ({\ttfamily size}). Each element will be filled with a value equal to 0. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{get\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of elements in the vector of this object Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVectorInt_aa7dab639c69bc92097f17639c6a449cf}{get\+Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Gets the capacity of the vector in this object Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVectorInt_ab29c2dfedd84cea82685d0661d619a4a}{count\+Identical\+Elements}} (const \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&other) const
+\begin{DoxyCompactList}\small\item\em Compares the integer vectors of this object and the provided object, and returns the number of identical elements in both of them. The comparison is performed in order, element by element, in both vectors. For example, given the following two vectors\+: 2 1 2 3 5 1 1 2 4 5 this method will return 3 (there is a match ​in positions 1, 2 and 4) \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Obtains a string with information about this \doxylink{classVectorInt}{Vector\+Int} object, in the following format\+: \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classVectorInt_ab08b8c0008a52708d02ae63954339e76}{distance}} (const \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&other) const
+\begin{DoxyCompactList}\small\item\em Gets the Euclidean distance between this and the provided object. The Euclidean distance between two points $ P=(p_1, p_2, ... , p_n) $ and $ Q=(q_1, q_2, ... , q_n) $ in an n-\/dimensional space $ R^n $ is the length of the line segment connecting them, calculated as the square root of the sum of the squared differences of their components\+: $ d(P,Q)=\sqrt{ \sum_{i=1}^{n} (p_i-q_i)^{2} } $. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorInt_a4f6aa55d8b6a5fc5244c458148d5365c}{assign}} (int value=0)
+\begin{DoxyCompactList}\small\item\em Assigns the provided value to all the elements in this vector Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorInt_a399db1d990b4867697a3ac99637c18ae}{append}} (int value)
+\begin{DoxyCompactList}\small\item\em Appends the given integer value at the end (first free position) of the array of integers in this object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Removes all the elements in this object, leaving the container with a size equal to 0. It only need to set the number of elements (\+\_\+size field) to zero. Modifier method. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}} (int pos) const
+\begin{DoxyCompactList}\small\item\em Gets a const reference to the integer element at the given position Query method. \end{DoxyCompactList}\item 
+int \& \mbox{\hyperlink{classVectorInt_ac237b35c4cee235393be8d3f1b744ae8}{at}} (int pos)
+\begin{DoxyCompactList}\small\item\em Gets a reference to the integer element at the given position. Modifier method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classVectorInt}{Vector\+Int} object contains a vector of integer elements. It has a capacity (maximun number of elements that can be stored in the vector) and a size (number of elements the vector currently contains). 
+
+Definition at line \mbox{\hyperlink{VectorInt_8h_source_l00027}{27}} of file \mbox{\hyperlink{VectorInt_8h_source}{Vector\+Int.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classVectorInt_ab6c0905e573d92a209c83f35e0058ae3}\label{classVectorInt_ab6c0905e573d92a209c83f35e0058ae3} 
+\index{VectorInt@{VectorInt}!VectorInt@{VectorInt}}
+\index{VectorInt@{VectorInt}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{VectorInt()}{VectorInt()}}
+{\footnotesize\ttfamily Vector\+Int\+::\+Vector\+Int (\begin{DoxyParamCaption}\item[{int}]{size = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+It builds a \doxylink{classVectorInt}{Vector\+Int} object (vector of integers) with a size and capacity equal to the provided value ({\ttfamily size}). Each element will be filled with a value equal to 0. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if {\ttfamily size} \texorpdfstring{$<$}{<} 0 or size\texorpdfstring{$>$}{>}DIM\+\_\+\+VECTOR\+\_\+\+VALUES \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size for the vector of integers in this object. Input parameter\\
+\hline
+\end{DoxyParams}
+\DoxyHorRuler{0}
+
+
+Constant with the capacity of the array \+\_\+values
+
+static const int DIM\+\_\+\+VECTOR\+\_\+\+VALUES = 100; \DoxyHorRuler{0}
+
+
+Array of integers with the integer elements in this object
+
+int \+\_\+values\mbox{[}DIM\+\_\+\+VECTOR\+\_\+\+VALUES\mbox{]}; \DoxyHorRuler{0}
+
+
+Number of elements contained in the array \+\_\+values
+
+int \+\_\+size; \DoxyHorRuler{0}
+ 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if {\ttfamily size} \texorpdfstring{$<$}{<} 0 or size\texorpdfstring{$>$}{>}DIM\+\_\+\+VECTOR\+\_\+\+VALUES \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The size for the vector of integers in this object. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordflow}{if}\ (size\ <\ 0\ ||\ size\ >\ DIM\_VECTOR\_VALUES)\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorInt:\ size\ invalido,\ que\ sea\ entre\ 1\ y\ 100"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \_size\ =\ size;}
+\DoxyCodeLine{00051\ \ \ \ \ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ size;\ i++)\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \_values[i]\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classVectorInt_a399db1d990b4867697a3ac99637c18ae}\label{classVectorInt_a399db1d990b4867697a3ac99637c18ae} 
+\index{VectorInt@{VectorInt}!append@{append}}
+\index{append@{append}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily void Vector\+Int\+::append (\begin{DoxyParamCaption}\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Appends the given integer value at the end (first free position) of the array of integers in this object. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the array of \doxylink{classLocation}{Location} was full (its capacity was full). Modifier method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the new integer value to be appended. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00175}{175}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ >=\ DIM\_VECTOR\_VALUES)\ \{}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorInt::append\ el\ array\ esta\ lleno"{}});}
+\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \_values[\_size]\ =\ value;}
+\DoxyCodeLine{00180\ \ \ \ \ \_size++;}
+\DoxyCodeLine{00181\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_a4f6aa55d8b6a5fc5244c458148d5365c}\label{classVectorInt_a4f6aa55d8b6a5fc5244c458148d5365c} 
+\index{VectorInt@{VectorInt}!assign@{assign}}
+\index{assign@{assign}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily void Vector\+Int\+::assign (\begin{DoxyParamCaption}\item[{int}]{value = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Assigns the provided value to all the elements in this vector Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & An integer value. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00161}{161}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \_values[i]\ =\ value;}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+\DoxyCodeLine{00165\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_ac237b35c4cee235393be8d3f1b744ae8}\label{classVectorInt_ac237b35c4cee235393be8d3f1b744ae8} 
+\index{VectorInt@{VectorInt}!at@{at}}
+\index{at@{at}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int \& Vector\+Int\+::at (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Gets a reference to the integer element at the given position. Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & position in the \doxylink{classVectorInt}{Vector\+Int} object. Input parameter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws an std\+::out\+\_\+of\+\_\+range exception if the given position is not valid \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+A reference to the integer element at the given position. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00217}{217}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ <\ 0\ ||\ pos\ >=\ \_size)\ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::at\ posicion\ invalida"{}});}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[pos];\ }
+\DoxyCodeLine{00222\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_a364be2a68884c9b733223eca0370cce2}\label{classVectorInt_a364be2a68884c9b733223eca0370cce2} 
+\index{VectorInt@{VectorInt}!at@{at}}
+\index{at@{at}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const int Vector\+Int\+::at (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption}) const}
+
+
+
+Gets a const reference to the integer element at the given position Query method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & position in the \doxylink{classVectorInt}{Vector\+Int} object. Input parameter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws an std\+::out\+\_\+of\+\_\+range exception if the given position is not valid. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+A const reference to the integer element at the given position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00202}{202}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \textcolor{keywordflow}{if}\ (pos\ <\ 0\ ||\ pos\ >=\ \_size)\ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::at\ posicion\ invalida"{}});}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[pos];\ }
+\DoxyCodeLine{00207\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}\label{classVectorInt_a6e0d736c02d352ad92e1792311d8d788} 
+\index{VectorInt@{VectorInt}!clear@{clear}}
+\index{clear@{clear}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Vector\+Int\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes all the elements in this object, leaving the container with a size equal to 0. It only need to set the number of elements (\+\_\+size field) to zero. Modifier method. 
+
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00189}{189}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \_size\ =\ 0;}
+\DoxyCodeLine{00191\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_ab29c2dfedd84cea82685d0661d619a4a}\label{classVectorInt_ab29c2dfedd84cea82685d0661d619a4a} 
+\index{VectorInt@{VectorInt}!countIdenticalElements@{countIdenticalElements}}
+\index{countIdenticalElements@{countIdenticalElements}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{countIdenticalElements()}{countIdenticalElements()}}
+{\footnotesize\ttfamily int Vector\+Int\+::count\+Identical\+Elements (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Compares the integer vectors of this object and the provided object, and returns the number of identical elements in both of them. The comparison is performed in order, element by element, in both vectors. For example, given the following two vectors\+: 2 1 2 3 5 1 1 2 4 5 this method will return 3 (there is a match ​in positions 1, 2 and 4) 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Throws an std\+::invalid\+\_\+argument exception if the sizes of this and the provided object are different Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & A \doxylink{classVectorInt}{Vector\+Int} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The number of identical elements in the vectors of this and the provided object. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ cont=\ 0;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ !=\ other.\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}())\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}countIdenticalElements:\ tamanios\ diferentes"{}});}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<\_size\ ;\ i++)\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_values[i]\ ==\ other.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i))\ cont++;}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordflow}{return}\ cont;}
+\DoxyCodeLine{00105\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{classVectorInt_ab08b8c0008a52708d02ae63954339e76}\label{classVectorInt_ab08b8c0008a52708d02ae63954339e76} 
+\index{VectorInt@{VectorInt}!distance@{distance}}
+\index{distance@{distance}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}}
+{\footnotesize\ttfamily double Vector\+Int\+::distance (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&}]{other }\end{DoxyParamCaption}) const}
+
+
+
+Gets the Euclidean distance between this and the provided object. The Euclidean distance between two points $ P=(p_1, p_2, ... , p_n) $ and $ Q=(q_1, q_2, ... , q_n) $ in an n-\/dimensional space $ R^n $ is the length of the line segment connecting them, calculated as the square root of the sum of the squared differences of their components\+: $ d(P,Q)=\sqrt{ \sum_{i=1}^{n} (p_i-q_i)^{2} } $. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Throws an std\+::invalid\+\_\+argument exception if the size of this object and the provided one are not equal \\
+\hline
+{\em std\+::invalid\+\_\+argument} & Throws an std\+::invalid\+\_\+argument exception if the size of the provided object is zero Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & A \doxylink{classVectorInt}{Vector\+Int}. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Euclidean distance between this and the provided objects 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ !=\ other.\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}())\ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}distance:\ tamanios\ diferentes"{}});}
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_size\ ==\ 0)\ \{}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}distance:\ tamanio\ es\ cero"{}});}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{keywordtype}{double}\ sum\ =\ 0;}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ sum\ +=\ std::pow(\_values[i]\ -\/\ other.\mbox{\hyperlink{classVectorInt_a364be2a68884c9b733223eca0370cce2}{at}}(i),\ 2);}
+\DoxyCodeLine{00152\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordflow}{return}\ std::sqrt(sum);}
+\DoxyCodeLine{00154\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classVectorInt_aa7dab639c69bc92097f17639c6a449cf}\label{classVectorInt_aa7dab639c69bc92097f17639c6a449cf} 
+\index{VectorInt@{VectorInt}!getCapacity@{getCapacity}}
+\index{getCapacity@{getCapacity}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{getCapacity()}{getCapacity()}}
+{\footnotesize\ttfamily int Vector\+Int\+::get\+Capacity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the capacity of the vector in this object Query method. 
+
+\begin{DoxyReturn}{Returns}
+The capacity of the vector in this object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordflow}{return}\ DIM\_VECTOR\_VALUES;}
+\DoxyCodeLine{00075\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}\label{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b} 
+\index{VectorInt@{VectorInt}!getSize@{getSize}}
+\index{getSize@{getSize}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int Vector\+Int\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of elements in the vector of this object Query method. 
+
+\begin{DoxyReturn}{Returns}
+The number of elements 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00062}{62}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordflow}{return}\ \_size;}
+\DoxyCodeLine{00064\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classVectorInt_a094980b34086a28b33ef241872f29405}\label{classVectorInt_a094980b34086a28b33ef241872f29405} 
+\index{VectorInt@{VectorInt}!toString@{toString}}
+\index{toString@{toString}!VectorInt@{VectorInt}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Vector\+Int\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtains a string with information about this \doxylink{classVectorInt}{Vector\+Int} object, in the following format\+: 
+
+
+\begin{DoxyItemize}
+\item First line, the number of elements in this vector.
+\item Second line, the elements in this vector, separated by a whitespace. Take into account that a \textquotesingle{}~\newline
+\textquotesingle{} should appear after the last element instead of a whitespace. Query method \begin{DoxyReturn}{Returns}
+string with information about this \doxylink{classVectorInt}{Vector\+Int} object 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ std::string\ result\ =\ std::to\_string(\_size)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_size;\ i++)\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ std::string\ espacio\ =\ (\ i\ ==\ \_size\ -\/1)\ ?\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}\ :\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ result\ +=\ std::to\_string(\_values[i])\ +\ espacio;}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00125\ \};}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{VectorInt_8h}{Vector\+Int.\+h}}\item 
+src/Vector\+Int.\+cpp\end{DoxyCompactItemize}
