@@ -1,3 +1,9 @@
+/*
+ * Metodología de la Programación
+ * Curso 2025/2026
+ * Clustering.h — versión con soporte -DTESTING
+ */
+
 #ifndef CLUSTERING_H
 #define CLUSTERING_H
 
@@ -6,11 +12,6 @@
 
 class Clustering {
 public:
-
-    //__________________________________
-    static const unsigned int DEFAULT_RANDOM_SEED = 1761560597U;
-    //__________________________________
-
     Clustering();
     int getK() const;
     const VectorLocation& getCentroids() const;
@@ -22,22 +23,18 @@ public:
     std::string clusterInfo(int cluster) const;
     std::string getStatistics() const;
     bool isEquivalentTo(const Clustering& other) const;
-    std::string toString() const; 
-    void set(const VectorLocation &locations, int K, 
-        unsigned int seed=DEFAULT_RANDOM_SEED);
+    std::string toString() const;
+    void set(const VectorLocation &locations, int K,
+             unsigned int seed = DEFAULT_RANDOM_SEED);
     void run();
-//__________________________________
+
+    static const unsigned int DEFAULT_RANDOM_SEED = 1761560597U;
+
 #ifdef TESTING
 public:
 #else
-//__________________________________
-
 private:
-
-//__________________________________
 #endif
-//__________________________________
-    // static const unsigned int DEFAULT_RANDOM_SEED=1761560597U; --> lo meto en public
     VectorLocation _locations;
     int _K;
     VectorInt _clusters;
@@ -46,9 +43,9 @@ private:
     unsigned int _seed;
     double _sumWCV;
     int _numIterations;
+
     void initialClusterAssignment();
     double calculateSumWCV();
 };
 
 #endif /* CLUSTERING_H */
-

@@ -830,6 +830,577 @@ int main(int argc, char* argv[]) {
         DeallocateArrayClustering(arrayClt);
         CHECK("T01-84 ArrayClustering_append_0", result, string("3 1"));
     }
-    
+
+    // --- TEST 85: ArrayClustering_append_1 ---
+    {
+        VectorLocation locations; refill_vlocation(locations, 3);
+        Clustering clt1; clt1.set(locations, 2, 12345);
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt, 3);
+        arrayClt.size = 2;
+        AppendArrayClustering(arrayClt, clt1);
+        string result = std::to_string(arrayClt.capacity) + " " + std::to_string(arrayClt.size);
+        DeallocateArrayClustering(arrayClt);
+        CHECK("T01-85 ArrayClustering_append_1", result, string("3 3"));
+    }
+
+    // --- TEST 86: ArrayClustering_append_2 ---
+    {
+        VectorLocation locations; refill_vlocation(locations, 3);
+        Clustering clt1; clt1.set(locations, 2, 12345);
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt);
+        arrayClt.size = 2;
+        AppendArrayClustering(arrayClt, clt1);
+        string result = std::to_string(arrayClt.capacity) + " " + std::to_string(arrayClt.size);
+        DeallocateArrayClustering(arrayClt);
+        CHECK("T01-86 ArrayClustering_append_2", result, string("4 3"));
+    }
+
+    // --- TEST 87: ArrayClustering_sort_1_no_change ---
+    {
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt, 5);
+        arrayClt.size = 5;
+        for (int i = 0; i < arrayClt.size; i++) {
+            arrayClt.clustering[i]._K = 2;
+            arrayClt.clustering[i]._sumWCV = 1.0 + i;
+            arrayClt.clustering[i]._numIterations = 10;
+            arrayClt.clustering[i]._isDone = true;
+        }
+        SortArrayClustering(arrayClt);
+        string result = inspectT(arrayClt);
+        DeallocateArrayClustering(arrayClt);
+        string expected = "capacity: 5 size: 5 List of Clusters: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 2.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 3.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 4.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 5.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: ";
+        CHECK("T01-87 ArrayClustering_sort_1_no_change", result, expected);
+    }
+
+    // --- TEST 88: ArrayClustering_Deallocate_0 ---
+    {
+        ArrayClustering arrayClt;
+        arrayClt.clustering = nullptr;
+        arrayClt.capacity = 0;
+        arrayClt.size = 0;
+        DeallocateArrayClustering(arrayClt);
+        CHECK("T01-88 ArrayClustering_Deallocate_0", arrayClt.capacity + arrayClt.size, 0);
+    }
+
+    // --- TEST 89: ArrayClustering_Deallocate_1 ---
+    {
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt, 5);
+        arrayClt.size = 5;
+        DeallocateArrayClustering(arrayClt);
+        CHECK("T01-89 ArrayClustering_Deallocate_1", arrayClt.capacity + arrayClt.size, 0);
+    }
+
+    // ===========================================================
+    // T02 — Intermediate tests (90-130)
+    // ===========================================================
+
+    // --- TEST 90: VectorLocation_VectorLocation_def4 (excepción) ---
+    {
+        cout << "[T02-90 VectorLocation_VectorLocation_def4]" << endl;
+        try {
+            VectorLocation vloc(VectorLocation::DIM_VECTOR_LOCATIONS + 1);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 91: VectorLocation_findLocation_4 ---
+    {
+        Location loc; loc.setName("OTHER");
+        VectorLocation vloc(VectorLocation::DIM_VECTOR_LOCATIONS);
+        vloc.at(VectorLocation::DIM_VECTOR_LOCATIONS - 1) = loc;
+        CHECK("T02-91 VectorLocation_findLocation_4", vloc.findLocation(loc), 99);
+    }
+
+    // --- TEST 92: VectorLocation_out_of_range_append_4 ---
+    {
+        Location loc; loc.set(37.2, -3.6, "Granada");
+        VectorLocation vloc(VectorLocation::DIM_VECTOR_LOCATIONS);
+        vloc.append(loc);  // ya lleno — debe ignorar (no lanzar)
+        CHECK("T02-92 VectorLocation_out_of_range_append_4", vloc.getSize(), 100);
+    }
+
+    // --- TEST 93: VectorLocation_out_of_range_append_5 (excepción) ---
+    {
+        cout << "[T02-93 VectorLocation_out_of_range_append_5]" << endl;
+        Location loc; loc.set(0, 0, "Terrace");
+        VectorLocation vloc;
+        for (int i = 0; i < VectorLocation::DIM_VECTOR_LOCATIONS; i++) { vloc.append(loc); }
+        try {
+            vloc.append(loc);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 94: VectorLocation_Load_4_exception (excepción) ---
+    {
+        cout << "[T02-94 VectorLocation_Load_4_exception]" << endl;
+        int n = 1; VectorLocation l1(n);
+        std::string sin = std::to_string(VectorLocation::DIM_VECTOR_LOCATIONS + 1);
+        istringstream ssin(sin);
+        try {
+            l1.load(ssin);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 95: VectorLocation_VectorLocation_def5 (excepción) ---
+    {
+        cout << "[T02-95 VectorLocation_VectorLocation_def5]" << endl;
+        try {
+            VectorLocation vloc(-1);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 96: VectorLocation_append_2 (duplicado se ignora) ---
+    {
+        Location loc; loc.set(37.2, -3.6, "Granada");
+        VectorLocation vloc;
+        vloc.append(loc); vloc.append(loc);
+        string result = std::regex_replace(vloc.toString(), std::regex(ENDL), " ");
+        CHECK("T02-96 VectorLocation_append_2", result, string("1 37.200000 -3.600000 Granada "));
+    }
+
+    // --- TEST 97: VectorLocation_at_exception0 (excepción) ---
+    {
+        cout << "[T02-97 VectorLocation_at_exception0]" << endl;
+        VectorLocation vloc(2);
+        try {
+            vloc.at(-1);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 98: VectorLocation_at_exception1 (excepción) ---
+    {
+        cout << "[T02-98 VectorLocation_at_exception1]" << endl;
+        VectorLocation vloc(2);
+        try {
+            vloc.at(2);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 99: VectorLocation_select_0 ---
+    {
+        int n = 5; Location loc0, loc1, loc2;
+        loc1.set(1,1,"1"); loc2.set(n,n,std::to_string(n));
+        VectorLocation l1(n), l2;
+        for (int i = 1; i <= n; i++) { l1.at(i-1).set(-i, i, std::to_string(i)); }
+        l2 = l1.select(loc0, loc2);
+        CHECK("T02-99 VectorLocation_select_0", l2.getSize(), 0);
+    }
+
+    // --- TEST 100: VectorLocation_select_1 ---
+    {
+        int sizeOriginal = 5; Location loc1, loc2;
+        loc2.set(sizeOriginal, sizeOriginal, std::to_string(sizeOriginal));
+        VectorLocation l1(sizeOriginal), l2;
+        for (int i = 1; i <= sizeOriginal; i++) { l1.at(i-1).set(i, i, std::to_string(i)); }
+        l2 = l1.select(loc1, loc2);
+        CHECK("T02-100 VectorLocation_select_1", l2.getSize(), 5);
+    }
+
+    // --- TEST 101: VectorLocation_select_2 ---
+    {
+        int n = 5; Location loc0, loc1, loc2;
+        loc1.set(1.0,1.0,"1"); loc2.set(n,n,std::to_string(n));
+        VectorLocation l1(n+1), l2;
+        for (int i = 0; i <= n; i++) { l1.at(i).set(i*(n+1), i*(n+1), std::to_string(i)); }
+        l2 = l1.select(loc0, loc2);
+        CHECK("T02-101 VectorLocation_select_2", l2.getSize(), 1);
+    }
+
+    // --- TEST 102: VectorLocation_select_3 ---
+    {
+        int n = 5; Location loc0, loc1, loc2;
+        loc0.set(0,0,"0"); loc1.set(1,1,"1"); loc2.set(n,n,std::to_string(n));
+        VectorLocation l1(n+1), l2;
+        for (int i = 0; i <= n; i++) { l1.at(i).set(i*(n+1), i*(n+1), std::to_string(i)); }
+        l2 = l1.select(loc0, loc2);
+        string result = std::regex_replace(l2.toString(), std::regex(ENDL), " ");
+        CHECK("T02-102 VectorLocation_select_3", result, string("1 0.000000 0.000000 0 "));
+    }
+
+    // --- TEST 103: VectorLocation_select_4 ---
+    {
+        int sizeOriginal = 5; Location loc1, loc2;
+        loc1.set(1,1,"1"); loc2.set(sizeOriginal,sizeOriginal,std::to_string(sizeOriginal));
+        VectorLocation l1(sizeOriginal), l2;
+        for (int i = 1; i <= sizeOriginal; i++) { l1.at(i-1).set(i, i, std::to_string(i)); }
+        l2 = l1.select(loc1, loc2);
+        string result = std::regex_replace(l2.toString(), std::regex(ENDL), " ");
+        CHECK("T02-103 VectorLocation_select_4", result,
+              string("5 1.000000 1.000000 1 2.000000 2.000000 2 3.000000 3.000000 3 4.000000 4.000000 4 5.000000 5.000000 5 "));
+    }
+
+    // --- TEST 104: VectorLocation_sort_1_no_change ---
+    {
+        int sizeOriginal = 3; Location loc; VectorLocation l1(sizeOriginal), sol;
+        for (int i = 0; i < sizeOriginal; i++) {
+            loc.setName(std::to_string(i));
+            l1.at(i) = loc;
+            sol.append(loc);
+        }
+        l1.sort();
+        CHECK_BOOL("T02-104 VectorLocation_sort_1_no_change", sol.toString() == l1.toString(), true);
+    }
+
+    // --- TEST 105: VectorLocation_sort_2 ---
+    {
+        int sizeOriginal = 3; Location loc; VectorLocation l1(sizeOriginal), sol;
+        for (int i = 0; i < sizeOriginal; i++) {
+            loc.setName(std::to_string(i));
+            l1.at(sizeOriginal-(i+1)) = loc;
+            sol.append(loc);
+        }
+        l1.sort();
+        CHECK_BOOL("T02-105 VectorLocation_sort_2", sol.toString() == l1.toString(), true);
+    }
+
+    // --- TEST 106: VectorLocation_join_intersection_empty_0 ---
+    {
+        int n = 5; VectorLocation l1(n), l2(n);
+        for (int i = 0; i < n; i++) {
+            l1.at(i).set(i, i, std::to_string(i));
+            l2.at(i).set((i+1)*n, (i+1)*n, std::to_string((i+1)*n));
+        }
+        l1.join(l2);
+        CHECK("T02-106 VectorLocation_join_intersection_empty_0", l1.getSize(), 10);
+    }
+
+    // --- TEST 107: VectorLocation_joinShouldRemainEqual_1 ---
+    {
+        int n = 5; VectorLocation l1(n), l2(n);
+        for (int i = 0; i < n; i++) {
+            l1.at(i).set(i, i, std::to_string(i));
+            l2.at(i).set(i, i, std::to_string(i));
+        }
+        l1.join(l2);
+        CHECK("T02-107 VectorLocation_joinShouldRemainEqual_1", l1.getSize(), 5);
+    }
+
+    // --- TEST 108: VectorLocation_joinShouldRemainEqual_2 ---
+    {
+        VectorLocation l1(1), l2(1);
+        l1.at(0).set(37.2, -3.6, "Granada");
+        l2.at(0).set(37.2, -3.6, "Granada");
+        l1.join(l2);
+        string result = std::regex_replace(l1.toString(), std::regex(ENDL), " ");
+        CHECK("T02-108 VectorLocation_joinShouldRemainEqual_2", result,
+              string("1 37.200000 -3.600000 Granada "));
+    }
+
+    // --- TEST 109: VectorLocation_assign_01 ---
+    {
+        int n = 5; Location loc; loc.set(37.2, -3.6, "Granada");
+        VectorLocation l2(n);
+        l2.assign(loc);
+        string result = std::regex_replace(l2.toString(), std::regex(ENDL), " ");
+        CHECK("T02-109 VectorLocation_assign_01", result,
+              string("5 37.200000 -3.600000 Granada 37.200000 -3.600000 Granada 37.200000 -3.600000 Granada 37.200000 -3.600000 Granada 37.200000 -3.600000 Granada "));
+    }
+
+    // --- TEST 110: VectorLocation_assign_02 ---
+    {
+        int n = 5; Location loc0, loc1; loc1.set(37.2, -3.6, "Granada");
+        VectorLocation l2(n);
+        for (int i = 0; i < 5; i++) { l2.at(i) = loc1; }
+        l2.assign(loc0);
+        string result = std::regex_replace(l2.toString(), std::regex(ENDL), " ");
+        CHECK("T02-110 VectorLocation_assign_02", result,
+              string("5 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 0.000000 "));
+    }
+
+    // --- TEST 111: VectorLocation_loadLoad_2 ---
+    {
+        int n = 1; VectorLocation l1(n);
+        string ss = std::string("1 ") + string(LOCATION_OTHER) + " ";
+        istringstream ssin(ss);
+        l1.load(ssin);
+        ssin.clear(); ssin.str(ss);
+        l1.load(ssin);
+        string result = std::regex_replace(l1.toString(), std::regex(ENDL), " ");
+        CHECK("T02-111 VectorLocation_loadLoad_2", result, string("1 37.200000 -3.600000 Granada "));
+    }
+
+    // --- TEST 112: VectorLocation_Load_3_exception (excepción) ---
+    {
+        cout << "[T02-112 VectorLocation_Load_3_exception]" << endl;
+        int n = 1; VectorLocation l1(n);
+        string ss = std::string("-1 ") + string(LOCATION_OTHER) + " ";
+        istringstream ssin(ss);
+        try {
+            l1.load(ssin);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 113: VectorInt_VectorInt_def3 (excepción) ---
+    {
+        cout << "[T02-113 VectorInt_VectorInt_def3]" << endl;
+        try {
+            VectorInt v(VectorInt::DIM_VECTOR_VALUES + 1);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 114: VectorInt_append_2_full (excepción) ---
+    {
+        cout << "[T02-114 VectorInt_append_2_full]" << endl;
+        VectorInt v(VectorInt::DIM_VECTOR_VALUES);
+        try {
+            v.append(7);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 115: VectorInt_VectorInt_def2 ---
+    {
+        VectorInt v(5);
+        string result = std::regex_replace(v.toString(), std::regex(ENDL), " ");
+        CHECK("T02-115 VectorInt_VectorInt_def2", result, string("5 0 0 0 0 0 "));
+    }
+
+    // --- TEST 116: VectorInt_at_exception0 (excepción) ---
+    {
+        cout << "[T02-116 VectorInt_at_exception0]" << endl;
+        VectorInt v(2);
+        try {
+            v.at(-1);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 117: VectorInt_at_exception1 (excepción) ---
+    {
+        cout << "[T02-117 VectorInt_at_exception1]" << endl;
+        VectorInt v(2);
+        try {
+            v.at(2);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 118: VectorInt_distance_fail1 (excepción) ---
+    {
+        cout << "[T02-118 VectorInt_distance_fail1]" << endl;
+        VectorInt v1(3), v2(5);
+        try {
+            v1.distance(v2);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::invalid_argument& e) {
+            cout << "  => OK (lanzó std::invalid_argument: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 119: VectorInt_distance_fail2 (excepción) ---
+    {
+        cout << "[T02-119 VectorInt_distance_fail2]" << endl;
+        VectorInt v1, v2;
+        try {
+            v1.distance(v2);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::invalid_argument& e) {
+            cout << "  => OK (lanzó std::invalid_argument: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 120: VectorInt_countIdenticalElements2_excep (excepción) ---
+    {
+        cout << "[T02-120 VectorInt_countIdenticalElements2_excep]" << endl;
+        VectorInt v1(3), v2(2);
+        try {
+            v1.countIdenticalElements(v2);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::invalid_argument& e) {
+            cout << "  => OK (lanzó std::invalid_argument: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 121: Clustering_run_0 ---
+    {
+        VectorLocation locations; fill_vlocation(locations, 3);
+        Clustering clt; clt.set(locations, 2, 12345);
+        clt.run();
+        string result = std::regex_replace(clt.toString(), std::regex(ENDL), " ");
+        string expected = "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 2 "
+            "Cluster number for each location: 3 0 1 1 "
+            "Centroids: 2 0.000000 0.000000  1.500000 1.500000  "
+            " Cluster 0 information: 0 0.000000 0.000000 Location0 "
+            " Cluster 1 information: 1 1.000000 1.000000 Location1 2 2.000000 2.000000 Location2 "
+            " ";
+        CHECK("T02-121 Clustering_run_0", result, expected);
+    }
+
+    // --- TEST 122: Clustering_clusterOf_AfterRun ---
+    {
+        VectorLocation locations; fill_vlocation(locations, 3);
+        Clustering clt; clt.set(locations, 2, 12345);
+        clt.run();
+        string result = std::to_string(clt.clusterOf(0)) + " " +
+                        std::to_string(clt.clusterOf(1)) + " " +
+                        std::to_string(clt.clusterOf(2));
+        CHECK("T02-122 Clustering_clusterOf_AfterRun", result, string("0 1 1"));
+    }
+
+    // --- TEST 123: Clustering_getSumWCV_AfterRun ---
+    {
+        VectorLocation locations; fill_vlocation(locations, 3);
+        Clustering clt; clt.set(locations, 2, 12345);
+        clt.run();
+        CHECK("T02-123 Clustering_getSumWCV_AfterRun", clt.getSumWCV(), 1.0);
+    }
+
+    // --- TEST 124: Clustering_getNumIterations_AfterRun ---
+    {
+        VectorLocation locations; fill_vlocation(locations, 3);
+        Clustering clt; clt.set(locations, 2, 12345);
+        clt.run();
+        CHECK("T02-124 Clustering_getNumIterations_AfterRun", clt.getNumIterations(), 2);
+    }
+
+    // --- TEST 125: Clustering_clusterInfo1 ---
+    {
+        VectorLocation locations; fill_vlocation(locations, 3);
+        Clustering clt; clt.set(locations, 2, 12345);
+        clt.run();
+        string result = std::regex_replace(clt.clusterInfo(1), std::regex(ENDL), " ");
+        CHECK("T02-125 Clustering_clusterInfo1", result,
+              string("1 1.000000 1.000000 Location1 2 2.000000 2.000000 Location2 "));
+    }
+
+    // --- TEST 126: Clustering_getStatistics ---
+    {
+        VectorLocation locations; fill_vlocation(locations, 3);
+        Clustering clt; clt.set(locations, 2, 12345);
+        clt.run();
+        string result = std::regex_replace(clt.getStatistics(), std::regex(ENDL), " ");
+        CHECK("T02-126 Clustering_getStatistics", result,
+              string("K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 2 "));
+    }
+
+    // --- TEST 127: ArrayClustering_Initialize_2 (excepción) ---
+    {
+        cout << "[T02-127 ArrayClustering_Initialize_2]" << endl;
+        ArrayClustering arrayClt;
+        try {
+            InitializeArrayClustering(arrayClt, 0);
+            cout << "  => FALLO (no lanzó excepción)" << endl;
+        } catch (const std::out_of_range& e) {
+            cout << "  => OK (lanzó std::out_of_range: " << e.what() << ")" << endl;
+        }
+        cout << endl;
+    }
+
+    // --- TEST 128: ArrayClustering_sort_2_no_change ---
+    {
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt, 5);
+        arrayClt.size = 5;
+        for (int i = 0; i < arrayClt.size; i++) {
+            arrayClt.clustering[i]._K = 2;
+            arrayClt.clustering[i]._sumWCV = 1.0;
+            arrayClt.clustering[i]._numIterations = 10 + i;
+            arrayClt.clustering[i]._isDone = true;
+        }
+        SortArrayClustering(arrayClt);
+        string result = inspectT(arrayClt);
+        DeallocateArrayClustering(arrayClt);
+        string expected = "capacity: 5 size: 5 List of Clusters: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 11 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 12 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 13 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 14 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: ";
+        CHECK("T02-128 ArrayClustering_sort_2_no_change", result, expected);
+    }
+
+    // --- TEST 129: ArrayClustering_sort_3_invert ---
+    {
+        int n = 5;
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt, n);
+        arrayClt.size = n;
+        for (int i = 0; i < n; i++) {
+            arrayClt.clustering[n-i-1]._K = 2;
+            arrayClt.clustering[n-i-1]._sumWCV = 1.0 + i;
+            arrayClt.clustering[n-i-1]._numIterations = 10;
+            arrayClt.clustering[n-i-1]._isDone = true;
+        }
+        SortArrayClustering(arrayClt);
+        string result = inspectT(arrayClt);
+        DeallocateArrayClustering(arrayClt);
+        string expected = "capacity: 5 size: 5 List of Clusters: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 2.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 3.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 4.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 5.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: ";
+        CHECK("T02-129 ArrayClustering_sort_3_invert", result, expected);
+    }
+
+    // --- TEST 130: ArrayClustering_sort_4_invert ---
+    {
+        int n = 5;
+        ArrayClustering arrayClt; InitializeArrayClustering(arrayClt, n);
+        arrayClt.size = n;
+        for (int i = 0; i < n; i++) {
+            arrayClt.clustering[n-i-1]._K = 2;
+            arrayClt.clustering[n-i-1]._sumWCV = 1.0;
+            arrayClt.clustering[n-i-1]._numIterations = 10 + i;
+            arrayClt.clustering[n-i-1]._isDone = true;
+        }
+        SortArrayClustering(arrayClt);
+        string result = inspectT(arrayClt);
+        DeallocateArrayClustering(arrayClt);
+        string expected = "capacity: 5 size: 5 List of Clusters: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 10 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 11 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 12 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 13 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: "
+            "K=2 Sum of within-cluster variances: 1.000000 Number of iterations: 14 Cluster number for each location: 0 Centroids: 0 Cluster 0 information: Cluster 1 information: ";
+        CHECK("T02-130 ArrayClustering_sort_4_invert", result, expected);
+    }
+
     return 0;
 }

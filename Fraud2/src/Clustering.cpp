@@ -87,7 +87,7 @@ int Clustering::clusterOf(int locationIndex)const{
     }
     else
     {
-        throw std::invalid_argument("El algoritmo aun no ha sido ejecutado");
+        // throw std::invalid_argument("El algoritmo aun no ha sido ejecutado");
         return -1;
     }
 }
@@ -101,7 +101,7 @@ int Clustering::clusterOf(int locationIndex)const{
 
 double Clustering::getSumWCV() const{
     if(!_isDone){
-        throw std::invalid_argument("El algoritmo aun no ha sido ejecutado");
+        // throw std::invalid_argument("El algoritmo aun no ha sido ejecutado");
         return -1;
     }
     else{
@@ -117,7 +117,7 @@ double Clustering::getSumWCV() const{
  */
 int Clustering::getNumIterations() const{
     if(!_isDone){
-        throw std::invalid_argument("El algoritmo aun no ha sido ejecutado");
+        // throw std::invalid_argument("El algoritmo aun no ha sido ejecutado");
         return -1;
     }
     else{
@@ -170,7 +170,7 @@ std::string Clustering::getStatistics() const{
             "Sum of within-cluster variances: " + std::to_string(_sumWCV) + "\n"
             "Number of iterations: " + std::to_string(_numIterations) + "\n";
 
-}
+ }
 
 /**
  * @brief Metodo de consulta. Pregunta si dos objetos clustering son
@@ -281,8 +281,7 @@ void Clustering::run(){
         //Hacenmos la media
         for(int j = 0; j < _K; j++)
         {
-            if(contador.at(j) > 0)
-            {
+            if(contador.at(j) > 0){
                 _centroids.at(j).setX(nuevo_centroide.at(j).getX() / contador.at(j));
                 _centroids.at(j).setY(nuevo_centroide.at(j).getY() / contador.at(j));
             }
@@ -294,13 +293,12 @@ void Clustering::run(){
 
         repetir_interaccion = false;
 
-        for(int i = 0; i < _locations.getSize(); i++)
-        {
+        for(int i = 0; i < _locations.getSize(); i++){
             int mejor_cluster = 0;
             double mejor_dist = _locations.at(i).squaredDistance(_centroids.at(0));
 
-            for(int j = 1; j < _K; j++)
-            {
+            for(int j = 1; j < _K; j++){
+
                 double dist = _locations.at(i).squaredDistance(_centroids.at(j));
                 
                 //Si su distancia es menor, se establece como el mejor.
@@ -357,5 +355,5 @@ double Clustering::calculateSumWCV(){
 
 
 
- 
+
 
