@@ -43,14 +43,14 @@ public:
      * Query method
      * @return The number of elements
      */
-    int getSize();
+    int getSize() const;
     
     /**
      * @brief Gets the capacity of the vector in this object
      * Query method
      * @return The capacity of the vector in this object
      */
-    int getCapacity();
+    int getCapacity() const;
     
     /**
      * @brief Compares the integer vectors of this object and the provided 
@@ -67,7 +67,7 @@ public:
      * @return The number of identical elements in the vectors of this
      * and the provided object.
      */
-    int countIdenticalElements(VectorInt other);
+    int countIdenticalElements(const VectorInt &other) const;
     
     /**
      * @brief Obtains a string with information about this VectorInt object, 
@@ -79,7 +79,7 @@ public:
      * Query method
      * @return string with information about this VectorInt object
      */
-    std::string toString();
+    std::string toString() const;
 
     /**
      * @brief Gets the Euclidean distance between this and the provided object.
@@ -96,7 +96,7 @@ public:
      * @param other A VectorInt. Input parameter
      * @return The Euclidean distance between this and the provided objects
      */
-    double distance(VectorInt other);
+    double distance(const VectorInt &other) const;
     
     /**
      * @brief Assigns the provided value to all the elements in this vector
@@ -132,7 +132,7 @@ public:
      * given position is not valid.
      * @return A const reference to the integer element at the given position
      */
-    int at(int pos);
+    const int &at(int pos) const;
     
     /**
      * @brief Gets a reference to the integer element at the given position. 
@@ -142,7 +142,7 @@ public:
      * given position is not valid
      * @return A reference to the integer element at the given position.
      */
-    int at(int pos);
+    int &at(int pos);
 
 private:
     /**
@@ -162,5 +162,4 @@ private:
 
 }; // end of class VectorInt
 
-#endif /* VECTORINT_H */
-
+#endif // VECTORINT_H //

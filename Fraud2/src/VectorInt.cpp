@@ -199,7 +199,7 @@ void VectorInt::clear(){
  * given position is not valid.
  * @return A const reference to the integer element at the given position
  */
-const int VectorInt::at(int pos)const{
+const int &VectorInt::at(int pos)const{
     if (pos < 0 || pos >= _size) {
         throw std::out_of_range("VectorLocation::at posicion invalida");
     }

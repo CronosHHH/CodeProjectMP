@@ -293,7 +293,7 @@ void VectorLocation::sort(){
  * If returns -1 if this vector is empty
  */
 
-int VectorLocation::nearest(Location location){
+int VectorLocation::nearest(const Location& location) const{
     
 
     // en verdad se podria usar el metodo distance en vez de squaredistance
@@ -320,7 +320,7 @@ int VectorLocation::nearest(Location location){
  * @param location A Location object. Input parameter
  */
 
-void VectorLocation::assign(Location location){
+void VectorLocation::assign(const Location& location){
 
     for (int i = 0; i < _size; i++) {
         _locations[i] = location;

@@ -41,7 +41,7 @@ public:
      * the field (_K) for the number of clusters with 0; the field (_isDone)
      * that tells whether the run() method has already been executed 
      * with false; the fields _sumWCV and _numIterations with 0 and the field
-     * _seed with DEFAULT_RANDOM_SEED.
+     * _seed with DEFAULT_RANDOM_SEED. 
      * The fields (_locations, _clusters,  _centroids) are initialized with 
      * the default constructor of their classes. 
      */
@@ -52,7 +52,7 @@ public:
      * Query method
      * @return The number of clusters
      */
-    int getK();
+    int getK() const;
     
     /**
      * @brief Gets the current vector of centroids
@@ -60,7 +60,7 @@ public:
      * @return A const reference to the vector of centroids (a VectorLocation
      * object).
      */
-    VectorLocation getCentroids();
+    const VectorLocation& getCentroids() const;
     
     /**
      * @brief Indicates whether the clustering algorithm (run() method) has 
@@ -69,7 +69,7 @@ public:
      * @return true if the run() method has already been executed for this 
      * Clustering object; false otherwise
      */
-    bool isDone();
+    bool isDone() const;
     
     /**
      * @brief Gets the number of locations in the set of locations of this 
@@ -78,7 +78,7 @@ public:
      * @return The number of locations in the set of locations of this 
      * Clustering
      */
-    int getNumLocations();
+    int getNumLocations() const;
     
     /**
      * @brief Gets the cluster number for the Location determined by the  
@@ -91,7 +91,7 @@ public:
      * clustering algorithm has not been run (_isDone is false), then it returns
      * -1.
      */
-    int clusterOf(int locationIndex);
+    int clusterOf(int locationIndex) const;
     
     /**
      * @brief Gets the value of the sum of the within-cluster variances of this 
@@ -102,7 +102,7 @@ public:
      * @return A double with the sum of within-cluster variances of this 
      * Clustering
      */
-    double getSumWCV();
+    double getSumWCV() const;
 
     /**
      * @brief  Gets the number of iterations used in the KMeans 
@@ -114,7 +114,7 @@ public:
      * Query method
      * @return The number of iterations used in the KMeans algorithm
      */
-    int getNumIterations();
+    int getNumIterations() const;
 
     /**
      * @brief  Gets a string with information about the provided cluster (index
@@ -123,9 +123,9 @@ public:
      * its location index (whithin the _location field), a whitespace, and 
      * the information returned by the Location::toString() method for that 
      * location. An example is the following (a cluster with three locations):
-0 3.300000 9.100000 Graduate College
-6 12.600000 17.500000 Admission Information Center
-7 12.500000 20.000000 Rockefeller College
+     * 0 3.300000 9.100000 Graduate College
+     * 6 12.600000 17.500000 Admission Information Center
+     * 7 12.500000 20.000000 Rockefeller College
      * Query method
      * @param cluster An integer, that defines the index of a cluster. Input
      * parameter
@@ -133,7 +133,7 @@ public:
      * clustering algorithm has not been run (_isDone is false) or an 
      * invalid value of cluster is provide, then it returns an empty string.
      */
-    std::string clusterInfo(int cluster);
+    std::string clusterInfo(int cluster) const;
 
     /**
      * @brief Obtains a string with the some statistics data about this 
@@ -144,7 +144,7 @@ public:
      * Query method
      * @return A string with the content described above
      */
-    std::string getStatistics();
+    std::string getStatistics() const;
 
     /**
      * @brief Indicates whether this Clustering object is equivalent to the 
@@ -156,11 +156,11 @@ public:
      * (@p other) has not yet run the clustering algorithm (the run() method), 
      * then they are not considered equivalent.
      * Query method
-     * @param other A Clustering object. Input parameter
+     * @param other A Clustering object. Input parameter**
      * @return true if this Clustering object is equivalent to the provided 
      * Clustering object (@p other); false otherwise
      */
-    bool isEquivalentTo(Clustering other);
+    bool isEquivalentTo(const Clustering& other) const;
 
     /**
      * @brief Obtains a string with the fields of this Clustering object. 
@@ -214,7 +214,7 @@ Cluster 4 information:
      * Query method
      * @return A string with the content described above
      */
-    std::string toString(); 
+    std::string toString() const; 
     
     /**
      * @brief Sets the vector of locations (_locations), the value of K (_K)  
@@ -234,7 +234,7 @@ Cluster 4 information:
      * (with srand(seed)) in the initialClusterAssignment() method. 
      * Input parameter
      */
-    void set(VectorLocation locations, int K, 
+    void set(const VectorLocation &locations, int K, 
         unsigned int seed=DEFAULT_RANDOM_SEED);
     
     /**
