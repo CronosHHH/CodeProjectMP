@@ -11,6 +11,11 @@ public:
     static const unsigned int DEFAULT_RANDOM_SEED = 1761560597U;
     //__________________________________
 
+    /**
+     * @brief Construtor de la clase Clustering que inicializa todos los miembros.
+     * Crea un objeto Clustering con estado inicial vacío (sin ubicaciones ni clusters).
+     * Todos los miembros se inicializan en el orden de declaración de la clase.
+     */
     Clustering();
     int getK() const;
     const VectorLocation& getCentroids() const;
@@ -51,4 +56,3 @@ private:
 };
 
 #endif /* CLUSTERING_H */
-

@@ -2,7 +2,6 @@
 #include <string>
 #include <cmath>
 #include <stdexcept>
-
 #include "Clustering.h"
 
 
@@ -24,11 +23,18 @@
 
  /**
  * @brief Constructor de la clase Clustering.
- * Inicializa los campos a 0 o false, y el campo _seed con DEFAULT_RANDOM_SEED. 
-
+ * Inicializa todos los campos en el orden de declaración de la clase:
+ * - _locations y _centroids se inicializan como vectores vacíos (tamaño 0)
+ * - _clusters se inicializa como un vector vacío (tamaño 0)
+ * - _K se inicializa a 0
+ * - _isDone se inicializa a false
+ * - _seed se inicializa con DEFAULT_RANDOM_SEED
+ * - _sumWCV se inicializa a 0
+ * - _numIterations se inicializa a 0
  */
-Clustering::Clustering(): _K(0), _isDone(false),
-_sumWCV(0), _numIterations(0), _seed(DEFAULT_RANDOM_SEED){}
+Clustering::Clustering(): _locations(), _K(0), _clusters(), 
+    _centroids(), _isDone(false), _seed(DEFAULT_RANDOM_SEED),
+    _sumWCV(0), _numIterations(0) {}
     
 /**
  * @brief Nos devuelve el numero de clusters.
@@ -229,6 +235,9 @@ void Clustering::set(const VectorLocation& locations, int K, unsigned int seed){
     if(K <= 0){
         throw std::invalid_argument("Valor de K no correspondiente.");
     }
+    if(K > locations.getSize()){
+        throw std::invalid_argument("Valor de K supera el numero de locations.");
+    }
     else{
         _K = K;
         _locations = locations;
@@ -352,8 +361,3 @@ double Clustering::calculateSumWCV(){
 
     return _sumWCV;
 }
-
-
-
-
-
