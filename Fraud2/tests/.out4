@@ -1,0 +1,14 @@
+==26479== Memcheck, a memory error detector
+==26479== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==26479== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==26479== Command: /home/toniverger/Escritorio/MP/CodeProjectMP/Fraud2/build/Fraud2 5 3 0 ../Datasets/dataP2/simple_5locations.loc
+==26479== 
+==26479== 
+==26479== HEAP SUMMARY:
+==26479==     in use at exit: 0 bytes in 0 blocks
+==26479==   total heap usage: 14 allocs, 14 frees, 103,066 bytes allocated
+==26479== 
+==26479== All heap blocks were freed -- no leaks are possible
+==26479== 
+==26479== For lists of detected and suppressed errors, rerun with: -s
+==26479== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

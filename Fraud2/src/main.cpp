@@ -97,45 +97,40 @@ int main(int argc, char* argv[]) {
     ifstream inputFile; // Input file stream for the loc file
 
     // Check if the number of arguments is valid.
-    if (argc != 5) {
-        showHelp(cerr, "Invalid number of arguments");
+    
+    if (argc < 5){
+        showHelp(cerr, "Not enough arguments");
         return 1;
     }
 
     // Read K from the command line arguments
-    try {
-        K = stoi(argv[1]);
-    } catch (const std::invalid_argument& e) {
-        showHelp(cerr, "Invalid value for K");
-        return 1;
-    }
-
+    K = atoi(argv[1]);
+    
     // Read the seed range from the command line arguments 
     // (use stoul to convert string to unsigned int)
-    try {
-        minSeed = stoul(argv[2]);
-        maxSeed = stoul(argv[3]);
-    } catch (const std::invalid_argument& e) {
-        showHelp(cerr, "Invalid seed value");
-        return 1;
-    }
-
+    minSeed = stoul(argv[2]);
+    maxSeed = stoul(argv[3]);
+    
     // Read from the input file the locations directly into the VectorLocation object
     inputFile.open(argv[4]);
-    if (!inputFile) {
-        showHelp(cerr, "Cannot open input file " + string(argv[4]));
+    if (inputFile) {
+        locations.load(inputFile);
+        inputFile.close();
+    }
+    else{
+        string error_read_input = "Error opening input file: ";
+        error_read_input += argv[4];
+        showHelp(cerr, error_read_input);
         return 1;
     }
-    locations.load(inputFile);
-    inputFile.close();
 
     // Initialize the arrayClustering object with an initial capacity of 2
     InitializeArrayClustering(arrayClustering, INITIAL_ARRAY_CLUSTERING_CAPACITY);
     
     // For each seed in the given range, perform a clustering and store it in
     // arrayClustering
-    for (unsigned int seed = minSeed; seed <= maxSeed; ++seed) {
-        clustering.set(locations, K, seed);
+    for (unsigned int i = minSeed; i <= maxSeed; i++) {
+        clustering.set(locations, K, i);
         clustering.run();
         AppendArrayClustering(arrayClustering, clustering);
     }

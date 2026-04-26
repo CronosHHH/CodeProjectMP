@@ -81,6 +81,12 @@ int FindArrayClustering(const ArrayClustering &arrayClustering, const Clustering
  * @param clustering The Clustering object to append. Input parameter
  */
 void AppendArrayClustering(ArrayClustering &arrayClustering, const Clustering &clustering) {
+    //No añadimos un clustering si ya existe uno equivalente
+    if(FindArrayClustering(arrayClustering, clustering) != -1)
+    {
+        return;
+    }
+    
     if (arrayClustering.size == arrayClustering.capacity) {
         int newCapacity = arrayClustering.capacity + ARRAY_CLUSTERING_CAPACITY_INCREMENT;
         Clustering *newClustering = new Clustering[newCapacity];

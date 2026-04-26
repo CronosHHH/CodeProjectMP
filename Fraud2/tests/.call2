@@ -1,0 +1,1 @@
+Test #2 [tests//fraud2_test00.test] valgrind --leak-check=full  build/Fraud2  5 ../Datasets/dataP2/simple_5locations.loc

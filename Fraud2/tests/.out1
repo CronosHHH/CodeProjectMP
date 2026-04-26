@@ -1,0 +1,24 @@
+==26329== Memcheck, a memory error detector
+==26329== Copyright (C) 2002-2022, and GNU GPL'd, by Julian Seward et al.
+==26329== Using Valgrind-3.22.0 and LibVEX; rerun with -h for copyright info
+==26329== Command: /home/toniverger/Escritorio/MP/CodeProjectMP/Fraud2/build/Fraud2
+==26329== 
+ERROR in Fraud2 parameters. Not enough arguments
+Run with the following arguments:
+Fraud2 <K> <minSeed> <maxSeed> <inputFile.loc>
+
+Parameters:
+<K>: an integer with the number of clusters to use in the K-means algorithm
+<minSeed>: an integer with the minimum seed value to use
+<maxSeed>: an integer with the maximum seed value to use
+<inputFile.loc>: name of the location file
+
+==26329== 
+==26329== HEAP SUMMARY:
+==26329==     in use at exit: 0 bytes in 0 blocks
+==26329==   total heap usage: 2 allocs, 2 frees, 73,749 bytes allocated
+==26329== 
+==26329== All heap blocks were freed -- no leaks are possible
+==26329== 
+==26329== For lists of detected and suppressed errors, rerun with: -s
+==26329== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

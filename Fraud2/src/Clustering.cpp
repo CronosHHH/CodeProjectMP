@@ -229,9 +229,6 @@ void Clustering::set(const VectorLocation& locations, int K, unsigned int seed){
     if(K <= 0){
         throw std::invalid_argument("Valor de K no correspondiente.");
     }
-    if(K > locations.getSize()){
-        throw std::invalid_argument("Valor de K supera el numero de locations.");
-    }
     else{
         _K = K;
         _locations = locations;
