@@ -5,11 +5,8 @@
 
 /**
  * @file main.cpp
- * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
- * @author Andrés Cano Utrera <acu@decsai.ugr.es>
- * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
- * 
- * Created on 24 de octubre de 2025, 9:27
+ * @author estudiante1: Verger Vallespir, Toni
+ * @author estudiante2: Ramírez Vida, Renato
  */
 
 #include <iostream>
