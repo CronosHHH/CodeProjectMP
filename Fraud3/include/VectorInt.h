@@ -155,7 +155,7 @@ public:
      * given position is not valid.
      * @return A const reference to the integer element at the given position
      */
-    int at(int pos);
+    const int &at(int pos)const;
     
     /**
      * @brief Gets a reference to the integer element at the given position. 
@@ -165,7 +165,7 @@ public:
      * given position is not valid
      * @return A reference to the integer element at the given position.
      */
-    int at(int pos);
+    int &at(int pos);
     
 private:
     /**
