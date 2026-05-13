@@ -27,8 +27,15 @@
  * Inicializa los campos a 0 o false, y el campo _seed con DEFAULT_RANDOM_SEED. 
 
  */
-Clustering::Clustering(): _K(0), _isDone(false),
-_sumWCV(0), _numIterations(0), _seed(DEFAULT_RANDOM_SEED){}
+Clustering::Clustering()
+        : _locations(),
+            _K(0),
+            _clusters(),
+            _centroids(),
+            _isDone(false),
+            _seed(DEFAULT_RANDOM_SEED),
+            _sumWCV(0),
+            _numIterations(0){}
     
 /**
  * @brief Nos devuelve el numero de clusters.

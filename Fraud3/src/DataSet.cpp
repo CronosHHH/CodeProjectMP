@@ -1,5 +1,6 @@
 #include <string>
 #include <iostream>
+#include <stdexcept>
 #include "DataSet.h"
 
 using namespace std;
@@ -31,6 +32,70 @@ _____________________________________________
 const string DataSet::MAGIC_STRING_T="MP-FRAUD_DATASET-T-1.0";
 
 /**
+ * @brief Libera la memoria dinamica reservada y resetea los atributos.
+ */
+void DataSet::liberar()
+{
+    if (_values != nullptr)
+    {
+        for (int i = 0; i < _nInstances; ++i)
+        {
+            delete[] _values[i];
+        }
+        delete[] _values;
+        _values = nullptr;
+    }
+
+    _nInstances = 0;
+    _nLocations = 0;
+}
+
+/**
+ * @brief Reserva memoria para una matriz n x m.
+ * @param nInstances Numero de instancias.
+ * @param nLocations Numero de ubicaciones.
+ */
+void DataSet::reservar(int nInstances, int nLocations)
+{
+    _nInstances = nInstances;
+    _nLocations = nLocations;
+
+    if (_nInstances > 0 && _nLocations > 0)
+    {
+        _values = new int*[_nInstances];
+        for (int i = 0; i < _nInstances; ++i)
+        {
+            _values[i] = new int[_nLocations];
+        }
+    }
+    else
+    {
+        _values = nullptr;
+    }
+}
+
+/**
+ * @brief Copia los datos de otro DataSet.
+ * Asume memoria reservada suficiente.
+ * @param orig Objeto origen de la copia.
+ */
+void DataSet::copiar(const DataSet &orig)
+{
+    _nInstances = orig._nInstances;
+    _nLocations = orig._nLocations;
+    _labels = orig._labels;
+    _locations = orig._locations;
+
+    for (int i = 0; i < _nInstances; ++i)
+    {
+        for (int j = 0; j < _nLocations; ++j)
+        {
+            _values[i][j] = orig._values[i][j];
+        }
+    }
+}
+
+/**
  * @brief It builds a DataSet object with the provided number of instances
  * and number of locations. This class uses a bidimensional matrix with 
  * nInstances rows and nLocations columns to store the values of the set 
@@ -48,19 +113,46 @@ const string DataSet::MAGIC_STRING_T="MP-FRAUD_DATASET-T-1.0";
  * @param nLocations An integer with the number of locations.
  * Input parameter
  */
-DataSet(int nInstances = 0, int nLocations = 0);
+DataSet::DataSet(int nInstances, int nLocations)
+    : _values(nullptr), _nInstances(0), _nLocations(0), _labels(), _locations()
+{
+    if (nInstances < 0 || nLocations < 0)
+    {
+        throw std::out_of_range("DataSet: tamanio invalido");
+    }
+
+    reservar(nInstances, nLocations);
+    _labels = VectorInt(nInstances);
+    _locations = VectorLocation(nLocations);
+
+    for (int i = 0; i < _nInstances; ++i)
+    {
+        for (int j = 0; j < _nLocations; ++j)
+        {
+            _values[i][j] = 0;
+        }
+    }
+};
 
 /**
  * @brief Copy constructor
  * @param orig the DataSet object used as source for the copy. 
  * Input parameter
  */
-DataSet(DataSet orig);
+DataSet::DataSet(const DataSet &orig)
+    : _values(nullptr), _nInstances(0), _nLocations(0), _labels(), _locations()
+{
+    reservar(orig._nInstances, orig._nLocations);
+    copiar(orig);
+};
 
 /**
  * @brief Destructor
  */
-~DataSet();
+DataSet::~DataSet()
+{
+    liberar();
+};
 
 /**
  * @brief Overloading of the assignment operator for DataSet class
@@ -69,21 +161,37 @@ DataSet(DataSet orig);
  * Input parameter
  * @return A reference to this object
  */
-DataSet operator=(DataSet orig);
+DataSet &DataSet::operator=(const DataSet &orig)
+{
+    if (this != &orig)
+    {
+        liberar();
+        reservar(orig._nInstances, orig._nLocations);
+        copiar(orig);
+    }
+
+    return *this;
+};
 
 /**
  * @brief Gets the number of instances in this DataSet
  * Query method
  * @return The number of instances in this DataSet
  */
-int getNumInstances();
+int DataSet::getNumInstances() const
+{
+    return _nInstances;
+};
 
 /**
  * @brief Gets the number of localizations in this DataSet
  * Query method
  * @return The number of localizations in this DataSet
  */
-int getNumLocations(); 
+int DataSet::getNumLocations() const
+{
+    return _nLocations;
+}; 
 
 /**
  * @brief Gets the value for the instance instanceIndex at the localization
@@ -100,7 +208,19 @@ int getNumLocations();
  * @return The value for the instance instanceIndex at the localization
  * locationIndex
  */   
-int getValue(int instanceIndex, int locationIndex);
+int DataSet::getValue(int instanceIndex, int locationIndex) const
+{
+    if (instanceIndex < 0 || instanceIndex >= _nInstances)
+    {
+        throw std::out_of_range("DataSet::getValue instancia invalida");
+    }
+    if (locationIndex < 0 || locationIndex >= _nLocations)
+    {
+        throw std::out_of_range("DataSet::getValue ubicacion invalida");
+    }
+
+    return _values[instanceIndex][locationIndex];
+};
 
 /**
  * @brief Gets the label (integer value) of the instance at the provided
@@ -113,7 +233,15 @@ int getValue(int instanceIndex, int locationIndex);
  * @return The label (integer value) of the instance at the provided
  * position
  */
-int getLabel(int instanceIndex);
+int DataSet::getLabel(int instanceIndex) const
+{
+    if (instanceIndex < 0 || instanceIndex >= _nInstances)
+    {
+        throw std::out_of_range("DataSet::getLabel instancia invalida");
+    }
+
+    return _labels.at(instanceIndex);
+};
 
 /**
  * @brief Gets a const reference to the vector of Location objects in this
@@ -122,14 +250,20 @@ int getLabel(int instanceIndex);
  * @return A const reference to the vector of Location objects in this
  * DataSet
  */
-VectorLocation getVectorLocation();
+VectorLocation DataSet::getVectorLocation() const
+{
+    return _locations;
+};
 
 /**
  * @brief Gets a const reference to the vector of labels in this DataSet
  * Query method
  * @return A const reference to the vector of labels in this DataSet
  */
-VectorInt getVectorLabels();
+VectorInt DataSet::getVectorLabels() const
+{
+    return _labels;
+};
 
 /**
  * @brief Obtains a string with information about this DataSet object, 
@@ -181,7 +315,19 @@ std::string DataSet::toString() const {
  * @param value An integer with the new value for the selected instance.
  * Input parameter
  */
-void setValue(int instanceIndex, int locationIndex, int value);
+void DataSet::setValue(int instanceIndex, int locationIndex, int value)
+{
+    if (instanceIndex < 0 || instanceIndex >= _nInstances)
+    {
+        throw std::out_of_range("DataSet::setValue instancia invalida");
+    }
+    if (locationIndex < 0 || locationIndex >= _nLocations)
+    {
+        throw std::out_of_range("DataSet::setValue ubicacion invalida");
+    }
+
+    _values[instanceIndex][locationIndex] = value;
+};
 
 /**
  * @brief Sets a new the label for the provided instance.
@@ -192,7 +338,15 @@ void setValue(int instanceIndex, int locationIndex, int value);
  * instance.
  * Input parameter
  */
-void setLabel(int instanceIndex, int label);
+void DataSet::setLabel(int instanceIndex, int label)
+{
+    if (instanceIndex < 0 || instanceIndex >= _nInstances)
+    {
+        throw std::out_of_range("DataSet::setLabel instancia invalida");
+    }
+
+    _labels.at(instanceIndex) = label;
+};
 
 /**
  * Assigns the provided value to each instance and location. That is, all 
@@ -202,7 +356,16 @@ void setLabel(int instanceIndex, int label);
  * location
  * Input parameter
  */
-void initInstances(int value = 0);
+void DataSet::initInstances(int value)
+{
+    for (int i = 0; i < _nInstances; ++i)
+    {
+        for (int j = 0; j < _nLocations; ++j)
+        {
+            _values[i][j] = value;
+        }
+    }
+};
 
 /**
  * @brief Removes all the information in this DataSet object:
@@ -215,7 +378,12 @@ void initInstances(int value = 0);
  * - The remaining fields of this object are updated accordingly.
  * Modifier method
  */
-void clear();
+void DataSet::clear()
+{
+    liberar();
+    _labels.clear();
+    _locations.clear();
+};
 
 /**
  * @brief Saves this DataSet object in the given file. See files *.dts in 
@@ -230,7 +398,22 @@ void clear();
  * @param fileName The name of the file where the DataSet will be saved. 
  * Input parameter
  */
-void save(std::string fileName);
+void DataSet::save(std::string fileName)
+{
+    std::ofstream os(fileName);
+    if (!os)
+    {
+        throw std::ios_base::failure("DataSet::save no se pudo abrir");
+    }
+
+    os << MAGIC_STRING_T << "\n";
+    os << toString();
+
+    if (!os)
+    {
+        throw std::ios_base::failure("DataSet::save error de escritura");
+    }
+};
 
 /**
  * @brief Loads into this object the DataSet information stored in the 
@@ -254,7 +437,74 @@ void save(std::string fileName);
  * if the given file cannot be opened or if an error occurs while reading
  * from the file. 
  */
-void load(std::string fileName);
+void DataSet::load(std::string fileName)
+{
+    clear();
+
+    std::ifstream is(fileName);
+    if (!is)
+    {
+        throw std::ios_base::failure("DataSet::load no se pudo abrir");
+    }
+
+    std::string magic;
+    std::getline(is, magic);
+    if (!is)
+    {
+        clear();
+        throw std::ios_base::failure("DataSet::load error de lectura");
+    }
+    if (magic != MAGIC_STRING_T)
+    {
+        clear();
+        throw std::invalid_argument("DataSet::load cadena magica invalida");
+    }
+
+    try
+    {
+        _locations.load(is);
+
+        int nInstances = 0;
+        if (!(is >> nInstances))
+        {
+            throw std::ios_base::failure("DataSet::load error de lectura");
+        }
+        if (nInstances < 0)
+        {
+            throw std::out_of_range("DataSet::load instancias negativas");
+        }
+
+        _labels = VectorInt(nInstances);
+        for (int i = 0; i < nInstances; ++i)
+        {
+            int label = 0;
+            if (!(is >> label))
+            {
+                throw std::ios_base::failure("DataSet::load error de lectura");
+            }
+            _labels.at(i) = label;
+        }
+
+        reservar(nInstances, _locations.getSize());
+        for (int i = 0; i < _nInstances; ++i)
+        {
+            for (int j = 0; j < _nLocations; ++j)
+            {
+                int value = 0;
+                if (!(is >> value))
+                {
+                    throw std::ios_base::failure("DataSet::load error de lectura");
+                }
+                _values[i][j] = value;
+            }
+        }
+    }
+    catch (...)
+    {
+        clear();
+        throw;
+    }
+};
 
 /**
  * @brief Gets a new DataSet from this DataSet. The DataSet will contain 
@@ -281,4 +531,34 @@ void load(std::string fileName);
  * Input parameter
  * @return A reduced DataSet
  */
-DataSet getReducedDataSet(Clustering clustering);
+DataSet DataSet::getReducedDataSet(Clustering clustering)
+{
+    if (!clustering.isDone())
+    {
+        throw std::invalid_argument("DataSet::getReducedDataSet clustering no ejecutado");
+    }
+    if (clustering.getNumLocations() != _nLocations)
+    {
+        throw std::invalid_argument("DataSet::getReducedDataSet tamanio incompatible");
+    }
+
+    int newLocations = clustering.getK();
+    DataSet reduced(_nInstances, newLocations);
+    reduced._labels = _labels;
+    reduced._locations = clustering.getCentroids();
+
+    for (int i = 0; i < _nInstances; ++i)
+    {
+        for (int j = 0; j < _nLocations; ++j)
+        {
+            int cluster = clustering.clusterOf(j);
+            if (cluster < 0 || cluster >= newLocations)
+            {
+                throw std::invalid_argument("DataSet::getReducedDataSet cluster invalido");
+            }
+            reduced._values[i][cluster] += _values[i][j];
+        }
+    }
+
+    return reduced;
+};

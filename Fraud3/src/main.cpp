@@ -13,6 +13,8 @@
  */
 
 #include <iostream>
+#include <string>
+#include <stdexcept>
 
 #include "DataSet.h"
 #include "Clustering.h"
@@ -79,17 +81,68 @@ int main(int argc, char* argv[]) {
     int indexInputFile = -1; // index of the input file in argv
 
     // Loop to process program arguments
+    for (int i = 1; i < argc; ++i)
+    {
+        string arg = argv[i];
+
+        if (!hasBeenReadInitialParameters && arg == "-K")
+        {
+            if (i + 1 >= argc)
+            {
+                showHelp(cerr, "Number of clusters not provided after -K");
+                return 1;
+            }
+            K = stoi(argv[++i]);
+        }
+        else if (!hasBeenReadInitialParameters && arg == "-o")
+        {
+            if (i + 1 >= argc)
+            {
+                showHelp(cerr, "Output file not provided after -o");
+                return 1;
+            }
+            outputFileName = argv[++i];
+        }
+        else
+        {
+            hasBeenReadInitialParameters = true;
+            if (indexInputFile != -1)
+            {
+                showHelp(cerr, "Too many parameters");
+                return 1;
+            }
+            indexInputFile = i;
+        }
+    }
+
+    if (indexInputFile == -1)
+    {
+        showHelp(cerr, "Input file not provided");
+        return 1;
+    }
 
     // Load the input dataset from the given file
-    
-    // Set the location vector and K in the clustering object. Use the default
-    // seed value.
+    try
+    {
+        inputDataset.load(argv[indexInputFile]);
 
-    // Run the clustering algorithm
-    
-    // Get the dataset with reduced dimensionality
+        // Set the location vector and K in the clustering object. Use the default
+        // seed value.
+        clustering.set(inputDataset.getVectorLocation(), K);
 
-    // Save the output dataset in the given file
-    
+        // Run the clustering algorithm
+        clustering.run();
+
+        // Get the dataset with reduced dimensionality
+        outputDataset = inputDataset.getReducedDataSet(clustering);
+
+        // Save the output dataset in the given file
+        outputDataset.save(outputFileName);
+    }
+    catch (const std::exception &e)
+    {
+        cerr << e.what() << endl;
+        return 1;
+    }
     return 0;
 }
