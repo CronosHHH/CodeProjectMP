@@ -5,11 +5,7 @@
 
 /**
  * @file main.cpp
- * @author Silvia Acid Carrillo <acid@decsai.ugr.es>
- * @author Andrés Cano Utrera <acu@decsai.ugr.es>
- * @author Luis Castillo Vidal <L.Castillo@decsai.ugr.es>
- * 
- * Created on 24 de octubre de 2025, 9:27
+ * @author Renato Ramirez Vida
  */
 
 #include <iostream>
@@ -115,6 +111,7 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    /// por si faltan parametros
     if (indexInputFile == -1)
     {
         showHelp(cerr, "Input file not provided");
@@ -122,27 +119,19 @@ int main(int argc, char* argv[]) {
     }
 
     // Load the input dataset from the given file
-    try
-    {
-        inputDataset.load(argv[indexInputFile]);
+    inputDataset.load(argv[indexInputFile]);
 
-        // Set the location vector and K in the clustering object. Use the default
-        // seed value.
-        clustering.set(inputDataset.getVectorLocation(), K);
+    // Set the location vector and K in the clustering object. Use the default
+    // seed value.
+    clustering.set(inputDataset.getVectorLocation(), K/* , 1761560597U */);
 
-        // Run the clustering algorithm
-        clustering.run();
+    // Run the clustering algorithm
+    clustering.run();
 
-        // Get the dataset with reduced dimensionality
-        outputDataset = inputDataset.getReducedDataSet(clustering);
+    // Get the dataset with reduced dimensionality
+    outputDataset = inputDataset.getReducedDataSet(clustering);
 
-        // Save the output dataset in the given file
-        outputDataset.save(outputFileName);
-    }
-    catch (const std::exception &e)
-    {
-        cerr << e.what() << endl;
-        return 1;
-    }
+    // Save the output dataset in the given file
+    outputDataset.save(outputFileName);
     return 0;
 }

@@ -74,15 +74,25 @@ function runDoxygen() {
 # Zip the project wihtout binaries, precompiled or any documentation
 # Folders not to be included in the zip. Otherwise left empty
 function runZipProject() {
-    cdRootFolder
+    CDRootFolder
     # Some folders are not included into the ZIP
-    EXCLUDED_FOLDERS="$PROJECT_NAME/nbproject/private/**\*  $PROJECT_NAME/dist/**\* $PROJECT_NAME/build/**\* $PROJECT_NAME/doc/html/**\* $PROJECT_NAME/doc/latex/**\*  $PROJECT_NAME/doc/markdown/**\*"
+    EXCLUDED_FOLDERS="$PROJECT_NAME/nbproject/private/**\*  $PROJECT_NAME/dist/**\* $PROJECT_NAME/build/**\* $PROJECT_NAME/doc/html/**\* $PROJECT_NAME/doc/latex/**\*  $PROJECT_NAME/doc/markdown/**\* $PROJECT_NAME/tests/.\* $PROJECT_NAME/data/**\* $PROJECT_NAME/tests/validation/**\*"
     # Remove older copies
     rm -f $ZIP_FOLDER/*.zip
     # Zips the project. It either zips the whole NetBeans folder, or just the folders inside it	
     echo "Zipping project"
     cd ..
-    eval "zip -r $PROJECT_NAME/$ZIP_FOLDER/$ZIP_NAME.zip $PROJECT_NAME/* -x $EXCLUDED_FOLDERS"
+    zip -r "$PROJECT_NAME/$ZIP_FOLDER/$ZIP_NAME.zip" "$PROJECT_NAME" \
+        -x "$PROJECT_NAME/nbproject/private/*" \
+        "$PROJECT_NAME/dist/*" \
+        "$PROJECT_NAME/build/*" \
+        "$PROJECT_NAME/doc/html/*" \
+        "$PROJECT_NAME/doc/latex/*" \
+        "$PROJECT_NAME/doc/markdown/*" \
+        "$PROJECT_NAME/tests/.*" \
+        "$PROJECT_NAME/data/*" \
+        "$PROJECT_NAME/tests/validation/*" \
+        "$PROJECT_NAME/zip/*"
 }
 
 #
@@ -449,9 +459,8 @@ function doValgrindExtended() {
 
 # Main
 # Load IDE variables
-DIR=$(dirname $0)
-#source $DIR/settingsIDE.sh
-source settingsIDE.sh
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source $SCRIPT_DIR/settingsIDE.sh
 # Moves to root folder
 CDRootFolder
 

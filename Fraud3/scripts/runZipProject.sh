@@ -15,8 +15,7 @@ cd $SCRIPT_DIR # Move to the scripts folder of the Project
 # Load configuration & moves to the project root folder
 if [ -d ../../Scripts ]
 then
-    source ../../Scripts/doConfig.sh $*
-    runZipProject
+    source ../../Scripts/doConfig.sh $* && runZipProject
 else
     echo "Unable to find Scripts library"
 fi
