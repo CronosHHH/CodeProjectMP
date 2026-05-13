@@ -43,7 +43,7 @@ public:
      * @param orig the VectorInt object used as source for the copy. Input
      * parameter
      */
-    VectorInt(VectorInt orig);
+    VectorInt(const VectorInt &orig);
     
     /**
      * @brief Destructor
@@ -57,21 +57,21 @@ public:
      * parameter
      * @return A reference to this object
      */
-    VectorInt operator=(VectorInt orig);
+    VectorInt &operator=(const VectorInt &orig);
     
     /**
      * @brief Gets the number of elements in the vector of this object
      * Query method
      * @return The number of elements
      */
-    int getSize();
+    int getSize() const;
     
     /**
      * @brief Gets the capacity of the vector in this object
      * Query method
      * @return The capacity of the vector in this object
      */
-    int getCapacity();
+    int getCapacity() const;
     
     /**
      * @brief Compares the integer vectors of this object and the provided 
@@ -88,7 +88,7 @@ public:
      * @return The number of identical elements in the vectors of this
      * and the provided object.
      */
-    int countIdenticalElements(VectorInt other);
+    int countIdenticalElements(const VectorInt &other) const;
 
     
     /**
@@ -101,7 +101,7 @@ public:
      * Query method
      * @return string with information about this VectorInt object
      */
-    std::string toString();
+    std::string toString() const;
 
     /**
      * @brief Gets the Euclidean distance between this and the provided object.
@@ -118,7 +118,7 @@ public:
      * @param other A VectorInt. Input parameter
      * @return The Euclidean distance between this and the provided objects
      */
-    double distance(VectorInt other);
+    double distance(const VectorInt &other) const;
     
     /**
      * @brief Assigns the provided value to all the elements in this vector
@@ -168,6 +168,11 @@ public:
     int &at(int pos);
     
 private:
+    void liberar();
+    void reservar(int capacity);
+    void copiar(const VectorInt &orig);
+    void reallocar(int newCapacity);
+
     /**
      * Pointer to a dynamic array of integers
      */

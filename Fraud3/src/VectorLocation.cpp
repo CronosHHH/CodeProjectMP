@@ -39,7 +39,65 @@ AHORA ES ASÍ:
 
 */
 
-// es  un setter condicional
+/**
+ * @brief Libera la memoria dinamica reservada y resetea los atributos.
+ */
+void VectorLocation::liberar()
+{
+    if (_locations != nullptr)
+    {
+        delete[] _locations;
+        _locations = nullptr;
+    }
+    _size = 0;
+    _capacity = 0;
+}
+
+/**
+ * @brief Reserva memoria para un numero especifico de elementos.
+ * @param n Capacidad a reservar.
+ */
+void VectorLocation::reservar(int n)
+{
+    if (n > 0)
+    {
+        _locations = new Location[n];
+        _capacity = n;
+    }
+    else
+    {
+        _locations = nullptr;
+        _capacity = 0;
+    }
+}
+
+/**
+ * @brief Copia los datos de otro objeto VectorLocation.
+ * Asume que ya existe memoria reservada suficiente en *this.
+ * @param orig Objeto origen de la copia.
+ */
+void VectorLocation::copiar(const VectorLocation &orig)
+{
+    _size = orig._size;
+    for (int i = 0; i < _size; ++i)
+    {
+        _locations[i] = orig._locations[i];
+    }
+}
+
+void VectorLocation::reallocar(int newCapacity)
+{
+    Location *oldLocations = _locations;
+    int oldSize = _size;
+
+    reservar(newCapacity);
+    for (int i = 0; i < oldSize; ++i)
+    {
+        _locations[i] = oldLocations[i];
+    }
+
+    delete[] oldLocations;
+}
 
 /**
  * @class VectorLocation
@@ -60,26 +118,16 @@ AHORA ES ASÍ:
  * @param size The size for the vector of Location in this object. Input
  * parameter
  */
-
-// CONSTRUCTOR POR PARAMETROS - POR DEFECTO - (con parametros)
-// se crea el array dinámico
-VectorLocation::VectorLocation(int size)
-    : _locations(nullptr), _size(0), _capacity(0)
+// CONSTRUCTOR POR PARAMETROS o DE RELLENO
+VectorLocation::VectorLocation(int size) : _locations(nullptr), _size(0), _capacity(0)
 {
     // OJO: se permite size = 0 -> _capacity = 0.
-    if (size < 0)
-    {
+    if (size < 0){
         throw std::out_of_range("VectorLocation: size invalido");
     }
 
+    reservar(size);
     _size = size;
-    _capacity = size;
-
-    // Each element in the vector is initialized with the default Location constructor.
-    if (_capacity > 0)
-    {
-        _locations = new Location[_capacity];
-    }
 };
 
 /**
@@ -87,21 +135,11 @@ VectorLocation::VectorLocation(int size)
  * @param orig the VectorLocation object used as source for the copy.
  * Input parameter
  */
-
-// CONSTRUCTOR DE COPIA - POR DEFECTO (con parametros)
-//
-VectorLocation::VectorLocation(const VectorLocation &orig)
-    : _locations(nullptr), _size(orig._size), _capacity(orig._capacity)
+// CONSTRUCTOR POR COPIA
+VectorLocation::VectorLocation(const VectorLocation &orig) : _locations(nullptr), _size(0), _capacity(0)
 {
-    if (_capacity > 0)
-    {
-        _locations = new Location[_capacity];
-        // No copia el puntero, copia los elementos.
-        for (int i = 0; i < _size; ++i)
-        {
-            _locations[i] = orig._locations[i];
-        }
-    }
+    reservar(orig._capacity);
+    copiar(orig);
 };
 
 /**
@@ -109,13 +147,12 @@ VectorLocation::VectorLocation(const VectorLocation &orig)
  */
 VectorLocation::~VectorLocation()
 {
-
-    delete[] _locations;
+    liberar();
 };
 
 /**
  * @brief Overloading of the assignment operator for VectorLocation class
- * Modifier method
+ * Modifier method --> cambia el valor de *this
  * @param orig the VectorLocation object used as source for the assignment.
  * Input parameter
  * @return A reference to this object
@@ -124,23 +161,9 @@ VectorLocation &VectorLocation::operator=(const VectorLocation &orig)
 {
     if (this != &orig)
     {
-        Location *newLocations;
-        newLocations = nullptr;
-
-        if (orig._capacity > 0)
-        {
-            newLocations = new Location[orig._capacity];
-            for (int i = 0; i < orig._size; ++i)
-            {
-                newLocations[i] = orig._locations[i];
-            }
-        }
-
-        delete[] _locations;
-
-        _locations = newLocations;
-        _size = orig._size;
-        _capacity = orig._capacity;
+        liberar();
+        reservar(orig._capacity);
+        copiar(orig);
     }
 
     return *this;
@@ -219,12 +242,15 @@ std::string VectorLocation::toString() const
  */
 int VectorLocation::findLocation(const Location &location) const
 {
+    int position = -1;
     for (int i = 0; i < _size; i++)
     {
         if (_locations[i].getName() == location.getName())
-            return i;
+        {
+            position = i;
+        }
     }
-    return -1;
+    return position;
 };
 
 /**
@@ -238,7 +264,6 @@ int VectorLocation::findLocation(const Location &location) const
  * @param topRight The Location of the top right point. Input parameter
  * @return A VectorLocation with the selected Locations.
  */
-
 VectorLocation VectorLocation::select(const Location &bottomLeft, const Location &topRight) const
 {
     VectorLocation vector_result;
@@ -260,7 +285,6 @@ VectorLocation VectorLocation::select(const Location &bottomLeft, const Location
  * (_size field) to zero.
  * Modifier method
  */
-
 void VectorLocation::clear()
 {
     _size = 0;
@@ -275,7 +299,6 @@ void VectorLocation::clear()
  * @param pos position in the VectorLocation object. Input parameter
  * @return A const reference to the Location element at the given position
  */
-
 // es como un getLocation que vamos a usar para cuando la entrada sea una posición
 const Location &VectorLocation::at(int pos) const
 {
@@ -297,7 +320,6 @@ const Location &VectorLocation::at(int pos) const
  * @param pos position in the VectorLocation object. Input parameter
  * @return A reference to the Location element at the given position.
  */
-
 Location &VectorLocation::at(int pos)
 {
     if (pos < 0 || pos >= _size)
@@ -330,7 +352,6 @@ Location &VectorLocation::at(int pos)
  * VectorLocation object; false otherwise (the location was already found
  * in this object)
  */
-
 bool VectorLocation::append(const Location &location)
 {
     // 0---- Si el nombre esta vacio, no anadimos
@@ -338,7 +359,6 @@ bool VectorLocation::append(const Location &location)
     {
         return false;
     }
-
     // 0---- Si ya existe una Location con ese nombre, no anadimos
     if (findLocation(location) != -1)
     {
@@ -349,16 +369,7 @@ bool VectorLocation::append(const Location &location)
     if (_size >= _capacity)
     {
         int newCapacity = (_capacity > 0) ? (_capacity + BLOCK_SIZE) : BLOCK_SIZE;
-        Location *newLocations = new Location[newCapacity];
-
-        for (int i = 0; i < _size; ++i)
-        {
-            newLocations[i] = _locations[i];
-        }
-
-        delete[] _locations;
-        _locations = newLocations;
-        _capacity = newCapacity;
+        reallocar(newCapacity);
     }
 
     // 2. Todo ok: anadimos la location en la siguiente posicion libre
@@ -379,7 +390,6 @@ bool VectorLocation::append(const Location &location)
  * Modifier method
  * @param crimeSet A VectorLocation object. Input parameter
  */
-
 void VectorLocation::join(const VectorLocation &locations)
 {
     for (int i = 0; i < locations.getSize(); i++)
@@ -421,7 +431,6 @@ void VectorLocation::sort()
  * location.
  * If returns -1 if this vector is empty
  */
-
 int VectorLocation::nearest(const Location &location) const
 {
 
@@ -451,7 +460,6 @@ int VectorLocation::nearest(const Location &location) const
  * Modifier method
  * @param location A Location object. Input parameter
  */
-
 void VectorLocation::assign(const Location &location)
 {
 
@@ -479,7 +487,6 @@ void VectorLocation::assign(const Location &location)
  * of this VectorLocation object.
  * @param is Input stream. Input/output parameter
  */
-
 // le he afnadido & al istream, preguntar en clase
 void VectorLocation::load(std::istream &is)
 {

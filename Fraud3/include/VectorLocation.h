@@ -219,6 +219,11 @@ public:
     void load(std::istream &is);
 
 private:
+    void liberar();
+    void reservar(int capacity);
+    void copiar(const VectorLocation &orig);
+    void reallocar(int newCapacity);
+
     /**
      * Pointer to a dynamic array of Locations
      */

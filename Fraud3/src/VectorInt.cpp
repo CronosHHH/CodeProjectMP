@@ -33,33 +33,121 @@
 *______________________________________________
 **/
 
+void VectorInt::liberar()
+{
+    if (_values != nullptr)
+    {
+        delete[] _values;
+        _values = nullptr;
+    }
+    _size = 0;
+    _capacity = 0;
+}
+
+void VectorInt::reservar(int capacity)
+{
+    if (capacity > 0)
+    {
+        _values = new int[capacity];
+        _capacity = capacity;
+    }
+    else
+    {
+        _values = nullptr;
+        _capacity = 0;
+    }
+}
+
+void VectorInt::copiar(const VectorInt &orig)
+{
+    _size = orig._size;
+    for (int i = 0; i < _size; ++i)
+    {
+        _values[i] = orig._values[i];
+    }
+}
+
+void VectorInt::reallocar(int newCapacity)
+{
+    int *oldValues = _values;
+    int oldSize = _size;
+
+    reservar(newCapacity);
+    for (int i = 0; i < oldSize; ++i)
+    {
+        _values[i] = oldValues[i];
+    }
+
+    delete[] oldValues;
+}
+
 
 /**
  * @brief It builds a VectorInt object (vector of integers) with a 
  * size and capacity equal to the provided value (@p size). Each element
  * will be filled with a value equal to 0.
  * @throw std::out_of_range Throws a std::out_of_range exception if
- * @p size < 0 or size>DIM_VECTOR_VALUES
+ * @p size < 0
  * @param size The size for the vector of integers in this object. Input
  * parameter
  */
-VectorInt::VectorInt(int size) {
-    if (size < 0 || size > DIM_VECTOR_VALUES) {
-        throw std::out_of_range("VectorInt: size invalido, que sea entre 1 y 100");
+VectorInt::VectorInt(int size) : _values(nullptr), _size(0), _capacity(0)
+{
+    if (size < 0)
+    {
+        throw std::out_of_range("VectorInt: size invalido");
     }
+
+    reservar(size);
     _size = size;
-    
-    for (int i = 0; i < size; i++) {
-        _values[i] = 0;
-    }
+    assign(0);
 };
+
+/**
+ * @brief Copy constructor
+ * @param orig the VectorInt object used as source for the copy. Input
+ * parameter
+ */
+VectorInt::VectorInt(const VectorInt &orig) : _values(nullptr), _size(0), _capacity(0)
+{
+    reservar(orig._capacity);
+    copiar(orig);
+};
+
+/**
+ * @brief Destructor
+ */
+VectorInt::~VectorInt()
+{
+    liberar();
+};
+
+/**
+ * @brief Overloading of the assignment operator for VectorInt class
+ * Modifier method
+ * @param orig the VectorInt object used as source for the assignment. Input
+ * parameter
+ * @return A reference to this object
+ */
+VectorInt &VectorInt::operator=(const VectorInt &orig)
+{
+    if (this != &orig)
+    {
+        liberar();
+        reservar(orig._capacity);
+        copiar(orig);
+    }
+
+    return *this;
+}
 
 /**
  * @brief Gets the number of elements in the vector of this object
  * Query method
  * @return The number of elements
  */
-int VectorInt::getSize()const{
+int VectorInt::getSize() const
+{
     return _size;
 };
 
@@ -70,8 +158,9 @@ int VectorInt::getSize()const{
  * Query method
  * @return The capacity of the vector in this object
  */
-int VectorInt::getCapacity()const{
-    return DIM_VECTOR_VALUES;
+int VectorInt::getCapacity() const
+{
+    return _capacity;
 };
 
 /**
@@ -91,7 +180,8 @@ int VectorInt::getCapacity()const{
  */
 
 // otro que como es query method le pongo el const
-int VectorInt::countIdenticalElements(const VectorInt& other)const{
+int VectorInt::countIdenticalElements(const VectorInt &other) const
+{
     int cont= 0;
 
     if (_size != other.getSize()) {
@@ -115,7 +205,8 @@ int VectorInt::countIdenticalElements(const VectorInt& other)const{
  * @return string with information about this VectorInt object
  */
 // es una query, aniadir const 
-std::string VectorInt::toString()const{
+std::string VectorInt::toString() const
+{
     std::string result = std::to_string(_size) + "\n";
     for (int i = 0; i < _size; i++) {
         std::string espacio = ( i == _size -1) ? "\n" : " ";
@@ -139,7 +230,8 @@ std::string VectorInt::toString()const{
  * @param other A VectorInt. Input parameter
  * @return The Euclidean distance between this and the provided objects
  */
-double VectorInt::distance(const VectorInt& other)const{
+double VectorInt::distance(const VectorInt &other) const
+{
     if (_size != other.getSize()) {
         throw std::invalid_argument("distance: tamanios diferentes");
     }
@@ -158,7 +250,8 @@ double VectorInt::distance(const VectorInt& other)const{
  * Modifier method
  * @param value An integer value. Input parameter
  */
-void VectorInt::assign(int value){
+void VectorInt::assign(int value)
+{
     for (int i = 0; i < _size; i++) {
         _values[i] = value;
     }
@@ -167,15 +260,17 @@ void VectorInt::assign(int value){
 /**
  * @brief Appends the given integer value at the end (first free position) 
  * of the array of integers in this object. 
- * @throw std::out_of_range Throws a std::out_of_range exception if the 
- * array of Location was full (its capacity was full).
  * Modifier method
  * @param value the new integer value to be appended. Input parameter
  */
-void VectorInt::append(int value){
-    if (_size >= DIM_VECTOR_VALUES) {
-        throw std::out_of_range("VectorInt::append el array esta lleno");
+void VectorInt::append(int value)
+{
+    if (_size >= _capacity)
+    {
+        int newCapacity = (_capacity > 0) ? (_capacity + BLOCK_SIZE) : BLOCK_SIZE;
+        reallocar(newCapacity);
     }
+
     _values[_size] = value;
     _size++;
 };
@@ -186,7 +281,8 @@ void VectorInt::append(int value){
  * (_size field) to zero.
  * Modifier method
  */
-void VectorInt::clear(){
+void VectorInt::clear()
+{
     _size = 0;
 };
 
@@ -199,9 +295,11 @@ void VectorInt::clear(){
  * given position is not valid.
  * @return A const reference to the integer element at the given position
  */
-const int &VectorInt::at(int pos)const{
-    if (pos < 0 || pos >= _size) {
-        throw std::out_of_range("VectorLocation::at posicion invalida");
+const int &VectorInt::at(int pos) const
+{
+    if (pos < 0 || pos >= _size)
+    {
+        throw std::out_of_range("VectorInt::at posicion invalida");
     }
     return _values[pos]; 
 };
@@ -214,9 +312,11 @@ const int &VectorInt::at(int pos)const{
  * given position is not valid
  * @return A reference to the integer element at the given position.
  */
-int &VectorInt::at(int pos){
-    if (pos < 0 || pos >= _size) {
-        throw std::out_of_range("VectorLocation::at posicion invalida");
+int &VectorInt::at(int pos)
+{
+    if (pos < 0 || pos >= _size)
+    {
+        throw std::out_of_range("VectorInt::at posicion invalida");
     }
     return _values[pos]; 
 };
