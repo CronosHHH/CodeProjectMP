@@ -26,6 +26,8 @@ function CDRootFolder() {
         if [ $DIR == '/' ] 
         then
             echo "Ups! Something went wrong...sorry!"
+            echo "Do you have the "$ROOT_FOLDER" folder in your project? If not, create it in the project's root folder with:"
+            echo "mkdir "$ROOT_FOLDER
             exit 1
         fi
     done 
@@ -74,25 +76,15 @@ function runDoxygen() {
 # Zip the project wihtout binaries, precompiled or any documentation
 # Folders not to be included in the zip. Otherwise left empty
 function runZipProject() {
-    CDRootFolder
+    cdRootFolder
     # Some folders are not included into the ZIP
-    EXCLUDED_FOLDERS="$PROJECT_NAME/nbproject/private/**\*  $PROJECT_NAME/dist/**\* $PROJECT_NAME/build/**\* $PROJECT_NAME/doc/html/**\* $PROJECT_NAME/doc/latex/**\*  $PROJECT_NAME/doc/markdown/**\* $PROJECT_NAME/tests/.\* $PROJECT_NAME/data/**\* $PROJECT_NAME/tests/validation/**\*"
+    EXCLUDED_FOLDERS="$PROJECT_NAME/nbproject/private/**\*  $PROJECT_NAME/dist/**\* $PROJECT_NAME/build/**\* $PROJECT_NAME/doc/html/**\* $PROJECT_NAME/doc/latex/**\*  $PROJECT_NAME/doc/markdown/**\*"
     # Remove older copies
     rm -f $ZIP_FOLDER/*.zip
     # Zips the project. It either zips the whole NetBeans folder, or just the folders inside it	
     echo "Zipping project"
     cd ..
-    zip -r "$PROJECT_NAME/$ZIP_FOLDER/$ZIP_NAME.zip" "$PROJECT_NAME" \
-        -x "$PROJECT_NAME/nbproject/private/*" \
-        "$PROJECT_NAME/dist/*" \
-        "$PROJECT_NAME/build/*" \
-        "$PROJECT_NAME/doc/html/*" \
-        "$PROJECT_NAME/doc/latex/*" \
-        "$PROJECT_NAME/doc/markdown/*" \
-        "$PROJECT_NAME/tests/.*" \
-        "$PROJECT_NAME/data/*" \
-        "$PROJECT_NAME/tests/validation/*" \
-        "$PROJECT_NAME/zip/*"
+    eval "zip -r $PROJECT_NAME/$ZIP_FOLDER/$ZIP_NAME.zip $PROJECT_NAME/* -x $EXCLUDED_FOLDERS"
 }
 
 #
@@ -458,9 +450,21 @@ function doValgrindExtended() {
 }
 
 # Main
+
 # Load IDE variables
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source $SCRIPT_DIR/settingsIDE.sh
+if [ -d ../Scripts ] # Si estamos en carpeta raiz del proyecto
+then
+    source ../Scripts/settingsIDE.sh
+else
+    if [ -d ../../Scripts ] # Si estamos en carpeta scripts del proyecto
+    then
+        source ../../Scripts/settingsIDE.sh
+    else
+        printf "\n${RED}Error in doConfig: Unable to find Scripts library${WHITE}\n\n"
+        exit
+   fi
+fi
+
 # Moves to root folder
 CDRootFolder
 
