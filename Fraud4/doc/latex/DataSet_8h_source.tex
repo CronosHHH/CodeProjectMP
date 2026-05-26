@@ -1,0 +1,96 @@
+\doxysection{Data\+Set.\+h}
+\hypertarget{DataSet_8h_source}{}\label{DataSet_8h_source}\index{include/DataSet.h@{include/DataSet.h}}
+\mbox{\hyperlink{DataSet_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00002}00002\ \textcolor{comment}{\ *\ Metodología\ de\ la\ Programación}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00003}00003\ \textcolor{comment}{\ *\ Curso\ 2025/2026}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00004}00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00015}00015\ \textcolor{preprocessor}{\#ifndef\ DATASET\_H}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00016}00016\ \textcolor{preprocessor}{\#define\ DATASET\_H}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00022}00022\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorInt_8h}{VectorInt.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00023}00023\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{VectorLocation_8h}{VectorLocation.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00024}00024\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Clustering_8h}{Clustering.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00041}\mbox{\hyperlink{classDataSet}{00041}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classDataSet}{DataSet}}\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00042}00042\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00061}00061\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}(\textcolor{keywordtype}{int}\ nInstances\ =\ 0,\ \textcolor{keywordtype}{int}\ nLocations\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00062}00062\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00068}00068\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&orig);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00069}00069\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00073}00073\ \ \ \ \ \mbox{\hyperlink{classDataSet_a2cdb84d32331956b413ca36933e516bd}{\string~DataSet}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00074}00074\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00082}00082\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&\mbox{\hyperlink{classDataSet_ac18cd88387de78c2d9045764d9a8c6c7}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&orig);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00089}00089\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00090}00090\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}()\ \textcolor{keyword}{const};\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00097}00097\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00113}00113\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{getValue}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00114}00114\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00126}00126\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_a659cd7775bb6d3265ccb899339995c79}{getLabel}}(\textcolor{keywordtype}{int}\ instanceIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00127}00127\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00135}00135\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \mbox{\hyperlink{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}{getVectorLocation}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00142}00142\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \mbox{\hyperlink{classDataSet_a8e094943b49ffa35e02ff28d9f20188c}{getVectorLabels}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00143}00143\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00161}00161\ \ \ \ \ std::string\ \mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00178}00178\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_aa8e8d9b2a5eb808c59ba42f6dea5021a}{setValue}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex,\ \textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00179}00179\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00189}00189\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{setLabel}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ label);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00190}00190\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00199}00199\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a89894be009f63390da1c3c9cc9e3c8f6}{initInstances}}(\textcolor{keywordtype}{int}\ value\ =\ 0);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00200}00200\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00212}00212\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00213}00213\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00227}00227\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{save}}(std::string\ fileName);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00251}00251\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6}{load}}(std::string\ fileName);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00252}00252\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00278}00278\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ \mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{getReducedDataSet}}(\mbox{\hyperlink{classClustering}{Clustering}}\ clustering);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00279}00279\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00300}00300\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563}{nearestInstance}}(\mbox{\hyperlink{classVectorInt}{VectorInt}}\ instance,\ \textcolor{keywordtype}{bool}\ selected[])\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00301}00301\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00312}00312\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classDataSet_a72626a5e49d22d650476df066b21239b}{operator()}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00324}00324\ \ \ \ \ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classDataSet_a72626a5e49d22d650476df066b21239b}{operator()}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00325}00325\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00326}00326\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\mbox{\hyperlink{classDataSet_a02801323160452d8a6e512918ae017a1}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&dataset);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00327}00327\ \ \ \ \ \textcolor{keyword}{friend}\ std::istream\ \&\mbox{\hyperlink{classDataSet_ae6e46a14f8dc5a034d1ca717c77f6225}{operator>>}}(std::istream\ \&is,\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&dataset);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00329}00329\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00330}00330\ \ \ \ \ \textcolor{keywordtype}{void}\ liberar();}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00331}00331\ \ \ \ \ \textcolor{keywordtype}{void}\ reservar(\textcolor{keywordtype}{int}\ nInstances,\ \textcolor{keywordtype}{int}\ nLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00332}00332\ \ \ \ \ \textcolor{keywordtype}{void}\ copiar(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&orig);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00333}00333\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00337}00337\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::string\ MAGIC\_STRING\_T;}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00344}00344\ \ \ \ \ \textcolor{keywordtype}{int}**\ \_values;}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00350}00350\ \ \ \ \ \textcolor{keywordtype}{int}\ \_nInstances;}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00351}00351\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00356}00356\ \ \ \ \ \textcolor{keywordtype}{int}\ \_nLocations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00364}00364\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \_labels;}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00365}00365\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00371}00371\ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \_locations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00372}00372\ \};\ \textcolor{comment}{//\ end\ of\ class\ DataSet}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00380}00380\ std::ostream\ \&\mbox{\hyperlink{DataSet_8h_a02801323160452d8a6e512918ae017a1}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&dataset);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00381}00381\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00396}00396\ std::istream\ \&\mbox{\hyperlink{DataSet_8h_ae6e46a14f8dc5a034d1ca717c77f6225}{operator>>}}(std::istream\ \&is,\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&dataset);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00420}00420\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{DataSet_8h_ae28eefece9297e8b084d6eb55fcc76d6}{classify}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&datasetModel,\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&datasetToClassify,\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00421}00421\ \ \ \ \ \textcolor{keywordtype}{int}\ K1,\ \textcolor{keywordtype}{int}\ K2,\ \textcolor{keywordtype}{bool}\ doReductionDimensionality);}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00423}00423\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ DATASET\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{DataSet_8h_source_l00424}00424\ }
+
+\end{DoxyCode}

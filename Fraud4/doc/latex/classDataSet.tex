@@ -1,0 +1,1071 @@
+\doxysection{Data\+Set Class Reference}
+\hypertarget{classDataSet}{}\label{classDataSet}\index{DataSet@{DataSet}}
+
+
+A \doxylink{classDataSet}{Data\+Set} is an object that contains a set of n instances. Each instance contains a vector of m integers that represents the amount of money spent by a person in each one of m locations. This class uses a bidimensional matrix with n rows and m columns to store the values of the set of instances. This class also contains a vector of n labels (\doxylink{classVectorInt}{Vector\+Int} \+\_\+labels) to store the label of each instance. Each label is an integer that defines the class value of the corresponding instance. Finally, this class contains a vector of m \doxylink{classLocation}{Location} objects (\doxylink{classVectorLocation}{Vector\+Location} \+\_\+locations) to store each locations in the \doxylink{classDataSet}{Data\+Set}. In the 2D matrix, each column i is associated with location i in the \+\_\+locations vector.  
+
+
+
+
+{\ttfamily \#include $<$Data\+Set.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classDataSet_af8520a45a281339e10c94a662ec60fd1}{Data\+Set}} (int n\+Instances=0, int n\+Locations=0)
+\begin{DoxyCompactList}\small\item\em It builds a \doxylink{classDataSet}{Data\+Set} object with the provided number of instances and number of locations. This class uses a bidimensional matrix with n\+Instances rows and n\+Locations columns to store the values of the set of instances. Note that this constructor also builds the vector (with a size equal to n\+Instances) of labels and the vector of locations (with a size equal to n\+Locations). This constructor initializes with a value of 0 all the values in the 2D matrix. The vector of labels is initialized with a value of 0 for each instance. The \doxylink{classLocation}{Location} objects in the vector of locations are built with the \doxylink{classLocation}{Location} default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataSet_a77d299c7f8953ea144ced5b918ef78d5}{Data\+Set}} (const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&orig)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataSet_a2cdb84d32331956b413ca36933e516bd}{\texorpdfstring{$\sim$}{\string~}\+Data\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataSet}{Data\+Set}} \& \mbox{\hyperlink{classDataSet_ac18cd88387de78c2d9045764d9a8c6c7}{operator=}} (const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&orig)
+\begin{DoxyCompactList}\small\item\em Overloading of the assignment operator for \doxylink{classDataSet}{Data\+Set} class Modifier method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{get\+Num\+Instances}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of instances in this \doxylink{classDataSet}{Data\+Set} Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{get\+Num\+Locations}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of localizations in this \doxylink{classDataSet}{Data\+Set} Query method. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{get\+Value}} (int instance\+Index, int location\+Index) const
+\begin{DoxyCompactList}\small\item\em Gets the value for the instance instance\+Index at the localization location\+Index. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataSet_a659cd7775bb6d3265ccb899339995c79}{get\+Label}} (int instance\+Index) const
+\begin{DoxyCompactList}\small\item\em Gets the label (integer value) of the instance at the provided position (instance\+Index) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \mbox{\hyperlink{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}{get\+Vector\+Location}} () const
+\begin{DoxyCompactList}\small\item\em Gets a const reference to the vector of \doxylink{classLocation}{Location} objects in this \doxylink{classDataSet}{Data\+Set} Query method. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVectorInt}{Vector\+Int}} \mbox{\hyperlink{classDataSet_a8e094943b49ffa35e02ff28d9f20188c}{get\+Vector\+Labels}} () const
+\begin{DoxyCompactList}\small\item\em Gets a const reference to the vector of labels in this \doxylink{classDataSet}{Data\+Set} Query method. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{to\+String}} () const
+\begin{DoxyCompactList}\small\item\em Obtains a string with information about this \doxylink{classDataSet}{Data\+Set} object, in the following format\+: -\/Information about the set of locations of this \doxylink{classDataSet}{Data\+Set}\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataSet_aa8e8d9b2a5eb808c59ba42f6dea5021a}{set\+Value}} (int instance\+Index, int location\+Index, int value)
+\begin{DoxyCompactList}\small\item\em Sets a new value for the instance instance\+Index at the localization location\+Index. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{set\+Label}} (int instance\+Index, int label)
+\begin{DoxyCompactList}\small\item\em Sets a new the label for the provided instance. Modifier method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataSet_a89894be009f63390da1c3c9cc9e3c8f6}{init\+Instances}} (int value=0)
+\item 
+void \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Removes all the information in this \doxylink{classDataSet}{Data\+Set} object\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{save}} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Saves this \doxylink{classDataSet}{Data\+Set} object in the given file. See files \texorpdfstring{$\ast$}{*}.dts in the folder Data\+Sets as example of files with \doxylink{classDataSet}{Data\+Set} information. Note that the format of the output file is the same as the string that returns the \doxylink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{to\+String()} method, except that the \doxylink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{save()} method should insert the magic string at the beginning of the output file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6}{load}} (std\+::string file\+Name)
+\begin{DoxyCompactList}\small\item\em Loads into this object the \doxylink{classDataSet}{Data\+Set} information stored in the given file. See files \texorpdfstring{$\ast$}{*}.dts in the folder Data\+Sets as example of files with \doxylink{classDataSet}{Data\+Set} information. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classDataSet}{Data\+Set}} \mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{get\+Reduced\+Data\+Set}} (\mbox{\hyperlink{classClustering}{Clustering}} clustering)
+\begin{DoxyCompactList}\small\item\em Gets a new \doxylink{classDataSet}{Data\+Set} from this \doxylink{classDataSet}{Data\+Set}. The \doxylink{classDataSet}{Data\+Set} will contain the same number of instances as this \doxylink{classDataSet}{Data\+Set}, but the number of locations is given by the number of clusters in the provided \doxylink{classClustering}{Clustering} object. Therefore, the returned \doxylink{classDataSet}{Data\+Set} will have a reduced number of columns and an equal number of rows compared to this \doxylink{classDataSet}{Data\+Set}. The provided \doxylink{classClustering}{Clustering} object defines how to reduce the set of columns. Column 0 will contain the sum of the columns of this \doxylink{classDataSet}{Data\+Set} belonging to cluster 0, column 1 the sum of the columns belonging to cluster 1, and so on. The vector of locations will be a copy of the vector of centroids of the provided \doxylink{classClustering}{Clustering} object. The vector of labels will be a copy of the vector of labels in this \doxylink{classDataSet}{Data\+Set}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563}{nearest\+Instance}} (\mbox{\hyperlink{classVectorInt}{Vector\+Int}} instance, bool selected\mbox{[}$\,$\mbox{]}) const
+\item 
+const int \& \mbox{\hyperlink{classDataSet_a72626a5e49d22d650476df066b21239b}{operator()}} (int instance\+Index, int location\+Index) const
+\begin{DoxyCompactList}\small\item\em Overloading of the () operator to access to the value at a given position in this \doxylink{classDataSet}{Data\+Set} Query method. \end{DoxyCompactList}\item 
+int \& \mbox{\hyperlink{classDataSet_a47992e0d084f7b7c2dd386f811ae3efd}{operator()}} (int instance\+Index, int location\+Index)
+\begin{DoxyCompactList}\small\item\em Overloading of the () operator to access to the value at a given position in this \doxylink{classDataSet}{Data\+Set} Modifier method. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{classDataSet_a02801323160452d8a6e512918ae017a1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&dataset)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream insertion operator for \doxylink{classDataSet}{Data\+Set} class. \end{DoxyCompactList}\item 
+std\+::istream \& \mbox{\hyperlink{classDataSet_ae6e46a14f8dc5a034d1ca717c77f6225}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{classDataSet}{Data\+Set}} \&dataset)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream extraction operator for \doxylink{classDataSet}{Data\+Set} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A \doxylink{classDataSet}{Data\+Set} is an object that contains a set of n instances. Each instance contains a vector of m integers that represents the amount of money spent by a person in each one of m locations. This class uses a bidimensional matrix with n rows and m columns to store the values of the set of instances. This class also contains a vector of n labels (\doxylink{classVectorInt}{Vector\+Int} \+\_\+labels) to store the label of each instance. Each label is an integer that defines the class value of the corresponding instance. Finally, this class contains a vector of m \doxylink{classLocation}{Location} objects (\doxylink{classVectorLocation}{Vector\+Location} \+\_\+locations) to store each locations in the \doxylink{classDataSet}{Data\+Set}. In the 2D matrix, each column i is associated with location i in the \+\_\+locations vector. 
+
+Definition at line \mbox{\hyperlink{DataSet_8h_source_l00041}{41}} of file \mbox{\hyperlink{DataSet_8h_source}{Data\+Set.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classDataSet_af8520a45a281339e10c94a662ec60fd1}\label{classDataSet_af8520a45a281339e10c94a662ec60fd1} 
+\index{DataSet@{DataSet}!DataSet@{DataSet}}
+\index{DataSet@{DataSet}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{DataSet()}{DataSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Data\+Set\+::\+Data\+Set (\begin{DoxyParamCaption}\item[{int}]{n\+Instances = {\ttfamily 0},  }\item[{int}]{n\+Locations = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+It builds a \doxylink{classDataSet}{Data\+Set} object with the provided number of instances and number of locations. This class uses a bidimensional matrix with n\+Instances rows and n\+Locations columns to store the values of the set of instances. Note that this constructor also builds the vector (with a size equal to n\+Instances) of labels and the vector of locations (with a size equal to n\+Locations). This constructor initializes with a value of 0 all the values in the 2D matrix. The vector of labels is initialized with a value of 0 for each instance. The \doxylink{classLocation}{Location} objects in the vector of locations are built with the \doxylink{classLocation}{Location} default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\+Instances} & An integer with the number of instances. Input parameter \\
+\hline
+{\em n\+Locations} & An integer with the number of locations. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00117\ \ \ \ \ :\ \_values(\textcolor{keyword}{nullptr}),\ \_nInstances(0),\ \_nLocations(0),\ \_labels(),\ \_locations()}
+\DoxyCodeLine{00118\ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0\ ||\ nLocations\ <\ 0)}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet:\ tamanio\ invalido"{}});}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ reservar(nInstances,\ nLocations);}
+\DoxyCodeLine{00125\ \ \ \ \ \_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{00126\ \ \ \ \ \_locations\ =\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}(nLocations);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{00129\ \ \ \ \ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ 0;}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a77d299c7f8953ea144ced5b918ef78d5}\label{classDataSet_a77d299c7f8953ea144ced5b918ef78d5} 
+\index{DataSet@{DataSet}!DataSet@{DataSet}}
+\index{DataSet@{DataSet}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{DataSet()}{DataSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Data\+Set\+::\+Data\+Set (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{orig }\end{DoxyParamCaption})}
+
+
+
+Copy constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & the \doxylink{classDataSet}{Data\+Set} object used as source for the copy. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00142}{142}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00143\ \ \ \ \ :\ \_values(\textcolor{keyword}{nullptr}),\ \_nInstances(0),\ \_nLocations(0),\ \_labels(),\ \_locations()}
+\DoxyCodeLine{00144\ \{}
+\DoxyCodeLine{00145\ \ \ \ \ reservar(orig.\_nInstances,\ orig.\_nLocations);}
+\DoxyCodeLine{00146\ \ \ \ \ copiar(orig);}
+\DoxyCodeLine{00147\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a2cdb84d32331956b413ca36933e516bd}\label{classDataSet_a2cdb84d32331956b413ca36933e516bd} 
+\index{DataSet@{DataSet}!````~DataSet@{\texorpdfstring{$\sim$}{\string~}DataSet}}
+\index{````~DataSet@{\texorpdfstring{$\sim$}{\string~}DataSet}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}DataSet()}{\string~DataSet()}}
+{\footnotesize\ttfamily Data\+Set\+::\texorpdfstring{$\sim$}{\string~}\+Data\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00152}{152}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00153\ \{}
+\DoxyCodeLine{00154\ \ \ \ \ liberar();}
+\DoxyCodeLine{00155\ \};}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}\label{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7} 
+\index{DataSet@{DataSet}!clear@{clear}}
+\index{clear@{clear}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Data\+Set\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Removes all the information in this \doxylink{classDataSet}{Data\+Set} object\+: 
+
+
+\begin{DoxyItemize}
+\item The vector of \doxylink{classLocation}{Location} objects (\+\_\+locations) is left empty. That is, it should represent a vector with 0 locations.
+\item The vector of labels (\+\_\+labels) is left empty. That is, it should represent a vector with 0 labels.
+\item The matrix (\+\_\+values) with the values for each instance is left empty. That is, it should represent a matrix with 0 instances and 0 locations.
+\item The remaining fields of this object are updated accordingly. Modifier method 
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00382\ \{}
+\DoxyCodeLine{00383\ \ \ \ \ liberar();}
+\DoxyCodeLine{00384\ \ \ \ \ \_labels.\mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}}();}
+\DoxyCodeLine{00385\ \ \ \ \ \_locations.\mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{clear}}();}
+\DoxyCodeLine{00386\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 0
+\Hypertarget{classDataSet_a659cd7775bb6d3265ccb899339995c79}\label{classDataSet_a659cd7775bb6d3265ccb899339995c79} 
+\index{DataSet@{DataSet}!getLabel@{getLabel}}
+\index{getLabel@{getLabel}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getLabel()}{getLabel()}}
+{\footnotesize\ttfamily int Data\+Set\+::get\+Label (\begin{DoxyParamCaption}\item[{int}]{instance\+Index }\end{DoxyParamCaption}) const}
+
+
+
+Gets the label (integer value) of the instance at the provided position (instance\+Index) 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if instance\+Index is not a valid index for an instance in this \doxylink{classDataSet}{Data\+Set}. Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+Index} & An integer with the index of the selected instance. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The label (integer value) of the instance at the provided position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00236}{236}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00237\ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{00239\ \ \ \ \ \{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::getLabel\ instancia\ invalida"{}});}
+\DoxyCodeLine{00241\ \ \ \ \ \}}
+\DoxyCodeLine{00242\ }
+\DoxyCodeLine{00243\ \ \ \ \ \textcolor{keywordflow}{return}\ \_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(instanceIndex);}
+\DoxyCodeLine{00244\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}\label{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6} 
+\index{DataSet@{DataSet}!getNumInstances@{getNumInstances}}
+\index{getNumInstances@{getNumInstances}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getNumInstances()}{getNumInstances()}}
+{\footnotesize\ttfamily int Data\+Set\+::get\+Num\+Instances (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of instances in this \doxylink{classDataSet}{Data\+Set} Query method. 
+
+\begin{DoxyReturn}{Returns}
+The number of instances in this \doxylink{classDataSet}{Data\+Set} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00181}{181}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \textcolor{keywordflow}{return}\ \_nInstances;}
+\DoxyCodeLine{00184\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}\label{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd} 
+\index{DataSet@{DataSet}!getNumLocations@{getNumLocations}}
+\index{getNumLocations@{getNumLocations}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getNumLocations()}{getNumLocations()}}
+{\footnotesize\ttfamily int Data\+Set\+::get\+Num\+Locations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of localizations in this \doxylink{classDataSet}{Data\+Set} Query method. 
+
+\begin{DoxyReturn}{Returns}
+The number of localizations in this \doxylink{classDataSet}{Data\+Set} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00191}{191}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00192\ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \textcolor{keywordflow}{return}\ \_nLocations;}
+\DoxyCodeLine{00194\ \};\ }
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}\label{classDataSet_adcd86bd27fa2a65212508dac9d7dce06} 
+\index{DataSet@{DataSet}!getReducedDataSet@{getReducedDataSet}}
+\index{getReducedDataSet@{getReducedDataSet}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getReducedDataSet()}{getReducedDataSet()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDataSet}{Data\+Set}} Data\+Set\+::get\+Reduced\+Data\+Set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classClustering}{Clustering}}}]{clustering }\end{DoxyParamCaption})}
+
+
+
+Gets a new \doxylink{classDataSet}{Data\+Set} from this \doxylink{classDataSet}{Data\+Set}. The \doxylink{classDataSet}{Data\+Set} will contain the same number of instances as this \doxylink{classDataSet}{Data\+Set}, but the number of locations is given by the number of clusters in the provided \doxylink{classClustering}{Clustering} object. Therefore, the returned \doxylink{classDataSet}{Data\+Set} will have a reduced number of columns and an equal number of rows compared to this \doxylink{classDataSet}{Data\+Set}. The provided \doxylink{classClustering}{Clustering} object defines how to reduce the set of columns. Column 0 will contain the sum of the columns of this \doxylink{classDataSet}{Data\+Set} belonging to cluster 0, column 1 the sum of the columns belonging to cluster 1, and so on. The vector of locations will be a copy of the vector of centroids of the provided \doxylink{classClustering}{Clustering} object. The vector of labels will be a copy of the vector of labels in this \doxylink{classDataSet}{Data\+Set}. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em throw} & std\+::invalid\+\_\+argument Throws a std\+::invalid\+\_\+argument exception if the method \doxylink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{Clustering\+::is\+Done()} return false with the provided \doxylink{classClustering}{Clustering} object. \\
+\hline
+{\em throw} & std\+::invalid\+\_\+argument Throws a std\+::invalid\+\_\+argument exception if the number of locations in the provided \doxylink{classClustering}{Clustering} object is not equal to the number of locations in this \doxylink{classDataSet}{Data\+Set}. Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em clustering} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reduced \doxylink{classDataSet}{Data\+Set} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00530}{530}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00531\ \{}
+\DoxyCodeLine{00532\ \ \ \ \ \textcolor{keywordflow}{if}\ (!clustering.\mbox{\hyperlink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{isDone}}())}
+\DoxyCodeLine{00533\ \ \ \ \ \{}
+\DoxyCodeLine{00534\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::getReducedDataSet\ clustering\ no\ ejecutado"{}});}
+\DoxyCodeLine{00535\ \ \ \ \ \}}
+\DoxyCodeLine{00536\ \ \ \ \ \textcolor{keywordflow}{if}\ (clustering.\mbox{\hyperlink{classClustering_a12786a2a6f40833089cb3e35465843fc}{getNumLocations}}()\ !=\ \_nLocations)}
+\DoxyCodeLine{00537\ \ \ \ \ \{}
+\DoxyCodeLine{00538\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::getReducedDataSet\ tamanio\ incompatible"{}});}
+\DoxyCodeLine{00539\ \ \ \ \ \}}
+\DoxyCodeLine{00540\ }
+\DoxyCodeLine{00541\ \ \ \ \ \textcolor{keywordtype}{int}\ newLocations\ =\ clustering.\mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}();}
+\DoxyCodeLine{00542\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ reduced(\_nInstances,\ newLocations);}
+\DoxyCodeLine{00543\ \ \ \ \ reduced.\_labels\ =\ \_labels;}
+\DoxyCodeLine{00544\ \ \ \ \ reduced.\_locations\ =\ clustering.\mbox{\hyperlink{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}{getCentroids}}();}
+\DoxyCodeLine{00545\ }
+\DoxyCodeLine{00546\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{00547\ \ \ \ \ \{}
+\DoxyCodeLine{00548\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{00549\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cluster\ =\ clustering.\mbox{\hyperlink{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}{clusterOf}}(j);}
+\DoxyCodeLine{00551\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cluster\ <\ 0\ ||\ cluster\ >=\ newLocations)}
+\DoxyCodeLine{00552\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::getReducedDataSet\ cluster\ invalido"{}});}
+\DoxyCodeLine{00554\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00555\ \ \ \ \ \ \ \ \ \ \ \ \ reduced.\_values[i][cluster]\ +=\ \_values[i][j];}
+\DoxyCodeLine{00556\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00557\ \ \ \ \ \}}
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00559\ \ \ \ \ \textcolor{keywordflow}{return}\ reduced;}
+\DoxyCodeLine{00560\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{classDataSet_a1c333a438a5a3868c09fd0e17868f349}\label{classDataSet_a1c333a438a5a3868c09fd0e17868f349} 
+\index{DataSet@{DataSet}!getValue@{getValue}}
+\index{getValue@{getValue}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily int Data\+Set\+::get\+Value (\begin{DoxyParamCaption}\item[{int}]{instance\+Index,  }\item[{int}]{location\+Index }\end{DoxyParamCaption}) const}
+
+
+
+Gets the value for the instance instance\+Index at the localization location\+Index. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if instance\+Index is not a valid index for an instance in this \doxylink{classDataSet}{Data\+Set}. \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if location\+Index is not a valid index for an location in this \doxylink{classDataSet}{Data\+Set}. Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+Index} & An integer with the index of the selected instance. Input parameter \\
+\hline
+{\em location\+Index} & An integer with the index of the selected location. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value for the instance instance\+Index at the localization location\+Index 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00211}{211}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00212\ \{}
+\DoxyCodeLine{00213\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{00214\ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::getValue\ instancia\ invalida"{}});}
+\DoxyCodeLine{00216\ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{00218\ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::getValue\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[instanceIndex][locationIndex];}
+\DoxyCodeLine{00223\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a8e094943b49ffa35e02ff28d9f20188c}\label{classDataSet_a8e094943b49ffa35e02ff28d9f20188c} 
+\index{DataSet@{DataSet}!getVectorLabels@{getVectorLabels}}
+\index{getVectorLabels@{getVectorLabels}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getVectorLabels()}{getVectorLabels()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVectorInt}{Vector\+Int}} Data\+Set\+::get\+Vector\+Labels (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets a const reference to the vector of labels in this \doxylink{classDataSet}{Data\+Set} Query method. 
+
+\begin{DoxyReturn}{Returns}
+A const reference to the vector of labels in this \doxylink{classDataSet}{Data\+Set} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00263}{263}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00264\ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \textcolor{keywordflow}{return}\ \_labels;}
+\DoxyCodeLine{00266\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}\label{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397} 
+\index{DataSet@{DataSet}!getVectorLocation@{getVectorLocation}}
+\index{getVectorLocation@{getVectorLocation}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{getVectorLocation()}{getVectorLocation()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} Data\+Set\+::get\+Vector\+Location (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets a const reference to the vector of \doxylink{classLocation}{Location} objects in this \doxylink{classDataSet}{Data\+Set} Query method. 
+
+\begin{DoxyReturn}{Returns}
+A const reference to the vector of \doxylink{classLocation}{Location} objects in this \doxylink{classDataSet}{Data\+Set} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00253}{253}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00254\ \{}
+\DoxyCodeLine{00255\ \ \ \ \ \textcolor{keywordflow}{return}\ \_locations;}
+\DoxyCodeLine{00256\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a89894be009f63390da1c3c9cc9e3c8f6}\label{classDataSet_a89894be009f63390da1c3c9cc9e3c8f6} 
+\index{DataSet@{DataSet}!initInstances@{initInstances}}
+\index{initInstances@{initInstances}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{initInstances()}{initInstances()}}
+{\footnotesize\ttfamily void Data\+Set\+::init\+Instances (\begin{DoxyParamCaption}\item[{int}]{value = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Assigns the provided value to each instance and location. That is, all instances of this \doxylink{classDataSet}{Data\+Set} are initialized with the provided value. Modifier method 
+\begin{DoxyParams}{Parameters}
+{\em value} & An integer with the value to assign to every instance and location Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00359}{359}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00360\ \{}
+\DoxyCodeLine{00361\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{00362\ \ \ \ \ \{}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ value;}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00367\ \ \ \ \ \}}
+\DoxyCodeLine{00368\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6}\label{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6} 
+\index{DataSet@{DataSet}!load@{load}}
+\index{load@{load}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Data\+Set\+::load (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Loads into this object the \doxylink{classDataSet}{Data\+Set} information stored in the given file. See files \texorpdfstring{$\ast$}{*}.dts in the folder Data\+Sets as example of files with \doxylink{classDataSet}{Data\+Set} information. 
+
+\begin{DoxyNote}{Note}
+Note that this method should remove any previous information that this object previously contained. 
+
+This method throws an exception in some error cases (see below). Before throwing the corresponding exception, this method clears the object (it calls to \doxylink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear()} method) to leave the object in a consistent state. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em throw} & std\+::invalid\+\_\+argument Throws a std\+::invalid\+\_\+argument exception if an invalid magic string is found in the given file \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations or the number of instances in the given file is negative. Modifier method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & The name of the file where the \doxylink{classDataSet}{Data\+Set} is stored. Input parameter \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::ios\+\_\+base\+::failure} & Throws a std\+::ios\+\_\+base\+::failure exception if the given file cannot be opened or if an error occurs while reading from the file. \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00440}{440}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00441\ \{}
+\DoxyCodeLine{00442\ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00443\ }
+\DoxyCodeLine{00444\ \ \ \ \ std::ifstream\ is(fileName);}
+\DoxyCodeLine{00445\ \ \ \ \ \textcolor{keywordflow}{if}\ (!is)}
+\DoxyCodeLine{00446\ \ \ \ \ \{}
+\DoxyCodeLine{00447\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ no\ se\ pudo\ abrir"{}});}
+\DoxyCodeLine{00448\ \ \ \ \ \}}
+\DoxyCodeLine{00449\ }
+\DoxyCodeLine{00450\ \ \ \ \ std::string\ magic;}
+\DoxyCodeLine{00451\ \ \ \ \ std::getline(is,\ magic);}
+\DoxyCodeLine{00452\ \ \ \ \ \textcolor{keywordflow}{if}\ (!is)}
+\DoxyCodeLine{00453\ \ \ \ \ \{}
+\DoxyCodeLine{00454\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00456\ \ \ \ \ \}}
+\DoxyCodeLine{00457\ \ \ \ \ \textcolor{keywordflow}{if}\ (magic\ !=\ MAGIC\_STRING\_T)}
+\DoxyCodeLine{00458\ \ \ \ \ \{}
+\DoxyCodeLine{00459\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00460\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::load\ cadena\ magica\ invalida"{}});}
+\DoxyCodeLine{00461\ \ \ \ \ \}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00463\ \ \ \ \ \_locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(is);}
+\DoxyCodeLine{00464\ }
+\DoxyCodeLine{00465\ \ \ \ \ \textcolor{keywordtype}{int}\ nInstances\ =\ 0;}
+\DoxyCodeLine{00466\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ nInstances))}
+\DoxyCodeLine{00467\ \ \ \ \ \{}
+\DoxyCodeLine{00468\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00469\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00470\ \ \ \ \ \}}
+\DoxyCodeLine{00471\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0)}
+\DoxyCodeLine{00472\ \ \ \ \ \{}
+\DoxyCodeLine{00473\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00474\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::load\ instancias\ negativas"{}});}
+\DoxyCodeLine{00475\ \ \ \ \ \}}
+\DoxyCodeLine{00476\ }
+\DoxyCodeLine{00477\ \ \ \ \ \_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{00478\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nInstances;\ ++i)}
+\DoxyCodeLine{00479\ \ \ \ \ \{}
+\DoxyCodeLine{00480\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ 0;}
+\DoxyCodeLine{00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ label))}
+\DoxyCodeLine{00482\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00483\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00484\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00485\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00486\ \ \ \ \ \ \ \ \ \_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ label;}
+\DoxyCodeLine{00487\ \ \ \ \ \}}
+\DoxyCodeLine{00488\ }
+\DoxyCodeLine{00489\ \ \ \ \ reservar(nInstances,\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{00490\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{00491\ \ \ \ \ \{}
+\DoxyCodeLine{00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{00493\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{00495\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ value))}
+\DoxyCodeLine{00496\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00499\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00500\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ value;}
+\DoxyCodeLine{00501\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00502\ \ \ \ \ \}}
+\DoxyCodeLine{00503\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3
+\Hypertarget{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563}\label{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563} 
+\index{DataSet@{DataSet}!nearestInstance@{nearestInstance}}
+\index{nearestInstance@{nearestInstance}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{nearestInstance()}{nearestInstance()}}
+{\footnotesize\ttfamily int Data\+Set\+::nearest\+Instance (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVectorInt}{Vector\+Int}}}]{instance,  }\item[{bool}]{selected\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption}) const}
+
+Returns the index (position) of the nearest instance in this \doxylink{classDataSet}{Data\+Set} to the provided instance ({\ttfamily instance}). To do so, the Euclidean distance is used to calculate the distance between two instances. If an instance i has already been selected (selected\mbox{[}i\mbox{]} == true) then it is not considered as a possible nearest instance. 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Throws a std\+::invalid\+\_\+argument exception if the size of the provided instance and the number of locations in this Dataset is not equal. Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em instance} & A \doxylink{classVectorInt}{Vector\+Int} that represents the instance for which we want to calculate the nearest instance. Input parameter \\
+\hline
+{\em selected} & array of bool that defines the already selected instances. This array should have at least a capacity equal to the number of instances in this \doxylink{classDataSet}{Data\+Set}. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+An integer with the index (position) of the nearest instance to {\ttfamily instance}. It returns -\/1 if this \doxylink{classDataSet}{Data\+Set} does not contain any instance. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00562}{562}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00563\ \{}
+\DoxyCodeLine{00564\ \ \ \ \ \textcolor{keywordflow}{if}\ (instance.\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}()\ !=\ \_nLocations)}
+\DoxyCodeLine{00565\ \ \ \ \ \{}
+\DoxyCodeLine{00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::nearestInstance\ tamanio\ incompatible"{}});}
+\DoxyCodeLine{00567\ \ \ \ \ \}}
+\DoxyCodeLine{00568\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_nInstances\ ==\ 0)}
+\DoxyCodeLine{00569\ \ \ \ \ \{}
+\DoxyCodeLine{00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00571\ \ \ \ \ \}}
+\DoxyCodeLine{00572\ }
+\DoxyCodeLine{00573\ \ \ \ \ \textcolor{keywordtype}{int}\ nearestIndex\ =\ -\/1;}
+\DoxyCodeLine{00574\ \ \ \ \ \textcolor{keywordtype}{double}\ bestDistance\ =\ 0.0;}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{00577\ \ \ \ \ \{}
+\DoxyCodeLine{00578\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selected\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ selected[i])}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00580\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00581\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00582\ }
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0.0;}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{00585\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00586\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ diff\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_values[i][j]\ -\/\ instance.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j));}
+\DoxyCodeLine{00587\ \ \ \ \ \ \ \ \ \ \ \ \ distance\ +=\ diff\ *\ diff;}
+\DoxyCodeLine{00588\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00589\ }
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearestIndex\ ==\ -\/1\ ||\ distance\ <\ bestDistance)}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00592\ \ \ \ \ \ \ \ \ \ \ \ \ bestDistance\ =\ distance;}
+\DoxyCodeLine{00593\ \ \ \ \ \ \ \ \ \ \ \ \ nearestIndex\ =\ i;}
+\DoxyCodeLine{00594\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00595\ \ \ \ \ \}}
+\DoxyCodeLine{00596\ }
+\DoxyCodeLine{00597\ \ \ \ \ \textcolor{keywordflow}{return}\ nearestIndex;}
+\DoxyCodeLine{00598\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 4
+\Hypertarget{classDataSet_a47992e0d084f7b7c2dd386f811ae3efd}\label{classDataSet_a47992e0d084f7b7c2dd386f811ae3efd} 
+\index{DataSet@{DataSet}!operator()@{operator()}}
+\index{operator()@{operator()}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily int \& Data\+Set\+::operator() (\begin{DoxyParamCaption}\item[{int}]{instance\+Index,  }\item[{int}]{location\+Index }\end{DoxyParamCaption})}
+
+
+
+Overloading of the () operator to access to the value at a given position in this \doxylink{classDataSet}{Data\+Set} Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+Index} & number of instance in this \doxylink{classDataSet}{Data\+Set}. Input parameter \\
+\hline
+{\em location\+Index} & number of location in this \doxylink{classDataSet}{Data\+Set}. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the value at the given position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00614}{614}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00615\ \{}
+\DoxyCodeLine{00616\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{00617\ \ \ \ \ \{}
+\DoxyCodeLine{00618\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ instancia\ invalida"{}});}
+\DoxyCodeLine{00619\ \ \ \ \ \}}
+\DoxyCodeLine{00620\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{00621\ \ \ \ \ \{}
+\DoxyCodeLine{00622\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{00623\ \ \ \ \ \}}
+\DoxyCodeLine{00624\ }
+\DoxyCodeLine{00625\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[instanceIndex][locationIndex];}
+\DoxyCodeLine{00626\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a72626a5e49d22d650476df066b21239b}\label{classDataSet_a72626a5e49d22d650476df066b21239b} 
+\index{DataSet@{DataSet}!operator()@{operator()}}
+\index{operator()@{operator()}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const int \& Data\+Set\+::operator() (\begin{DoxyParamCaption}\item[{int}]{instance\+Index,  }\item[{int}]{location\+Index }\end{DoxyParamCaption}) const}
+
+
+
+Overloading of the () operator to access to the value at a given position in this \doxylink{classDataSet}{Data\+Set} Query method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+Index} & number of instance in this \doxylink{classDataSet}{Data\+Set}. Input parameter \\
+\hline
+{\em location\+Index} & number of location in this \doxylink{classDataSet}{Data\+Set} Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A const reference to the value at the given position 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00600}{600}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00601\ \{}
+\DoxyCodeLine{00602\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{00603\ \ \ \ \ \{}
+\DoxyCodeLine{00604\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ instancia\ invalida"{}});}
+\DoxyCodeLine{00605\ \ \ \ \ \}}
+\DoxyCodeLine{00606\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{00607\ \ \ \ \ \{}
+\DoxyCodeLine{00608\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{00609\ \ \ \ \ \}}
+\DoxyCodeLine{00610\ }
+\DoxyCodeLine{00611\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[instanceIndex][locationIndex];}
+\DoxyCodeLine{00612\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_ac18cd88387de78c2d9045764d9a8c6c7}\label{classDataSet_ac18cd88387de78c2d9045764d9a8c6c7} 
+\index{DataSet@{DataSet}!operator=@{operator=}}
+\index{operator=@{operator=}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classDataSet}{Data\+Set}} \& Data\+Set\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{orig }\end{DoxyParamCaption})}
+
+
+
+Overloading of the assignment operator for \doxylink{classDataSet}{Data\+Set} class Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & the \doxylink{classDataSet}{Data\+Set} object used as source for the assignment. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to this object 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00164}{164}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00165\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&orig)}
+\DoxyCodeLine{00167\ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ liberar();}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ reservar(orig.\_nInstances,\ orig.\_nLocations);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ copiar(orig);}
+\DoxyCodeLine{00171\ \ \ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00174\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}\label{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82} 
+\index{DataSet@{DataSet}!save@{save}}
+\index{save@{save}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Data\+Set\+::save (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+
+
+Saves this \doxylink{classDataSet}{Data\+Set} object in the given file. See files \texorpdfstring{$\ast$}{*}.dts in the folder Data\+Sets as example of files with \doxylink{classDataSet}{Data\+Set} information. Note that the format of the output file is the same as the string that returns the \doxylink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{to\+String()} method, except that the \doxylink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{save()} method should insert the magic string at the beginning of the output file. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::ios\+\_\+base\+::failure} & Throws a std\+::ios\+\_\+base\+::failure exception if the given file cannot be opened or if an error occurs while writing to the file. Query method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & The name of the file where the \doxylink{classDataSet}{Data\+Set} will be saved. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00401}{401}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00402\ \{}
+\DoxyCodeLine{00403\ \ \ \ \ std::ofstream\ os(fileName);}
+\DoxyCodeLine{00404\ \ \ \ \ \textcolor{keywordflow}{if}\ (!os)}
+\DoxyCodeLine{00405\ \ \ \ \ \{}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::save\ no\ se\ pudo\ abrir"{}});}
+\DoxyCodeLine{00407\ \ \ \ \ \}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \ \ \ \ os\ <<\ MAGIC\_STRING\_T\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00410\ \ \ \ \ os\ <<\ \mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{toString}}();}
+\DoxyCodeLine{00411\ }
+\DoxyCodeLine{00412\ \ \ \ \ \textcolor{keywordflow}{if}\ (!os)}
+\DoxyCodeLine{00413\ \ \ \ \ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::save\ error\ de\ escritura"{}});}
+\DoxyCodeLine{00415\ \ \ \ \ \}}
+\DoxyCodeLine{00416\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 5
+\Hypertarget{classDataSet_a0805c336a6f7adc45531984c0c46d61f}\label{classDataSet_a0805c336a6f7adc45531984c0c46d61f} 
+\index{DataSet@{DataSet}!setLabel@{setLabel}}
+\index{setLabel@{setLabel}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{setLabel()}{setLabel()}}
+{\footnotesize\ttfamily void Data\+Set\+::set\+Label (\begin{DoxyParamCaption}\item[{int}]{instance\+Index,  }\item[{int}]{label }\end{DoxyParamCaption})}
+
+
+
+Sets a new the label for the provided instance. Modifier method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+Index} & An integer with the index of the selected instance. Input parameter \\
+\hline
+{\em label} & An integer with the new value for the label of the selected instance. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00341}{341}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00342\ \{}
+\DoxyCodeLine{00343\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{00344\ \ \ \ \ \{}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::setLabel\ instancia\ invalida"{}});}
+\DoxyCodeLine{00346\ \ \ \ \ \}}
+\DoxyCodeLine{00347\ }
+\DoxyCodeLine{00348\ \ \ \ \ \_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(instanceIndex)\ =\ label;}
+\DoxyCodeLine{00349\ \};}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 6
+\Hypertarget{classDataSet_aa8e8d9b2a5eb808c59ba42f6dea5021a}\label{classDataSet_aa8e8d9b2a5eb808c59ba42f6dea5021a} 
+\index{DataSet@{DataSet}!setValue@{setValue}}
+\index{setValue@{setValue}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{setValue()}{setValue()}}
+{\footnotesize\ttfamily void Data\+Set\+::set\+Value (\begin{DoxyParamCaption}\item[{int}]{instance\+Index,  }\item[{int}]{location\+Index,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets a new value for the instance instance\+Index at the localization location\+Index. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if instance\+Index is out of the valid range \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if location\+Index is out of the valid range Modifier method \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em instance\+Index} & An integer with the index of the selected instance. Input parameter \\
+\hline
+{\em location\+Index} & An integer with the index of the selected location. Input parameter \\
+\hline
+{\em value} & An integer with the new value for the selected instance. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00318}{318}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00319\ \{}
+\DoxyCodeLine{00320\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{00321\ \ \ \ \ \{}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::setValue\ instancia\ invalida"{}});}
+\DoxyCodeLine{00323\ \ \ \ \ \}}
+\DoxyCodeLine{00324\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{00325\ \ \ \ \ \{}
+\DoxyCodeLine{00326\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::setValue\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{00327\ \ \ \ \ \}}
+\DoxyCodeLine{00328\ }
+\DoxyCodeLine{00329\ \ \ \ \ \_values[instanceIndex][locationIndex]\ =\ value;}
+\DoxyCodeLine{00330\ \};}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}\label{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6} 
+\index{DataSet@{DataSet}!toString@{toString}}
+\index{toString@{toString}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily std\+::string Data\+Set\+::to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Obtains a string with information about this \doxylink{classDataSet}{Data\+Set} object, in the following format\+: -\/Information about the set of locations of this \doxylink{classDataSet}{Data\+Set}\+: 
+
+
+\begin{DoxyItemize}
+\item A line with the number of locations
+\item For each location, a line with its information, converted to a string with the \doxylink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{Location\+::to\+String()} method.
+\end{DoxyItemize}
+
+Information about the labels of each instance in this \doxylink{classDataSet}{Data\+Set}\+:
+\begin{DoxyItemize}
+\item A line with the number of instances
+\item A line with the labels (space separated) of the set of instances.
+\end{DoxyItemize}
+
+Instances of the Dataset. This is the information contained in the 2D matrix of this \doxylink{classDataSet}{Data\+Set}.
+\begin{DoxyItemize}
+\item For each instance, a line with the values (space separated) of that instance. Query method \begin{DoxyReturn}{Returns}
+string with information about this Crime\+Set object 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00285}{285}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00286\ \ \ \ \ \textcolor{keywordtype}{string}\ result;}
+\DoxyCodeLine{00287\ \ \ \ \ }
+\DoxyCodeLine{00288\ \ \ \ \ result\ +=\ \_locations.\mbox{\hyperlink{classVectorLocation_a225b6306345bb813f40198850a65a813}{toString}}();}
+\DoxyCodeLine{00289\ \ \ \ \ result\ +=\ \_labels.\mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{toString}}();}
+\DoxyCodeLine{00290\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ instance=0;\ instance<\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}();\ instance++)\{}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ location=0;\ location<\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}();\ location++)\{}
+\DoxyCodeLine{00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//result\ +=\ to\_string((*this)(instance,location));}}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ to\_string(this-\/>\mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{getValue}}(instance,location));}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(location<\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}()-\/1)\{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ result\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{00299\ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{00300\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{00301\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 7
+
+
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{classDataSet_a02801323160452d8a6e512918ae017a1}\label{classDataSet_a02801323160452d8a6e512918ae017a1} 
+\index{DataSet@{DataSet}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{dataset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading of the stream insertion operator for \doxylink{classDataSet}{Data\+Set} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream to be used. Input/output parameter \\
+\hline
+{\em dataset} & The \doxylink{classDataSet}{Data\+Set} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00628}{628}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00629\ \{}
+\DoxyCodeLine{00630\ \ \ \ \ os\ <<\ dataset.\mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{toString}}();}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00632\ \}}
+
+\end{DoxyCode}
+\Hypertarget{classDataSet_ae6e46a14f8dc5a034d1ca717c77f6225}\label{classDataSet_ae6e46a14f8dc5a034d1ca717c77f6225} 
+\index{DataSet@{DataSet}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!DataSet@{DataSet}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{\mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{dataset }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Overloading of the stream extraction operator for \doxylink{classDataSet}{Data\+Set} class. 
+
+\begin{DoxyNote}{Note}
+Note that this operator should begin by removing any previous information that the provided object previously contained (a call to \doxylink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear()} method). 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations read from the file is negative. \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations or the number of instances in the provided input stream is negative. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em is} & The input stream to be used. Input/output parameter \\
+\hline
+{\em dataset} & The \doxylink{classDataSet}{Data\+Set} object to be filled. Input/output parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the input stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00634}{634}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00635\ \{}
+\DoxyCodeLine{00636\ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00637\ }
+\DoxyCodeLine{00638\ \ \ \ \ dataset.\_locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(is);}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keywordtype}{int}\ nInstances\ =\ 0;}
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ nInstances))}
+\DoxyCodeLine{00642\ \ \ \ \ \{}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00645\ \ \ \ \ \}}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0)}
+\DoxyCodeLine{00647\ \ \ \ \ \{}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator>>\ instancias\ negativas"{}});}
+\DoxyCodeLine{00650\ \ \ \ \ \}}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \ \ \ \ dataset.\_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{00653\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nInstances;\ ++i)}
+\DoxyCodeLine{00654\ \ \ \ \ \{}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ 0;}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ label))}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ dataset.\_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ label;}
+\DoxyCodeLine{00662\ \ \ \ \ \}}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00664\ \ \ \ \ dataset.reservar(nInstances,\ dataset.\_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{00665\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ dataset.\_nInstances;\ ++i)}
+\DoxyCodeLine{00666\ \ \ \ \ \{}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ dataset.\_nLocations;\ ++j)}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ value))}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\_values[i][j]\ =\ value;}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00677\ \ \ \ \ \}}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00680\ \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{DataSet_8h}{Data\+Set.\+h}}\item 
+src/Data\+Set.\+cpp\end{DoxyCompactItemize}

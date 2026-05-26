@@ -44,7 +44,7 @@ public:
      * @param orig the VectorLocation object used as source for the copy. 
      * Input parameter
      */
-    VectorLocation(VectorLocation orig);
+    VectorLocation(const VectorLocation &orig);
     
     /**
      * @brief Destructor
@@ -58,7 +58,7 @@ public:
      * Input parameter
      * @return A reference to this object
      */
-    VectorLocation operator=(VectorLocation orig);
+    VectorLocation &operator=(const VectorLocation &orig);
     
     /**
      * @brief Gets the number of elements in the vector of this object
@@ -192,14 +192,14 @@ public:
      * location.
      * If returns -1 if this vector is empty
      */
-    int nearest(Location location);
+    int nearest(const Location &location) const;
     
     /**
      * Assigns the provided value to all the elements in this vector
      * Modifier method
      * @param location A Location object. Input parameter
      */
-    void assign(Location location);
+    void assign(const Location &location);
 
     /**
      * @brief Reads from the provided input stream the information
@@ -216,7 +216,7 @@ public:
      * number of Location read from the input stream is negative.
      * @param is Input stream. Input/output parameter
      */
-    void load(std::istream is);
+    void load(std::istream &is);
 
     /**
      * @brief Overloading of the [] operator for VectorLocation class
@@ -224,7 +224,7 @@ public:
      * @param index index of the element. Input parameter
      * @return A constant reference to the element at position @p index
      */
-    Location operator[](int index);
+    const Location &operator[](int index) const;
     
     /**
      * @brief Overloading of the [] operator for VectorLocation class
@@ -232,7 +232,7 @@ public:
      * @param index index of the element. Input parameter 
      * @return A reference to the element at position @p index
      */
-    Location operator[](int index);
+    Location &operator[](int index);
 
     /**
      * @brief Overloads the operator += for the VectorLocation class. 
@@ -247,9 +247,14 @@ public:
      * parameter
      * @return A reference to this object.
      */
-    VectorLocation operator+=(Location location);
+    VectorLocation &operator+=(const Location &location);
 
 private:
+    void liberar();
+    void reservar(int n);
+    void copiar(const VectorLocation &orig);
+    void reallocar(int newCapacity);
+
     /**
      * Pointer to a dynamic array of Locations
      */
@@ -281,7 +286,7 @@ private:
  * @param vector The VectorLocation object. Input parameter
  * @return @p os A reference to the output stream
  */
-std::ostream operator<<(std::ostream os, VectorLocation vector);
+std::ostream &operator<<(std::ostream &os, const VectorLocation &vector);
 
 /**
  * @brief Overloading of the stream extraction operator for VectorLocation class.
@@ -301,7 +306,7 @@ std::ostream operator<<(std::ostream os, VectorLocation vector);
  * @param vector The VectorLocation object to be filled. Input/output parameter
  * @return @p is A reference to the input stream
  */
-std::istream operator>>(std::istream is, VectorLocation vector);
+std::istream &operator>>(std::istream &is, VectorLocation &vector);
 
 #endif /* VECTORLOCATION_H */
 

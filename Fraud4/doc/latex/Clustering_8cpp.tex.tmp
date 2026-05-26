@@ -1,0 +1,240 @@
+\doxysection{src/\+Clustering.cpp File Reference}
+\hypertarget{Clustering_8cpp}{}\label{Clustering_8cpp}\index{src/Clustering.cpp@{src/Clustering.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include "{}Clustering.\+h"{}}\newline
+Include dependency graph for Clustering.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{Clustering_8cpp_a91c53e1855fdbc00edfebe323b34cc64}{operator$<$}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering1, const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering2)
+\begin{DoxyCompactList}\small\item\em Overloading of the less-\/than operator for \doxylink{classClustering}{Clustering} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Clustering_8cpp_a38925a842ce239ece3255cd605b535af}{operator$>$}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering1, const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering2)
+\begin{DoxyCompactList}\small\item\em Overloading of the greater-\/than operator for \doxylink{classClustering}{Clustering} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Clustering_8cpp_abbba12b4d080b33f644c3f3efbbae459}{operator==}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering1, const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering2)
+\begin{DoxyCompactList}\small\item\em Overloading of the equality operator for \doxylink{classClustering}{Clustering} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Clustering_8cpp_ad71648fe2857b8a23f0b3aee0056a7cf}{operator!=}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering1, const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering2)
+\begin{DoxyCompactList}\small\item\em Overloading of the not-\/equal operator for \doxylink{classClustering}{Clustering} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Clustering_8cpp_ad7513bf19762479e3e46c5f693e96016}{operator$<$=}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering1, const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering2)
+\begin{DoxyCompactList}\small\item\em Overloading of the less-\/than-\/or-\/equal operator for \doxylink{classClustering}{Clustering} class. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{Clustering_8cpp_a669249608d442570f36f8d82eb526b10}{operator$>$=}} (const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering1, const \mbox{\hyperlink{classClustering}{Clustering}} \&clustering2)
+\begin{DoxyCompactList}\small\item\em Overloading of the greater-\/than-\/or-\/equal operator for \doxylink{classClustering}{Clustering} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 22 de octubre de 2025, 11\+:57 
+
+Definition in file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{Clustering_8cpp_ad71648fe2857b8a23f0b3aee0056a7cf}\label{Clustering_8cpp_ad71648fe2857b8a23f0b3aee0056a7cf} 
+\index{Clustering.cpp@{Clustering.cpp}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Clustering.cpp@{Clustering.cpp}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily bool operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering1,  }\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering2 }\end{DoxyParamCaption})}
+
+
+
+Overloading of the not-\/equal operator for \doxylink{classClustering}{Clustering} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clustering1} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+{\em clustering2} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if clustering1 != clustering2; false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00407}{407}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00408\ \{}
+\DoxyCodeLine{00409\ \ \ \ \ \textcolor{keywordflow}{return}\ !(clustering1\ ==\ clustering2);}
+\DoxyCodeLine{00410\ \}}
+
+\end{DoxyCode}
+\Hypertarget{Clustering_8cpp_a91c53e1855fdbc00edfebe323b34cc64}\label{Clustering_8cpp_a91c53e1855fdbc00edfebe323b34cc64} 
+\index{Clustering.cpp@{Clustering.cpp}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Clustering.cpp@{Clustering.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering1,  }\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering2 }\end{DoxyParamCaption})}
+
+
+
+Overloading of the less-\/than operator for \doxylink{classClustering}{Clustering} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clustering1} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+{\em clustering2} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the sum of within-\/cluster variances (WCVs) of {\ttfamily clustering1} is less than that of {\ttfamily clustering2} or if both WCVs are equal and the number of iterations of {\ttfamily clustering1} is less than that of {\ttfamily clustering2}; false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00383}{383}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00384\ \{}
+\DoxyCodeLine{00385\ \ \ \ \ \textcolor{keywordflow}{if}\ (clustering1.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ <\ clustering2.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}())}
+\DoxyCodeLine{00386\ \ \ \ \ \{}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00388\ \ \ \ \ \}}
+\DoxyCodeLine{00389\ \ \ \ \ \textcolor{keywordflow}{if}\ (clustering1.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ >\ clustering2.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}())}
+\DoxyCodeLine{00390\ \ \ \ \ \{}
+\DoxyCodeLine{00391\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00392\ \ \ \ \ \}}
+\DoxyCodeLine{00393\ \ \ \ \ \textcolor{keywordflow}{return}\ clustering1.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}()\ <\ clustering2.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}();}
+\DoxyCodeLine{00394\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{Clustering_8cpp_ad7513bf19762479e3e46c5f693e96016}\label{Clustering_8cpp_ad7513bf19762479e3e46c5f693e96016} 
+\index{Clustering.cpp@{Clustering.cpp}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Clustering.cpp@{Clustering.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily bool operator$<$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering1,  }\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering2 }\end{DoxyParamCaption})}
+
+
+
+Overloading of the less-\/than-\/or-\/equal operator for \doxylink{classClustering}{Clustering} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clustering1} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+{\em clustering2} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if clustering1 \texorpdfstring{$<$}{<}= clustering2; false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00412}{412}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00413\ \{}
+\DoxyCodeLine{00414\ \ \ \ \ \textcolor{keywordflow}{return}\ (clustering1\ <\ clustering2)\ ||\ (clustering1\ ==\ clustering2);}
+\DoxyCodeLine{00415\ \}}
+
+\end{DoxyCode}
+\Hypertarget{Clustering_8cpp_abbba12b4d080b33f644c3f3efbbae459}\label{Clustering_8cpp_abbba12b4d080b33f644c3f3efbbae459} 
+\index{Clustering.cpp@{Clustering.cpp}!operator==@{operator==}}
+\index{operator==@{operator==}!Clustering.cpp@{Clustering.cpp}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering1,  }\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering2 }\end{DoxyParamCaption})}
+
+
+
+Overloading of the equality operator for \doxylink{classClustering}{Clustering} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clustering1} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+{\em clustering2} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if clustering1 == clustering2; false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00401}{401}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00402\ \{}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordflow}{return}\ (clustering1.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ ==\ clustering2.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}())}
+\DoxyCodeLine{00404\ \ \ \ \ \ \ \ \ \&\&\ (clustering1.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}()\ ==\ clustering2.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}());}
+\DoxyCodeLine{00405\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{Clustering_8cpp_a38925a842ce239ece3255cd605b535af}\label{Clustering_8cpp_a38925a842ce239ece3255cd605b535af} 
+\index{Clustering.cpp@{Clustering.cpp}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Clustering.cpp@{Clustering.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool operator$>$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering1,  }\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering2 }\end{DoxyParamCaption})}
+
+
+
+Overloading of the greater-\/than operator for \doxylink{classClustering}{Clustering} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clustering1} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+{\em clustering2} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if clustering1 \texorpdfstring{$>$}{>} clustering2; false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00396}{396}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00397\ \{}
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordflow}{return}\ clustering2\ <\ clustering1;}
+\DoxyCodeLine{00399\ \}}
+
+\end{DoxyCode}
+\Hypertarget{Clustering_8cpp_a669249608d442570f36f8d82eb526b10}\label{Clustering_8cpp_a669249608d442570f36f8d82eb526b10} 
+\index{Clustering.cpp@{Clustering.cpp}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Clustering.cpp@{Clustering.cpp}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily bool operator$>$= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering1,  }\item[{const \mbox{\hyperlink{classClustering}{Clustering}} \&}]{clustering2 }\end{DoxyParamCaption})}
+
+
+
+Overloading of the greater-\/than-\/or-\/equal operator for \doxylink{classClustering}{Clustering} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em clustering1} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+{\em clustering2} & A \doxylink{classClustering}{Clustering} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if clustering1 \texorpdfstring{$>$}{>}= clustering2; false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Clustering_8cpp_source_l00417}{417}} of file \mbox{\hyperlink{Clustering_8cpp_source}{Clustering.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00418\ \{}
+\DoxyCodeLine{00419\ \ \ \ \ \textcolor{keywordflow}{return}\ (clustering1\ >\ clustering2)\ ||\ (clustering1\ ==\ clustering2);}
+\DoxyCodeLine{00420\ \}}
+
+\end{DoxyCode}

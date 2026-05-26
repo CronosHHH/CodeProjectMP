@@ -1,0 +1,76 @@
+\doxysection{Vector\+Int.\+h}
+\hypertarget{VectorInt_8h_source}{}\label{VectorInt_8h_source}\index{include/VectorInt.h@{include/VectorInt.h}}
+\mbox{\hyperlink{VectorInt_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00002}00002\ \textcolor{comment}{\ *\ Metodología\ de\ la\ Programación}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00003}00003\ \textcolor{comment}{\ *\ Curso\ 2025/2026}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00004}00004\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00015}00015\ \textcolor{preprocessor}{\#ifndef\ VECTORINT\_H}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00016}00016\ \textcolor{preprocessor}{\#define\ VECTORINT\_H}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00027}\mbox{\hyperlink{classVectorInt}{00027}}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classVectorInt}{VectorInt}}\ \{}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00028}00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00029}00029\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00039}00039\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}(\textcolor{keywordtype}{int}\ size=0);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00040}00040\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00046}00046\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&orig);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00047}00047\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00051}00051\ \ \ \ \ \mbox{\hyperlink{classVectorInt_a41e2beff592cdcbdabd874d6b42e2c73}{\string~VectorInt}}();}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00052}00052\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00060}00060\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&\mbox{\hyperlink{classVectorInt_a21506f77ff95719965d92df3037bbb79}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&orig);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00061}00061\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00067}00067\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00068}00068\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_aa7dab639c69bc92097f17639c6a449cf}{getCapacity}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00075}00075\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00091}00091\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classVectorInt_ab29c2dfedd84cea82685d0661d619a4a}{countIdenticalElements}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00092}00092\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00103}00103\ \ \ \ \ std::string\ \mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{toString}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00120}00120\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classVectorInt_ab08b8c0008a52708d02ae63954339e76}{distance}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&other)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00121}00121\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00127}00127\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVectorInt_a4f6aa55d8b6a5fc5244c458148d5365c}{assign}}(\textcolor{keywordtype}{int}\ value=0);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00128}00128\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVectorInt_a399db1d990b4867697a3ac99637c18ae}{append}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00139}00139\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00146}00146\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}}();}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00157}00157\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(\textcolor{keywordtype}{int}\ pos)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00158}00158\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00167}00167\ \ \ \ \ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(\textcolor{keywordtype}{int}\ pos);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00175}00175\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classVectorInt_a429a053add01d6e6d52a836b92bae8f9}{operator[]}}(\textcolor{keywordtype}{int}\ index)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00176}00176\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00183}00183\ \ \ \ \ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classVectorInt_a429a053add01d6e6d52a836b92bae8f9}{operator[]}}(\textcolor{keywordtype}{int}\ index);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00195}00195\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&\mbox{\hyperlink{classVectorInt_ae3ec63894d14d1ecb6f98b0a59e0528a}{operator+=}}(\textcolor{keywordtype}{int}\ value);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00196}00196\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00197}00197\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00198}00198\ \ \ \ \ \textcolor{keywordtype}{void}\ liberar();}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00199}00199\ \ \ \ \ \textcolor{keywordtype}{void}\ reservar(\textcolor{keywordtype}{int}\ capacity);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00200}00200\ \ \ \ \ \textcolor{keywordtype}{void}\ copiar(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&orig);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00201}00201\ \ \ \ \ \textcolor{keywordtype}{void}\ reallocar(\textcolor{keywordtype}{int}\ newCapacity);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00206}00206\ \ \ \ \ \textcolor{keywordtype}{int}*\ \_values;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00207}00207\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00211}00211\ \ \ \ \ \textcolor{keywordtype}{int}\ \_size;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00212}00212\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00217}00217\ \ \ \ \ \textcolor{keywordtype}{int}\ \_capacity;}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00218}00218\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00222}00222\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ BLOCK\_SIZE=20;\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00223}00223\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00224}00224\ \};\ \textcolor{comment}{//\ end\ of\ class\ VectorInt}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00225}00225\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00238}00238\ std::ostream\ \&\mbox{\hyperlink{VectorInt_8h_ab4dd2e468a0d3c02e394d9e435f20afb}{operator<<}}(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&vector);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00254}00254\ std::istream\ \&\mbox{\hyperlink{VectorInt_8h_a4362cf16da30eaced0585d62c1f300f4}{operator>>}}(std::istream\ \&is,\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \&vector);}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00255}00255\ }
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00256}00256\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ VECTORINT\_H\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{VectorInt_8h_source_l00257}00257\ }
+
+\end{DoxyCode}

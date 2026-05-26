@@ -1,0 +1,564 @@
+\doxysection{Data\+Set.\+cpp}
+\hypertarget{DataSet_8cpp_source}{}\label{DataSet_8cpp_source}\index{src/DataSet.cpp@{src/DataSet.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{DataSet_8h}{DataSet.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00006}00006\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00009}00009\ \textcolor{comment}{/*\ \ }}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00010}00010\ \textcolor{comment}{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00011}00011\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00012}00012\ \textcolor{comment}{\ \ \ \ *\ Cadena\ magica\ del\ formato}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00013}00013\ \textcolor{comment}{\ \ \ \ static\ const\ std::string\ MAGIC\_STRING\_T;}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00014}00014\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00015}00015\ \textcolor{comment}{\ \ \ \ *\ Matriz\ de\ valores\ de\ instancias}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00016}00016\ \textcolor{comment}{\ \ \ \ int**\ \_values;}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00017}00017\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00018}00018\ \textcolor{comment}{\ \ \ \ *\ Numero\ de\ instancias}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00019}00019\ \textcolor{comment}{\ \ \ \ int\ \_nInstances;}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00020}00020\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00021}00021\ \textcolor{comment}{\ \ \ \ *\ Numero\ de\ ubicaciones}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00022}00022\ \textcolor{comment}{\ \ \ \ int\ \_nLocations;}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00023}00023\ \textcolor{comment}{}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00024}00024\ \textcolor{comment}{\ \ \ \ *\ Etiquetas\ de\ cada\ instancia}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00025}00025\ \textcolor{comment}{\ \ \ \ VectorInt\ \_labels;}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00026}00026\ \textcolor{comment}{\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00027}00027\ \textcolor{comment}{\ \ \ \ *\ Ubicaciones\ del\ conjunto}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00028}00028\ \textcolor{comment}{\ \ \ \ VectorLocation\ \_locations;}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00029}00029\ \textcolor{comment}{\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00030}00030\ \textcolor{comment}{*/}\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00032}00032\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ DataSet::MAGIC\_STRING\_T=\textcolor{stringliteral}{"{}MP-\/FRAUD\_DATASET-\/T-\/1.0"{}};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00037}00037\ \textcolor{keywordtype}{void}\ DataSet::liberar()}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00038}00038\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00039}00039\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_values\ !=\ \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ \_values[i];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ \_values;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \_values\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00049}00049\ \ \ \ \ \_nInstances\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00050}00050\ \ \ \ \ \_nLocations\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00051}00051\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00058}00058\ \textcolor{keywordtype}{void}\ DataSet::reservar(\textcolor{keywordtype}{int}\ nInstances,\ \textcolor{keywordtype}{int}\ nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00060}00060\ \ \ \ \ \_nInstances\ =\ nInstances;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00061}00061\ \ \ \ \ \_nLocations\ =\ nLocations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00063}00063\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_nInstances\ >\ 0\ \&\&\ \_nLocations\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \_values\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}*[\_nInstances];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i]\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{int}[\_nLocations];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \_values\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00075}00075\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00082}00082\ \textcolor{keywordtype}{void}\ DataSet::copiar(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&orig)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00083}00083\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00084}00084\ \ \ \ \ \_nInstances\ =\ orig.\_nInstances;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00085}00085\ \ \ \ \ \_nLocations\ =\ orig.\_nLocations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00086}00086\ \ \ \ \ \_labels\ =\ orig.\_labels;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00087}00087\ \ \ \ \ \_locations\ =\ orig.\_locations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ orig.\_values[i][j];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00096}00096\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00116}\mbox{\hyperlink{classDataSet_af8520a45a281339e10c94a662ec60fd1}{00116}}\ \mbox{\hyperlink{classDataSet_af8520a45a281339e10c94a662ec60fd1}{DataSet::DataSet}}(\textcolor{keywordtype}{int}\ nInstances,\ \textcolor{keywordtype}{int}\ nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00117}00117\ \ \ \ \ :\ \_values(nullptr),\ \_nInstances(0),\ \_nLocations(0),\ \_labels(),\ \_locations()}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00118}00118\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0\ ||\ nLocations\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet:\ tamanio\ invalido"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00122}00122\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00124}00124\ \ \ \ \ reservar(nInstances,\ nLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00125}00125\ \ \ \ \ \_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00126}00126\ \ \ \ \ \_locations\ =\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}(nLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00134}00134\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00135}00135\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00142}\mbox{\hyperlink{classDataSet_a77d299c7f8953ea144ced5b918ef78d5}{00142}}\ \mbox{\hyperlink{classDataSet_af8520a45a281339e10c94a662ec60fd1}{DataSet::DataSet}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&orig)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00143}00143\ \ \ \ \ :\ \_values(nullptr),\ \_nInstances(0),\ \_nLocations(0),\ \_labels(),\ \_locations()}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00144}00144\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00145}00145\ \ \ \ \ reservar(orig.\_nInstances,\ orig.\_nLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00146}00146\ \ \ \ \ copiar(orig);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00147}00147\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00152}\mbox{\hyperlink{classDataSet_a2cdb84d32331956b413ca36933e516bd}{00152}}\ \mbox{\hyperlink{classDataSet_a2cdb84d32331956b413ca36933e516bd}{DataSet::\string~DataSet}}()}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00153}00153\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00154}00154\ \ \ \ \ liberar();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00155}00155\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00164}\mbox{\hyperlink{classDataSet_ac18cd88387de78c2d9045764d9a8c6c7}{00164}}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&\mbox{\hyperlink{classDataSet_ac18cd88387de78c2d9045764d9a8c6c7}{DataSet::operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&orig)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00165}00165\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00166}00166\ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&orig)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00167}00167\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ liberar();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00169}00169\ \ \ \ \ \ \ \ \ reservar(orig.\_nInstances,\ orig.\_nLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00170}00170\ \ \ \ \ \ \ \ \ copiar(orig);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00171}00171\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00173}00173\ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00174}00174\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00175}00175\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00181}\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{00181}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{DataSet::getNumInstances}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00182}00182\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00183}00183\ \ \ \ \ \textcolor{keywordflow}{return}\ \_nInstances;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00184}00184\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00185}00185\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00191}\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{00191}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{DataSet::getNumLocations}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00192}00192\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00193}00193\ \ \ \ \ \textcolor{keywordflow}{return}\ \_nLocations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00194}00194\ \};\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00211}\mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{00211}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{DataSet::getValue}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00212}00212\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00213}00213\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00214}00214\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::getValue\ instancia\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00216}00216\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00218}00218\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::getValue\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00220}00220\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00222}00222\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[instanceIndex][locationIndex];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00223}00223\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00236}\mbox{\hyperlink{classDataSet_a659cd7775bb6d3265ccb899339995c79}{00236}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_a659cd7775bb6d3265ccb899339995c79}{DataSet::getLabel}}(\textcolor{keywordtype}{int}\ instanceIndex)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00237}00237\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00239}00239\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::getLabel\ instancia\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00241}00241\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00243}00243\ \ \ \ \ \textcolor{keywordflow}{return}\ \_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(instanceIndex);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00244}00244\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00253}\mbox{\hyperlink{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}{00253}}\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \mbox{\hyperlink{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}{DataSet::getVectorLocation}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00254}00254\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{return}\ \_locations;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00256}00256\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00257}00257\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00263}\mbox{\hyperlink{classDataSet_a8e094943b49ffa35e02ff28d9f20188c}{00263}}\ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ \mbox{\hyperlink{classDataSet_a8e094943b49ffa35e02ff28d9f20188c}{DataSet::getVectorLabels}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00264}00264\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00265}00265\ \ \ \ \ \textcolor{keywordflow}{return}\ \_labels;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00266}00266\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00267}00267\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00285}\mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{00285}}\ std::string\ \mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{DataSet::toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00286}00286\ \ \ \ \ \textcolor{keywordtype}{string}\ result;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00287}00287\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00288}00288\ \ \ \ \ result\ +=\ \_locations.\mbox{\hyperlink{classVectorLocation_a225b6306345bb813f40198850a65a813}{toString}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00289}00289\ \ \ \ \ result\ +=\ \_labels.\mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{toString}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00290}00290\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ instance=0;\ instance<\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}();\ instance++)\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00291}00291\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ location=0;\ location<\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}();\ location++)\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//result\ +=\ to\_string((*this)(instance,location));}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ to\_string(this-\/>\mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{getValue}}(instance,location));}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(location<\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}()-\/1)\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\ +=\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00298}00298\ \ \ \ \ \ \ \ \ result\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00299}00299\ \ \ \ \ \}\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00300}00300\ \ \ \ \ \textcolor{keywordflow}{return}\ result;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00301}00301\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00318}\mbox{\hyperlink{classDataSet_aa8e8d9b2a5eb808c59ba42f6dea5021a}{00318}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_aa8e8d9b2a5eb808c59ba42f6dea5021a}{DataSet::setValue}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex,\ \textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00319}00319\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00320}00320\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00321}00321\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::setValue\ instancia\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00323}00323\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00324}00324\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00325}00325\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00326}\mbox{\hyperlink{DataSet_8h_a02801323160452d8a6e512918ae017a1}{00326}}\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::setValue\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00327}\mbox{\hyperlink{DataSet_8h_ae6e46a14f8dc5a034d1ca717c77f6225}{00327}}\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00329}00329\ \ \ \ \ \_values[instanceIndex][locationIndex]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00330}00330\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00341}\mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{00341}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{DataSet::setLabel}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ label)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00342}00342\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00343}00343\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00344}00344\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00345}00345\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::setLabel\ instancia\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00346}00346\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00347}00347\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00348}00348\ \ \ \ \ \_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(instanceIndex)\ =\ label;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00349}00349\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00359}\mbox{\hyperlink{classDataSet_a89894be009f63390da1c3c9cc9e3c8f6}{00359}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a89894be009f63390da1c3c9cc9e3c8f6}{DataSet::initInstances}}(\textcolor{keywordtype}{int}\ value)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00360}00360\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00361}00361\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00362}00362\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00367}00367\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00368}00368\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00381}\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{00381}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{DataSet::clear}}()}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00382}00382\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00383}00383\ \ \ \ \ liberar();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00384}00384\ \ \ \ \ \_labels.\mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00385}00385\ \ \ \ \ \_locations.\mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00386}00386\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00387}00387\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00401}\mbox{\hyperlink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{00401}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{DataSet::save}}(std::string\ fileName)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00402}00402\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00403}00403\ \ \ \ \ std::ofstream\ os(fileName);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00404}00404\ \ \ \ \ \textcolor{keywordflow}{if}\ (!os)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00405}00405\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::save\ no\ se\ pudo\ abrir"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00407}00407\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00408}00408\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00409}00409\ \ \ \ \ os\ <<\ MAGIC\_STRING\_T\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00410}00410\ \ \ \ \ os\ <<\ \mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{toString}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00412}00412\ \ \ \ \ \textcolor{keywordflow}{if}\ (!os)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00413}00413\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::save\ error\ de\ escritura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00415}00415\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00416}00416\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00417}00417\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00440}\mbox{\hyperlink{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6}{00440}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6}{DataSet::load}}(std::string\ fileName)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00441}00441\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00442}00442\ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00443}00443\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00444}00444\ \ \ \ \ std::ifstream\ is(fileName);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00445}00445\ \ \ \ \ \textcolor{keywordflow}{if}\ (!is)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00446}00446\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ no\ se\ pudo\ abrir"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00448}00448\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00449}00449\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00450}00450\ \ \ \ \ std::string\ magic;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00451}00451\ \ \ \ \ std::getline(is,\ magic);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00452}00452\ \ \ \ \ \textcolor{keywordflow}{if}\ (!is)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00453}00453\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00456}00456\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00457}00457\ \ \ \ \ \textcolor{keywordflow}{if}\ (magic\ !=\ MAGIC\_STRING\_T)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00458}00458\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::load\ cadena\ magica\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00461}00461\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00462}00462\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00463}00463\ \ \ \ \ \_locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(is);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00464}00464\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00465}00465\ \ \ \ \ \textcolor{keywordtype}{int}\ nInstances\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00466}00466\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ nInstances))}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00467}00467\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00470}00470\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00471}00471\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00472}00472\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00473}00473\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::load\ instancias\ negativas"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00475}00475\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00476}00476\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00477}00477\ \ \ \ \ \_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00478}00478\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00479}00479\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ label))}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ label;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00487}00487\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00488}00488\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00489}00489\ \ \ \ \ reservar(nInstances,\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00490}00490\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00491}00491\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ value))}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::load\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \_values[i][j]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00502}00502\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00503}00503\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00504}00504\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00530}\mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{00530}}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{DataSet::getReducedDataSet}}(\mbox{\hyperlink{classClustering}{Clustering}}\ clustering)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00531}00531\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00532}00532\ \ \ \ \ \textcolor{keywordflow}{if}\ (!clustering.\mbox{\hyperlink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{isDone}}())}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00533}00533\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::getReducedDataSet\ clustering\ no\ ejecutado"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00535}00535\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00536}00536\ \ \ \ \ \textcolor{keywordflow}{if}\ (clustering.\mbox{\hyperlink{classClustering_a12786a2a6f40833089cb3e35465843fc}{getNumLocations}}()\ !=\ \_nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00537}00537\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::getReducedDataSet\ tamanio\ incompatible"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00539}00539\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00540}00540\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00541}00541\ \ \ \ \ \textcolor{keywordtype}{int}\ newLocations\ =\ clustering.\mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00542}00542\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ reduced(\_nInstances,\ newLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00543}00543\ \ \ \ \ reduced.\_labels\ =\ \_labels;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00544}00544\ \ \ \ \ reduced.\_locations\ =\ clustering.\mbox{\hyperlink{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}{getCentroids}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00545}00545\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00546}00546\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00547}00547\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cluster\ =\ clustering.\mbox{\hyperlink{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}{clusterOf}}(j);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cluster\ <\ 0\ ||\ cluster\ >=\ newLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::getReducedDataSet\ cluster\ invalido"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ reduced.\_values[i][cluster]\ +=\ \_values[i][j];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00557}00557\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00558}00558\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00559}00559\ \ \ \ \ \textcolor{keywordflow}{return}\ reduced;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00560}00560\ \};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00561}00561\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00562}\mbox{\hyperlink{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563}{00562}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563}{DataSet::nearestInstance}}(\mbox{\hyperlink{classVectorInt}{VectorInt}}\ instance,\ \textcolor{keywordtype}{bool}\ selected[])\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00563}00563\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00564}00564\ \ \ \ \ \textcolor{keywordflow}{if}\ (instance.\mbox{\hyperlink{classVectorInt_a16cc9f95a17139d62e3a767aba9eef2b}{getSize}}()\ !=\ \_nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00565}00565\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}DataSet::nearestInstance\ tamanio\ incompatible"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00567}00567\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00568}00568\ \ \ \ \ \textcolor{keywordflow}{if}\ (\_nInstances\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00569}00569\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00571}00571\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00573}00573\ \ \ \ \ \textcolor{keywordtype}{int}\ nearestIndex\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00574}00574\ \ \ \ \ \textcolor{keywordtype}{double}\ bestDistance\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00575}00575\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00576}00576\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00577}00577\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (selected\ !=\ \textcolor{keyword}{nullptr}\ \&\&\ selected[i])}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00582}00582\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ distance\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00584}00584\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00585}00585\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ diff\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(\_values[i][j]\ -\/\ instance.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j));}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ distance\ +=\ diff\ *\ diff;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00588}00588\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00589}00589\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00590}00590\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearestIndex\ ==\ -\/1\ ||\ distance\ <\ bestDistance)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00592}00592\ \ \ \ \ \ \ \ \ \ \ \ \ bestDistance\ =\ distance;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ nearestIndex\ =\ i;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00594}00594\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00595}00595\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00596}00596\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00597}00597\ \ \ \ \ \textcolor{keywordflow}{return}\ nearestIndex;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00598}00598\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00599}00599\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00600}\mbox{\hyperlink{classDataSet_a72626a5e49d22d650476df066b21239b}{00600}}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classDataSet_a72626a5e49d22d650476df066b21239b}{DataSet::operator()}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00601}00601\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00602}00602\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00603}00603\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ instancia\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00605}00605\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00606}00606\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00607}00607\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00609}00609\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00610}00610\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00611}00611\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[instanceIndex][locationIndex];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00612}00612\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00613}00613\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00614}\mbox{\hyperlink{classDataSet_a47992e0d084f7b7c2dd386f811ae3efd}{00614}}\ \textcolor{keywordtype}{int}\ \&\mbox{\hyperlink{classDataSet_a72626a5e49d22d650476df066b21239b}{DataSet::operator()}}(\textcolor{keywordtype}{int}\ instanceIndex,\ \textcolor{keywordtype}{int}\ locationIndex)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00615}00615\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00616}00616\ \ \ \ \ \textcolor{keywordflow}{if}\ (instanceIndex\ <\ 0\ ||\ instanceIndex\ >=\ \_nInstances)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00617}00617\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00618}00618\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ instancia\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00619}00619\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00620}00620\ \ \ \ \ \textcolor{keywordflow}{if}\ (locationIndex\ <\ 0\ ||\ locationIndex\ >=\ \_nLocations)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00621}00621\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator()\ ubicacion\ invalida"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00623}00623\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00624}00624\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00625}00625\ \ \ \ \ \textcolor{keywordflow}{return}\ \_values[instanceIndex][locationIndex];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00626}00626\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00627}00627\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00628}\mbox{\hyperlink{classDataSet_a02801323160452d8a6e512918ae017a1}{00628}}\ std::ostream\ \&operator<<(std::ostream\ \&os,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&dataset)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00629}00629\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00630}00630\ \ \ \ \ os\ <<\ dataset.\mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{toString}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00631}00631\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00632}00632\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00633}00633\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00634}\mbox{\hyperlink{classDataSet_ae6e46a14f8dc5a034d1ca717c77f6225}{00634}}\ std::istream\ \&operator>>(std::istream\ \&is,\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&dataset)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00635}00635\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00636}00636\ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00637}00637\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00638}00638\ \ \ \ \ dataset.\_locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(is);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00639}00639\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00640}00640\ \ \ \ \ \textcolor{keywordtype}{int}\ nInstances\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00641}00641\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ nInstances))}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00642}00642\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00643}00643\ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00645}00645\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00646}00646\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00647}00647\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00648}00648\ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator>>\ instancias\ negativas"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00650}00650\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00651}00651\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00652}00652\ \ \ \ \ dataset.\_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00653}00653\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00654}00654\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ label))}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00657}00657\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00661}00661\ \ \ \ \ \ \ \ \ dataset.\_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ label;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00662}00662\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00663}00663\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00664}00664\ \ \ \ \ dataset.reservar(nInstances,\ dataset.\_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00665}00665\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ dataset.\_nInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00666}00666\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ dataset.\_nLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ value))}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\_values[i][j]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00677}00677\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00678}00678\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00679}00679\ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00680}00680\ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00681}00681\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00682}\mbox{\hyperlink{DataSet_8h_ae28eefece9297e8b084d6eb55fcc76d6}{00682}}\ \textcolor{keywordtype}{void}\ classify(\textcolor{keyword}{const}\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&datasetModel,\ \mbox{\hyperlink{classDataSet}{DataSet}}\ \&datasetToClassify,}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ K1,\ \textcolor{keywordtype}{int}\ K2,\ \textcolor{keywordtype}{bool}\ doReductionDimensionality)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00684}00684\ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00685}00685\ \ \ \ \ \textcolor{keywordflow}{if}\ (datasetModel.\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}()\ !=\ datasetToClassify.\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}())}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00686}00686\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00687}00687\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ tamanio\ incompatible"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00688}00688\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00689}00689\ \ \ \ \ \textcolor{keywordflow}{if}\ (doReductionDimensionality\ \&\&\ K1\ <=\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00690}00690\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00691}00691\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ K1\ invalido"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00692}00692\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00693}00693\ \ \ \ \ \textcolor{keywordflow}{if}\ (K2\ <\ 1)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00694}00694\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00695}00695\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ K2\ invalido"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00696}00696\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00697}00697\ \ \ \ \ \textcolor{keywordflow}{if}\ (K2\ >\ datasetModel.\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}())}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00698}00698\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00699}00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ K2\ demasiado\ grande"{}});}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00700}00700\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00701}00701\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00702}00702\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ dsM(datasetModel);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00703}00703\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ dsC(datasetToClassify);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00704}00704\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00705}00705\ \ \ \ \ \textcolor{keywordflow}{if}\ (doReductionDimensionality)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00706}00706\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classClustering}{Clustering}}\ clustering;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00708}00708\ \ \ \ \ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_ad14c6ffc56cbdcfe2b2a2c6d5e08218d}{set}}(dsM.\mbox{\hyperlink{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}{getVectorLocation}}(),\ K1);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00709}00709\ \ \ \ \ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00710}00710\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00711}00711\ \ \ \ \ \ \ \ \ dsM\ =\ dsM.\mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{getReducedDataSet}}(clustering);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00712}00712\ \ \ \ \ \ \ \ \ dsC\ =\ dsC.\mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{getReducedDataSet}}(clustering);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00713}00713\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00714}00714\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00715}00715\ \ \ \ \ \textcolor{keywordtype}{int}\ numInstances\ =\ dsC.\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00716}00716\ \ \ \ \ \textcolor{keywordtype}{int}\ numLocations\ =\ dsC.\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00717}00717\ \ \ \ \ \textcolor{keywordtype}{int}\ modelInstances\ =\ dsM.\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}();}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00718}00718\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00719}00719\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numInstances;\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00720}00720\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00721}00721\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ votes[2]\ =\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00722}00722\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ *selected\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{bool}[modelInstances];}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00724}00724\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ s\ =\ 0;\ s\ <\ modelInstances;\ ++s)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ selected[s]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00727}00727\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00728}00728\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ instance(numLocations);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00730}00730\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ numLocations;\ ++j)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00731}00731\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ instance.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j)\ =\ dsC.\mbox{\hyperlink{classDataSet_a1c333a438a5a3868c09fd0e17868f349}{getValue}}(i,\ j);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00733}00733\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00734}00734\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00735}00735\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ K2;\ ++k)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nearest\ =\ dsM.\mbox{\hyperlink{classDataSet_adfe9c0f27bbf44945ba43cdf0ade4563}{nearestInstance}}(instance,\ selected);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearest\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00742}00742\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ selected[nearest]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00744}00744\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ dsM.\mbox{\hyperlink{classDataSet_a659cd7775bb6d3265ccb899339995c79}{getLabel}}(nearest);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (label\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00747}00747\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ votes[0]++;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (label\ ==\ 1)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00751}00751\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00752}00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ votes[1]++;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00754}00754\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00755}00755\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00756}00756\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ selected;}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00757}00757\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (votes[0]\ >=\ votes[1])}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ dsC.\mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{setLabel}}(i,\ 0);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00761}00761\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00762}00762\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00763}00763\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ dsC.\mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{setLabel}}(i,\ 1);}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00765}00765\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00766}00766\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00767}00767\ }
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00768}00768\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ datasetToClassify.\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}();\ ++i)}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00769}00769\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00770}00770\ \ \ \ \ \ \ \ \ datasetToClassify.\mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{setLabel}}(i,\ dsC.\mbox{\hyperlink{classDataSet_a659cd7775bb6d3265ccb899339995c79}{getLabel}}(i));}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00771}00771\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{DataSet_8cpp_source_l00772}00772\ \}}
+
+\end{DoxyCode}

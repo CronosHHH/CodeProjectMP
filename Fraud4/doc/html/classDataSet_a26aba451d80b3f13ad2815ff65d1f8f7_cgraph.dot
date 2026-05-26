@@ -1,0 +1,13 @@
+digraph "DataSet::clear"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="DataSet::clear",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Removes all the information in this DataSet object:"];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="VectorInt::clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorInt.html#a6e0d736c02d352ad92e1792311d8d788",tooltip="Removes all the elements in this object, leaving the container with a size equal to 0...."];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="VectorLocation::clear",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorLocation.html#aa5eba8c0c77daa601a50a616b1076b48",tooltip="Removes all the elements in this object, leaving the container with a size equal to 0...."];
+}

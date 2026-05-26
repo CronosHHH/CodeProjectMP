@@ -1,0 +1,145 @@
+\doxysection{include/\+Vector\+Int.h File Reference}
+\hypertarget{VectorInt_8h}{}\label{VectorInt_8h}\index{include/VectorInt.h@{include/VectorInt.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for Vector\+Int.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVectorInt}{Vector\+Int}}
+\begin{DoxyCompactList}\small\item\em A \doxylink{classVectorInt}{Vector\+Int} object contains a vector of integer elements. It has a capacity (maximun number of elements that can be stored in the vector) and a size (number of elements the vector currently contains). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{VectorInt_8h_ab4dd2e468a0d3c02e394d9e435f20afb}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&vector)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream insertion operator for \doxylink{classVectorInt}{Vector\+Int} class. It sends to the output the information about the provided \doxylink{classVectorInt}{Vector\+Int} object in the following format\+: \end{DoxyCompactList}\item 
+std\+::istream \& \mbox{\hyperlink{VectorInt_8h_a4362cf16da30eaced0585d62c1f300f4}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&vector)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream extraction operator for \doxylink{classVectorInt}{Vector\+Int} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 30 de julio de 2025, 9\+:54 
+
+Definition in file \mbox{\hyperlink{VectorInt_8h_source}{Vector\+Int.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{VectorInt_8h_ab4dd2e468a0d3c02e394d9e435f20afb}\label{VectorInt_8h_ab4dd2e468a0d3c02e394d9e435f20afb} 
+\index{VectorInt.h@{VectorInt.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!VectorInt.h@{VectorInt.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Overloading of the stream insertion operator for \doxylink{classVectorInt}{Vector\+Int} class. It sends to the output the information about the provided \doxylink{classVectorInt}{Vector\+Int} object in the following format\+: 
+
+
+\begin{DoxyItemize}
+\item First line, the number of elements in this vector.
+\item Second line, the elements in the provided vector, separated by a whitespace. Take into account that a \textquotesingle{}~\newline
+\textquotesingle{} should appear after the last element instead of a whitespace. 
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream to be used. Input/output parameter \\
+\hline
+{\em vector} & The \doxylink{classVectorInt}{Vector\+Int} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+os A reference to the output stream 
+\end{DoxyReturn}
+
+\end{DoxyItemize}
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00374}{374}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00375\ \{}
+\DoxyCodeLine{00376\ \ \ \ \ os\ <<\ vector.\mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{toString}}();}
+\DoxyCodeLine{00377\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00378\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{VectorInt_8h_a4362cf16da30eaced0585d62c1f300f4}\label{VectorInt_8h_a4362cf16da30eaced0585d62c1f300f4} 
+\index{VectorInt.h@{VectorInt.h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!VectorInt.h@{VectorInt.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{\mbox{\hyperlink{classVectorInt}{Vector\+Int}} \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Overloading of the stream extraction operator for \doxylink{classVectorInt}{Vector\+Int} class. 
+
+\begin{DoxyNote}{Note}
+This operator should remove any previously information contained in the provided \doxylink{classVectorInt}{Vector\+Int} {\ttfamily vector}. 
+
+This operator throws an exception in some error cases (see below). Before throwing the corresponding exception, this operator clears the provided object (it calls to clear() method) to leave it in a consistent state. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of elements read from the file is negative. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em is} & The input stream to be used. Input/output parameter \\
+\hline
+{\em vector} & The \doxylink{classVectorInt}{Vector\+Int} object to be filled. Input/output parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the input stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorInt_8cpp_source_l00394}{394}} of file \mbox{\hyperlink{VectorInt_8cpp_source}{Vector\+Int.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00395\ \{}
+\DoxyCodeLine{00396\ \ \ \ \ vector.\mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}}();}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00399\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ n))}
+\DoxyCodeLine{00400\ \ \ \ \ \{}
+\DoxyCodeLine{00401\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00402\ \ \ \ \ \}}
+\DoxyCodeLine{00403\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0)}
+\DoxyCodeLine{00404\ \ \ \ \ \{}
+\DoxyCodeLine{00405\ \ \ \ \ \ \ \ \ vector.\mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}}();}
+\DoxyCodeLine{00406\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorInt::operator>>\ numero\ de\ elementos\ negativo"{}});}
+\DoxyCodeLine{00407\ \ \ \ \ \}}
+\DoxyCodeLine{00408\ }
+\DoxyCodeLine{00409\ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ temp(n);}
+\DoxyCodeLine{00410\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)}
+\DoxyCodeLine{00411\ \ \ \ \ \{}
+\DoxyCodeLine{00412\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{00413\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ value))}
+\DoxyCodeLine{00414\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00415\ \ \ \ \ \ \ \ \ \ \ \ \ vector.\mbox{\hyperlink{classVectorInt_a6e0d736c02d352ad92e1792311d8d788}{clear}}();}
+\DoxyCodeLine{00416\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}VectorInt::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00417\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00418\ \ \ \ \ \ \ \ \ temp.at(i)\ =\ value;}
+\DoxyCodeLine{00419\ \ \ \ \ \}}
+\DoxyCodeLine{00420\ }
+\DoxyCodeLine{00421\ \ \ \ \ vector\ =\ temp;}
+\DoxyCodeLine{00422\ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00423\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3

@@ -1,0 +1,133 @@
+\doxysection{include/\+Vector\+Location.h File Reference}
+\hypertarget{VectorLocation_8h}{}\label{VectorLocation_8h}\index{include/VectorLocation.h@{include/VectorLocation.h}}
+{\ttfamily \#include "{}Location.\+h"{}}\newline
+Include dependency graph for Vector\+Location.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classVectorLocation}{Vector\+Location}}
+\begin{DoxyCompactList}\small\item\em A \doxylink{classVectorLocation}{Vector\+Location} object contains a vector of \doxylink{classLocation}{Location} objects. It has a capacity (maximun number of Locations that can be stored in the vector) and a size (number of Locations the vector currently contains). The public methods of this class do not allow a \doxylink{classVectorLocation}{Vector\+Location} to contain two \doxylink{classLocation}{Location} objects with identical names. This class uses an array of \doxylink{classLocation}{Location} objects with a fixed capacity to store the set of locations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{VectorLocation_8h_a029531646344181337eac1852bad0cdd}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&vector)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream insertion operator for \doxylink{classVectorLocation}{Vector\+Location} class. It sends to the output stream a line for each \doxylink{classLocation}{Location} of the given \doxylink{classVectorLocation}{Vector\+Location} object. Each line will contain the x and y coordinates of a \doxylink{classLocation}{Location}, separated by a whitespace. \end{DoxyCompactList}\item 
+std\+::istream \& \mbox{\hyperlink{VectorLocation_8h_a2fc7203792b9253d369105a52bc86fe0}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&vector)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream extraction operator for \doxylink{classVectorLocation}{Vector\+Location} class. This operator first reads from the input stream a line containing an integer n, which corresponds to the number of \doxylink{classLocation}{Location} objects to be read from the input stream. Then, it reads n \doxylink{classLocation}{Location} objects from the input stream, storing them in the provided \doxylink{classVectorLocation}{Vector\+Location} object ({\ttfamily vector}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 30 de julio de 2025, 11\+:27 
+
+Definition in file \mbox{\hyperlink{VectorLocation_8h_source}{Vector\+Location.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{VectorLocation_8h_a029531646344181337eac1852bad0cdd}\label{VectorLocation_8h_a029531646344181337eac1852bad0cdd} 
+\index{VectorLocation.h@{VectorLocation.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!VectorLocation.h@{VectorLocation.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Overloading of the stream insertion operator for \doxylink{classVectorLocation}{Vector\+Location} class. It sends to the output stream a line for each \doxylink{classLocation}{Location} of the given \doxylink{classVectorLocation}{Vector\+Location} object. Each line will contain the x and y coordinates of a \doxylink{classLocation}{Location}, separated by a whitespace. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream to be used. Input/output parameter \\
+\hline
+{\em vector} & The \doxylink{classVectorLocation}{Vector\+Location} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily os} A reference to the output stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00548}{548}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00549\ \{}
+\DoxyCodeLine{00550\ \ \ \ \ os\ <<\ vector.\mbox{\hyperlink{classVectorLocation_a225b6306345bb813f40198850a65a813}{toString}}();}
+\DoxyCodeLine{00551\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00552\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{VectorLocation_8h_a2fc7203792b9253d369105a52bc86fe0}\label{VectorLocation_8h_a2fc7203792b9253d369105a52bc86fe0} 
+\index{VectorLocation.h@{VectorLocation.h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!VectorLocation.h@{VectorLocation.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{\mbox{\hyperlink{classVectorLocation}{Vector\+Location}} \&}]{vector }\end{DoxyParamCaption})}
+
+
+
+Overloading of the stream extraction operator for \doxylink{classVectorLocation}{Vector\+Location} class. This operator first reads from the input stream a line containing an integer n, which corresponds to the number of \doxylink{classLocation}{Location} objects to be read from the input stream. Then, it reads n \doxylink{classLocation}{Location} objects from the input stream, storing them in the provided \doxylink{classVectorLocation}{Vector\+Location} object ({\ttfamily vector}). 
+
+\begin{DoxyNote}{Note}
+This operator should remove any \doxylink{classLocation}{Location} previously contained in the provided \doxylink{classVectorLocation}{Vector\+Location} {\ttfamily vector}. 
+
+This operator throws an exception in some error cases (see below). Before throwing the corresponding exception, this operator clears the provided object (it calls to clear() method) to leave it in a consistent state. 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations read from the file is negative. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em is} & The input stream to be used. Input/output parameter \\
+\hline
+{\em vector} & The \doxylink{classVectorLocation}{Vector\+Location} object to be filled. Input/output parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily is} A reference to the input stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{VectorLocation_8cpp_source_l00572}{572}} of file \mbox{\hyperlink{VectorLocation_8cpp_source}{Vector\+Location.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00573\ \{}
+\DoxyCodeLine{00574\ \ \ \ \ vector.\mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{clear}}();}
+\DoxyCodeLine{00575\ }
+\DoxyCodeLine{00576\ \ \ \ \ \textcolor{keywordtype}{int}\ n\ =\ 0;}
+\DoxyCodeLine{00577\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ n))}
+\DoxyCodeLine{00578\ \ \ \ \ \{}
+\DoxyCodeLine{00579\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00580\ \ \ \ \ \}}
+\DoxyCodeLine{00581\ \ \ \ \ \textcolor{keywordflow}{if}\ (n\ <\ 0)}
+\DoxyCodeLine{00582\ \ \ \ \ \{}
+\DoxyCodeLine{00583\ \ \ \ \ \ \ \ \ vector.\mbox{\hyperlink{classVectorLocation_aa5eba8c0c77daa601a50a616b1076b48}{clear}}();}
+\DoxyCodeLine{00584\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}VectorLocation::operator>>\ numero\ de\ locations\ negativo"{}});}
+\DoxyCodeLine{00585\ \ \ \ \ \}}
+\DoxyCodeLine{00586\ }
+\DoxyCodeLine{00587\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ ++i)}
+\DoxyCodeLine{00588\ \ \ \ \ \{}
+\DoxyCodeLine{00589\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLocation}{Location}}\ location;}
+\DoxyCodeLine{00590\ \ \ \ \ \ \ \ \ location.\mbox{\hyperlink{classLocation_a684a059d3b704a43bfdf46c6326228d0}{load}}(is);}
+\DoxyCodeLine{00591\ \ \ \ \ \ \ \ \ vector.\mbox{\hyperlink{classVectorLocation_afbf93b0cc61e83f981227b3b7526f466}{append}}(location);}
+\DoxyCodeLine{00592\ \ \ \ \ \}}
+\DoxyCodeLine{00593\ }
+\DoxyCodeLine{00594\ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00595\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 3

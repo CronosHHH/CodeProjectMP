@@ -1,0 +1,277 @@
+\doxysection{Clustering.\+cpp}
+\hypertarget{Clustering_8cpp_source}{}\label{Clustering_8cpp_source}\index{src/Clustering.cpp@{src/Clustering.cpp}}
+\mbox{\hyperlink{Clustering_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{Clustering_8h}{Clustering.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00011}00011\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00012}00012\ \textcolor{comment}{\ *\ Metodología\ de\ la\ Programación}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00013}00013\ \textcolor{comment}{\ *\ Curso\ 2025/2026}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00014}00014\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00030}\mbox{\hyperlink{classClustering_ac2b89030ef2f080689740a152fca50e7}{00030}}\ \mbox{\hyperlink{classClustering_ac2b89030ef2f080689740a152fca50e7}{Clustering::Clustering}}()}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ :\ \_locations(),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \_K(0),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \_clusters(),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \_centroids(),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \_isDone(false),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \_seed(DEFAULT\_RANDOM\_SEED),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \_sumWCV(0),}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \_numIterations(0)\{\}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00039}00039\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00045}\mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{00045}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{Clustering::getK}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00046}00046\ \ \ \ \ \textcolor{keywordflow}{return}\ \_K;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00047}00047\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00055}\mbox{\hyperlink{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}{00055}}\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \&\mbox{\hyperlink{classClustering_a68b8fda5bd8d6fe129bebd678de2d2b4}{Clustering::getCentroids}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return}\ \_centroids;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00057}00057\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00066}\mbox{\hyperlink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{00066}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classClustering_a3e71c339ac69df5389f104ea719c1be3}{Clustering::isDone}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00067}00067\ \ \ \ \ \textcolor{keywordflow}{return}\ \_isDone;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00077}\mbox{\hyperlink{classClustering_a12786a2a6f40833089cb3e35465843fc}{00077}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a12786a2a6f40833089cb3e35465843fc}{Clustering::getNumLocations}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{return}\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00079}00079\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00092}\mbox{\hyperlink{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}{00092}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a1c6e1026bbd18f3aeab6bfecdb9a2272}{Clustering::clusterOf}}(\textcolor{keywordtype}{int}\ locationIndex)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{if}(\_isDone)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(locationIndex);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ throw\ std::invalid\_argument("{}El\ algoritmo\ aun\ no\ ha\ sido\ ejecutado"{});}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00102}00102\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00113}\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{00113}}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{Clustering::getSumWCV}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{return}\ \_sumWCV;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00115}00115\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00127}\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{00127}}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{Clustering::getNumIterations}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{return}\ \_numIterations;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00129}00129\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00145}\mbox{\hyperlink{classClustering_a9745f28464a8c1dccd04fa3a933d161a}{00145}}\ std::string\ \mbox{\hyperlink{classClustering_a9745f28464a8c1dccd04fa3a933d161a}{Clustering::clusterInfo}}(\textcolor{keywordtype}{int}\ cluster)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00146}00146\ \textcolor{keyword}{}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00147}00147\ \ \ \ \ \textcolor{comment}{//Creamos\ la\ variable\ que\ almacenara\ el\ resultado.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00148}00148\ \ \ \ \ std::string\ result\_clusterInfo;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00149}00149\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00150}00150\ \ \ \ \ \textcolor{comment}{//Si\ no\ se\ cumple\ alguna\ de\ las\ condiciones\ de\ seguridad\ del\ metodo,\ devuelve\ empty.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00151}00151\ \ \ \ \ \textcolor{keywordflow}{if}(!\_isDone\ ||\ cluster\ <\ 0\ ||\ cluster\ >=\ \_K)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00152}00152\ \ \ \ \ \ \ \ \ result\_clusterInfo\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00153}00153\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00154}00154\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Se\ ejecuta\ un\ bucle\ donde\ se\ repasan\ todas\ las\ localizaciones.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Si\ el\ cluster\ de\ entrada\ coincide\ con\ el\ valor\ de\ cluster\ de\ la\ localizacion,\ se\ ejecuta.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(cluster\ ==\ \_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i))}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Se\ almacena\ en\ el\ string\ la\ location\ y\ sus\ datos.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\_clusterInfo\ +=\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\_clusterInfo\ +=\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a8acfe3b137ecc53b8c4f33197ab63511}{toString}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ result\_clusterInfo\ +=\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00171}00171\ \ \ \ \ \textcolor{keywordflow}{return}\ result\_clusterInfo;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00172}00172\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00183}\mbox{\hyperlink{classClustering_a871ad2a337f8068dfb07c14af709befa}{00183}}\ std::string\ \mbox{\hyperlink{classClustering_a871ad2a337f8068dfb07c14af709befa}{Clustering::getStatistics}}()\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00184}00184\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}K="{}}\ +\ std::to\_string(\_K)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Sum\ of\ within-\/cluster\ variances:\ "{}}\ +\ std::to\_string(\_sumWCV)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Number\ of\ iterations:\ "{}}\ +\ std::to\_string(\_numIterations)\ +\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00188}00188\ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00204}\mbox{\hyperlink{classClustering_a75df6dc49572b0a122421d5c052ed673}{00204}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classClustering_a75df6dc49572b0a122421d5c052ed673}{Clustering::isEquivalentTo}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&other)\textcolor{keyword}{\ const}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00205}00205\ \ \ \ \ \textcolor{keywordtype}{bool}\ result\_equivalence\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00207}00207\ \ \ \ \ \textcolor{keywordflow}{if}(\_isDone\ \&\&\ other.\_isDone}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \&\&\ \mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}()\ ==\ other.\mbox{\hyperlink{classClustering_a80787e3f759cddb27cda96c64dcf3f25}{getK}}()}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \&\&\ \_sumWCV\ ==\ other.\_sumWCV}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \&\&\ \_numIterations\ ==\ other.\_numIterations)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00211}00211\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00212}00212\ \ \ \ \ \ \ \ \ result\_equivalence\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00215}00215\ \ \ \ \ \textcolor{keywordflow}{return}\ result\_equivalence;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00216}00216\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00230}\mbox{\hyperlink{classClustering_ae2d59326d01555deff1d3db41e9d3956}{00230}}\ std::string\ \mbox{\hyperlink{classClustering_ae2d59326d01555deff1d3db41e9d3956}{Clustering::toString}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00231}00231\ \ \ \ \ std::string\ result\_toString\ =\ \mbox{\hyperlink{classClustering_a871ad2a337f8068dfb07c14af709befa}{getStatistics}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00232}00232\ \ \ \ \ result\_toString\ +=\ \textcolor{stringliteral}{"{}Cluster\ number\ for\ each\ location:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00233}00233\ \ \ \ \ result\_toString\ +=\ \_clusters.\mbox{\hyperlink{classVectorInt_a094980b34086a28b33ef241872f29405}{toString}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00234}00234\ \ \ \ \ result\_toString\ +=\ \textcolor{stringliteral}{"{}Centroids:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00235}00235\ \ \ \ \ result\_toString\ +=\ \_centroids.\mbox{\hyperlink{classVectorLocation_a225b6306345bb813f40198850a65a813}{toString}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00237}00237\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i=0;\ i<\_K;\ i++)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00238}00238\ \ \ \ \ \ \ \ \ result\_toString\ +=\ \textcolor{stringliteral}{"{}Cluster\ "{}}\ +\ std::to\_string(i)\ +\ \textcolor{stringliteral}{"{}\ information:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00239}00239\ \ \ \ \ \ \ \ \ result\_toString\ +=\ \mbox{\hyperlink{classClustering_a9745f28464a8c1dccd04fa3a933d161a}{clusterInfo}}(i);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00240}00240\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00242}00242\ \ \ \ \ \textcolor{keywordflow}{return}\ result\_toString;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00243}00243\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00255}\mbox{\hyperlink{classClustering_ad14c6ffc56cbdcfe2b2a2c6d5e08218d}{00255}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classClustering_ad14c6ffc56cbdcfe2b2a2c6d5e08218d}{Clustering::set}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ \&locations,\ \textcolor{keywordtype}{int}\ K,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ seed)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00256}00256\ \ \ \ \ \textcolor{keywordflow}{if}(K\ <=\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}Valor\ de\ K\ no\ correspondiente."{}});}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00258}00258\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00259}00259\ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00260}00260\ \ \ \ \ \ \ \ \ \_K\ =\ K;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00261}00261\ \ \ \ \ \ \ \ \ \_locations\ =\ locations;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00262}00262\ \ \ \ \ \ \ \ \ \_seed\ =\ seed;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \_isDone\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \_clusters\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \_centroids\ =\ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}(K);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00266}00266\ \ \ \ \ \ \ \ \ \_sumWCV\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \_numIterations\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00269}00269\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00279}\mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{00279}}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{Clustering::run}}()\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00281}00281\ \ \ \ \ \textcolor{comment}{//Asignamos\ clusters\ aleatorios\ a\ las\ localizaciones.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00282}00282\ \ \ \ \ initialClusterAssignment();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00283}00283\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00284}00284\ \ \ \ \ \textcolor{comment}{//Inicializamos}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00285}00285\ \ \ \ \ \textcolor{keywordtype}{bool}\ repetir\_interaccion\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00286}00286\ \ \ \ \ \_numIterations\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00288}00288\ \ \ \ \ \textcolor{keywordflow}{while}(repetir\_interaccion)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00289}00289\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00290}00290\ \ \ \ \ \ \ \ \ \_numIterations++;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00292}00292\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Apartado\ 1.\ Vamos\ a\ recalcular\ los\ centroides.\ Para\ ello,}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00293}00293\ \textcolor{comment}{\ \ \ \ \ \ \ \ acumulamos\ la\ suma\ de\ coordenadas\ de\ cada\ cluster*/}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Inicializamos\ variables.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorLocation}{VectorLocation}}\ nuevo\_centroide(\_K);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ contador(\_K);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Sumamos\ todas\ las\ coordenadas\ de\ cada\ cluster.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ \_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo\_centroide.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a8eb37eee2b6c26e334848a4f44164378}{setX}}(nuevo\_centroide.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}()\ +\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}());}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ nuevo\_centroide.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a0e4ec1ffdf93365edca5b15843243d31}{setY}}(nuevo\_centroide.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}()\ +\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}());}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ contador.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j)++;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00307}00307\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Hacenmos\ la\ media}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ \_K;\ j++)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(contador.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j)\ >\ 0)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a8eb37eee2b6c26e334848a4f44164378}{setX}}(nuevo\_centroide.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a62ecaddd690504df2a1eaa7c2435bcc7}{getX}}()\ /\ contador.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j));}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a0e4ec1ffdf93365edca5b15843243d31}{setY}}(nuevo\_centroide.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j).\mbox{\hyperlink{classLocation_a2223613f9dee0209c7f0378ce79045de}{getY}}()\ /\ contador.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(j));}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \textcolor{comment}{/*Aoartado\ 2.\ Vamos\ a\ reasignar\ cada\ localizacion\ a\ su\ centroide\ mas\ cercano.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00318}00318\ \textcolor{comment}{\ \ \ \ \ \ \ \ Entonces,\ si\ algun\ parametro\ ha\ cambiado,\ el\ repetir\_interaccion\ se\ mantiene\ en\ true\ }}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00319}00319\ \textcolor{comment}{\ \ \ \ \ \ \ \ y\ aumentaremos\ el\ \_numIterations.*/}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00321}00321\ \ \ \ \ \ \ \ \ repetir\_interaccion\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ mejor\_cluster\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ mejor\_dist\ =\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(\_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(0));}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 1;\ j\ <\ \_K;\ j++)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ dist\ =\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(\_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j));}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Si\ su\ distancia\ es\ menor,\ se\ establece\ como\ el\ mejor.}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(dist\ <\ mejor\_dist)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mejor\_dist\ =\ dist;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mejor\_cluster\ =\ j;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00338}00338\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ !=\ mejor\_cluster)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ mejor\_cluster;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ repetir\_interaccion\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00344}00344\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00346}00346\ \ \ \ \ calculateSumWCV();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00347}00347\ \ \ \ \ \_isDone\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00348}00348\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00354}00354\ \textcolor{keywordtype}{void}\ Clustering::initialClusterAssignment()\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00355}00355\ \ \ \ \ srand(\_seed);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00356}00356\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ rand()\ \%\ \_K;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00358}00358\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00359}00359\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00370}00370\ \textcolor{keywordtype}{double}\ Clustering::calculateSumWCV()\{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00371}00371\ \ \ \ \ \_sumWCV\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00372}00372\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00373}00373\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}();\ i++)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00374}00374\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ j\ =\ \_clusters.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00376}00376\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \_sumWCV\ +=\ \_locations.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(i).\mbox{\hyperlink{classLocation_a2d57811d4ca4178008f2c181d87d36bc}{squaredDistance}}(\_centroids.\mbox{\hyperlink{classVectorLocation_ac71b79efab849c9b66de42d3657448ae}{at}}(j));}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00378}00378\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00379}00379\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00380}00380\ \ \ \ \ \textcolor{keywordflow}{return}\ \_sumWCV;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00381}00381\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00382}00382\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00383}\mbox{\hyperlink{Clustering_8cpp_a91c53e1855fdbc00edfebe323b34cc64}{00383}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Clustering_8cpp_a91c53e1855fdbc00edfebe323b34cc64}{operator<}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering2)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00384}00384\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00385}00385\ \ \ \ \ \textcolor{keywordflow}{if}\ (clustering1.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ <\ clustering2.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}())}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00386}00386\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00388}00388\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00389}00389\ \ \ \ \ \textcolor{keywordflow}{if}\ (clustering1.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ >\ clustering2.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}())}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00390}00390\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00392}00392\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00393}00393\ \ \ \ \ \textcolor{keywordflow}{return}\ clustering1.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}()\ <\ clustering2.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}();}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00394}00394\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00395}00395\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00396}\mbox{\hyperlink{Clustering_8cpp_a38925a842ce239ece3255cd605b535af}{00396}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Clustering_8cpp_a38925a842ce239ece3255cd605b535af}{operator>}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering2)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00397}00397\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00398}00398\ \ \ \ \ \textcolor{keywordflow}{return}\ clustering2\ <\ clustering1;}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00399}00399\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00401}\mbox{\hyperlink{Clustering_8cpp_abbba12b4d080b33f644c3f3efbbae459}{00401}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Clustering_8cpp_abbba12b4d080b33f644c3f3efbbae459}{operator==}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering2)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00402}00402\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00403}00403\ \ \ \ \ \textcolor{keywordflow}{return}\ (clustering1.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}()\ ==\ clustering2.\mbox{\hyperlink{classClustering_a2d105d0597213381ac3b7eb50d814423}{getSumWCV}}())}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \&\&\ (clustering1.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}()\ ==\ clustering2.\mbox{\hyperlink{classClustering_a6fb49ef1a90f18a73fab8b6d76ad84d5}{getNumIterations}}());}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00405}00405\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00406}00406\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00407}\mbox{\hyperlink{Clustering_8cpp_ad71648fe2857b8a23f0b3aee0056a7cf}{00407}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Clustering_8cpp_ad71648fe2857b8a23f0b3aee0056a7cf}{operator!=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering2)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00408}00408\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00409}00409\ \ \ \ \ \textcolor{keywordflow}{return}\ !(clustering1\ ==\ clustering2);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00410}00410\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00411}00411\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00412}\mbox{\hyperlink{Clustering_8cpp_ad7513bf19762479e3e46c5f693e96016}{00412}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Clustering_8cpp_ad7513bf19762479e3e46c5f693e96016}{operator<=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering2)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00413}00413\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00414}00414\ \ \ \ \ \textcolor{keywordflow}{return}\ (clustering1\ <\ clustering2)\ ||\ (clustering1\ ==\ clustering2);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00415}00415\ \}}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00417}\mbox{\hyperlink{Clustering_8cpp_a669249608d442570f36f8d82eb526b10}{00417}}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{Clustering_8cpp_a669249608d442570f36f8d82eb526b10}{operator>=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering1,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{classClustering}{Clustering}}\ \&clustering2)}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00418}00418\ \{}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00419}00419\ \ \ \ \ \textcolor{keywordflow}{return}\ (clustering1\ >\ clustering2)\ ||\ (clustering1\ ==\ clustering2);}
+\DoxyCodeLine{\Hypertarget{Clustering_8cpp_source_l00420}00420\ \}}
+
+\end{DoxyCode}

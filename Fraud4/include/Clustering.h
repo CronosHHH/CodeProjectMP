@@ -52,15 +52,15 @@ public:
      * Query method
      * @return The number of clusters
      */
-    int getK();
+    int getK() const;
     
     /**
      * @brief Gets the current vector of centroids
      * Query method
-     * @return A const reference to the vector of centroids (a VectorLocation
-     * object).
+    * @return A const reference to the vector of centroids (a VectorLocation
+    * object).
      */
-    VectorLocation getCentroids();
+    const VectorLocation &getCentroids() const;
     
     /**
      * @brief Indicates whether the clustering algorithm (run() method) has 
@@ -69,7 +69,7 @@ public:
      * @return true if the run() method has already been executed for this 
      * Clustering object; false otherwise
      */
-    bool isDone();
+    bool isDone() const;
     
     /**
      * @brief Gets the number of locations in the set of locations of this 
@@ -78,7 +78,7 @@ public:
      * @return The number of locations in the set of locations of this 
      * Clustering
      */
-    int getNumLocations();
+    int getNumLocations() const;
     
     /**
      * @brief Gets the cluster number for the Location determined by the  
@@ -91,7 +91,7 @@ public:
      * clustering algorithm has not been run (_isDone is false), then it returns
      * -1.
      */
-    int clusterOf(int locationIndex);
+    int clusterOf(int locationIndex) const;
     
     /**
      * @brief Gets the value of the sum of the within-cluster variances of this 
@@ -102,7 +102,7 @@ public:
      * @return A double with the sum of within-cluster variances of this 
      * Clustering
      */
-    double getSumWCV();
+    double getSumWCV() const;
 
     /**
      * @brief  Gets the number of iterations used in the KMeans 
@@ -114,7 +114,7 @@ public:
      * Query method
      * @return The number of iterations used in the KMeans algorithm
      */
-    int getNumIterations();
+    int getNumIterations() const;
 
     /**
      * @brief  Gets a string with information about the provided cluster (index
@@ -133,7 +133,7 @@ public:
      * clustering algorithm has not been run (_isDone is false) or an 
      * invalid value of cluster is provide, then it returns an empty string.
      */
-    std::string clusterInfo(int cluster);
+    std::string clusterInfo(int cluster) const;
 
     /**
      * @brief Obtains a string with the some statistics data about this 
@@ -144,7 +144,7 @@ public:
      * Query method
      * @return A string with the content described above
      */
-    std::string getStatistics();
+    std::string getStatistics() const;
 
     /**
      * @brief Indicates whether this Clustering object is equivalent to the 
@@ -160,7 +160,7 @@ public:
      * @return true if this Clustering object is equivalent to the provided 
      * Clustering object (@p other); false otherwise
      */
-    bool isEquivalentTo(Clustering other);
+    bool isEquivalentTo(const Clustering &other) const;
 
     /**
      * @brief Obtains a string with the fields of this Clustering object. 
@@ -214,7 +214,7 @@ Cluster 4 information:
      * Query method
      * @return A string with the content described above
      */
-    std::string toString(); 
+    std::string toString() const; 
     
     /**
      * @brief Sets the vector of locations (_locations), the value of K (_K)  
@@ -234,7 +234,7 @@ Cluster 4 information:
      * (with srand(seed)) in the initialClusterAssignment() method. 
      * Input parameter
      */
-    void set(VectorLocation locations, int K, 
+    void set(const VectorLocation &locations, int K, 
         unsigned int seed=DEFAULT_RANDOM_SEED);
     
     /**
@@ -368,7 +368,7 @@ private:
  * equal and the number of iterations of @p clustering1 is less than that of 
  * @p clustering2; false otherwise
  */
-bool operator<(Clustering clustering1, Clustering clustering2);
+bool operator<(const Clustering &clustering1, const Clustering &clustering2);
 
 /**
  * @brief Overloading of the greater-than operator for Clustering class
@@ -376,7 +376,7 @@ bool operator<(Clustering clustering1, Clustering clustering2);
  * @param clustering2 A Clustering object. Input parameter
  * @return true if clustering1 > clustering2; false otherwise
  */
-bool operator>(Clustering clustering1, Clustering clustering2);
+bool operator>(const Clustering &clustering1, const Clustering &clustering2);
 
 /**
  * @brief Overloading of the equality operator for Clustering class
@@ -384,7 +384,7 @@ bool operator>(Clustering clustering1, Clustering clustering2);
  * @param clustering2 A Clustering object. Input parameter
  * @return true if clustering1 == clustering2; false otherwise
  */
-bool operator==(Clustering clustering1, Clustering clustering2);
+bool operator==(const Clustering &clustering1, const Clustering &clustering2);
 
 /**
  * @brief Overloading of the not-equal operator for Clustering class
@@ -392,7 +392,7 @@ bool operator==(Clustering clustering1, Clustering clustering2);
  * @param clustering2 A Clustering object. Input parameter
  * @return true if clustering1 != clustering2; false otherwise
  */
-bool operator!=(Clustering clustering1, Clustering clustering2);
+bool operator!=(const Clustering &clustering1, const Clustering &clustering2);
 
 /**
  * @brief Overloading of the less-than-or-equal operator for Clustering class
@@ -400,7 +400,7 @@ bool operator!=(Clustering clustering1, Clustering clustering2);
  * @param clustering2 A Clustering object. Input parameter
  * @return true if clustering1 <= clustering2; false otherwise
  */
-bool operator<=(Clustering clustering1, Clustering clustering2);
+bool operator<=(const Clustering &clustering1, const Clustering &clustering2);
 
 /**
  * @brief Overloading of the greater-than-or-equal operator for Clustering class
@@ -408,6 +408,6 @@ bool operator<=(Clustering clustering1, Clustering clustering2);
  * @param clustering2 A Clustering object. Input parameter
  * @return true if clustering1 >= clustering2; false otherwise
  */
-bool operator>=(Clustering clustering1, Clustering clustering2);
+bool operator>=(const Clustering &clustering1, const Clustering &clustering2);
 #endif /* CLUSTERING_H */
 

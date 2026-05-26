@@ -1,0 +1,23 @@
+digraph "DataSet::getReducedDataSet"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="DataSet::getReducedDataSet",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Gets a new DataSet from this DataSet. The DataSet will contain the same number of instances as this D..."];
+  Node1 -> Node2 [id="edge8_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Clustering::clusterOf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classClustering.html#a1c6e1026bbd18f3aeab6bfecdb9a2272",tooltip="Gets the cluster number for the Location determined by the   provided integer (locationIndex) Query m..."];
+  Node2 -> Node3 [id="edge9_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="VectorInt::at",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorInt.html#ab14fa45d0452cf24e55ffcc8e7d46028",tooltip="Gets a const reference to the integer element at the given position Query method."];
+  Node1 -> Node4 [id="edge10_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="Clustering::getCentroids",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classClustering.html#a68b8fda5bd8d6fe129bebd678de2d2b4",tooltip="Gets the current vector of centroids Query method."];
+  Node1 -> Node5 [id="edge11_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="Clustering::getK",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classClustering.html#a80787e3f759cddb27cda96c64dcf3f25",tooltip="Gets the number of clusters Query method."];
+  Node1 -> Node6 [id="edge12_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="Clustering::getNumLocations",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classClustering.html#a12786a2a6f40833089cb3e35465843fc",tooltip="Gets the number of locations in the set of locations of this Clustering object. Query method."];
+  Node6 -> Node7 [id="edge13_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="VectorLocation::getSize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classVectorLocation.html#a0c681e3b6626273809594914ff2612fe",tooltip="Gets the number of elements in the vector of this object Query method."];
+  Node1 -> Node8 [id="edge14_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="Clustering::isDone",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classClustering.html#a3e71c339ac69df5389f104ea719c1be3",tooltip="Indicates whether the clustering algorithm (run() method) has already been executed for this Clusteri..."];
+}

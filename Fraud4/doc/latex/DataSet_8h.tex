@@ -1,0 +1,288 @@
+\doxysection{include/\+Data\+Set.h File Reference}
+\hypertarget{DataSet_8h}{}\label{DataSet_8h}\index{include/DataSet.h@{include/DataSet.h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include "{}Vector\+Int.\+h"{}}\newline
+{\ttfamily \#include "{}Vector\+Location.\+h"{}}\newline
+{\ttfamily \#include "{}Clustering.\+h"{}}\newline
+Include dependency graph for Data\+Set.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classDataSet}{Data\+Set}}
+\begin{DoxyCompactList}\small\item\em A \doxylink{classDataSet}{Data\+Set} is an object that contains a set of n instances. Each instance contains a vector of m integers that represents the amount of money spent by a person in each one of m locations. This class uses a bidimensional matrix with n rows and m columns to store the values of the set of instances. This class also contains a vector of n labels (\doxylink{classVectorInt}{Vector\+Int} \+\_\+labels) to store the label of each instance. Each label is an integer that defines the class value of the corresponding instance. Finally, this class contains a vector of m \doxylink{classLocation}{Location} objects (\doxylink{classVectorLocation}{Vector\+Location} \+\_\+locations) to store each locations in the \doxylink{classDataSet}{Data\+Set}. In the 2D matrix, each column i is associated with location i in the \+\_\+locations vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::ostream \& \mbox{\hyperlink{DataSet_8h_a02801323160452d8a6e512918ae017a1}{operator$<$$<$}} (std\+::ostream \&os, const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&dataset)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream insertion operator for \doxylink{classDataSet}{Data\+Set} class. \end{DoxyCompactList}\item 
+std\+::istream \& \mbox{\hyperlink{DataSet_8h_ae6e46a14f8dc5a034d1ca717c77f6225}{operator$>$$>$}} (std\+::istream \&is, \mbox{\hyperlink{classDataSet}{Data\+Set}} \&dataset)
+\begin{DoxyCompactList}\small\item\em Overloading of the stream extraction operator for \doxylink{classDataSet}{Data\+Set} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{DataSet_8h_ae28eefece9297e8b084d6eb55fcc76d6}{classify}} (const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&dataset\+Model, \mbox{\hyperlink{classDataSet}{Data\+Set}} \&dataset\+To\+Classify, int K1, int K2, bool do\+Reduction\+Dimensionality)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Silvia Acid Carrillo \href{mailto:acid@decsai.ugr.es}{\texttt{ acid@decsai.\+ugr.\+es}} 
+
+Andrés Cano Utrera \href{mailto:acu@decsai.ugr.es}{\texttt{ acu@decsai.\+ugr.\+es}} 
+
+Luis Castillo Vidal \href{mailto:L.Castillo@decsai.ugr.es}{\texttt{ L.\+Castillo@decsai.\+ugr.\+es}}
+\end{DoxyAuthor}
+Created on 30 de julio de 2025, 10\+:00 
+
+Definition in file \mbox{\hyperlink{DataSet_8h_source}{Data\+Set.\+h}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{DataSet_8h_ae28eefece9297e8b084d6eb55fcc76d6}\label{DataSet_8h_ae28eefece9297e8b084d6eb55fcc76d6} 
+\index{DataSet.h@{DataSet.h}!classify@{classify}}
+\index{classify@{classify}!DataSet.h@{DataSet.h}}
+\doxysubsubsection{\texorpdfstring{classify()}{classify()}}
+{\footnotesize\ttfamily void classify (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{dataset\+Model,  }\item[{\mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{dataset\+To\+Classify,  }\item[{int}]{K1,  }\item[{int}]{K2,  }\item[{bool}]{do\+Reduction\+Dimensionality }\end{DoxyParamCaption})}
+
+Classifies the instances of the dataset {\ttfamily data\+Set\+To\+Classify} with the KNN algorithm and using the dataset {\ttfamily data\+Set\+Model} as model to classify. Each instance in {\ttfamily data\+Set\+To\+Classify} will be classified by changing its label to the one found by the KNN algorithm. 
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::invalid\+\_\+argument} & Throws a std\+::invalid\+\_\+argument exception if the number of locations in dataset\+Model and dataset\+To\+Classify is not equal. \\
+\hline
+{\em std\+::invalid\+\_\+argument} & Throws a std\+::invalid\+\_\+argument exception if {\ttfamily do\+Reduction\+Dimensionality} is true and {\ttfamily K1} is less or equals than 0. \\
+\hline
+{\em std\+::invalid\+\_\+argument} & Throws a std\+::invalid\+\_\+argument exception if {\ttfamily K2} is greater than the number of instances in {\ttfamily dataset\+Model} \\
+\hline
+{\em std\+::invalid\+\_\+argument} & Throws a std\+::invalid\+\_\+argument exception if {\ttfamily K2} is less than 1 \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em data\+Set\+Model} & \doxylink{classDataSet}{Data\+Set} used as model to classify. Input parameter \\
+\hline
+{\em data\+Set\+To\+Classify} & \doxylink{classDataSet}{Data\+Set} to be classified. Input/output parameter \\
+\hline
+{\em K1} & The K value to be used in the clustering algorithm (KMeans) of the dimensionality reduction step. Input parameter \\
+\hline
+{\em K2} & The K value to be used in the KNN algorithm (to define the number K of nearest neighbours). Input parameter \\
+\hline
+{\em do\+Reduction\+Dimensionality} & Indicates whether or not dimensionality reduction should be applied using the clustering algorithm. Input parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00682}{682}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00684\ \{}
+\DoxyCodeLine{00685\ \ \ \ \ \textcolor{keywordflow}{if}\ (datasetModel.\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}()\ !=\ datasetToClassify.\mbox{\hyperlink{classDataSet_abdf9d0babc3fc24dc42a5c25fc6863cd}{getNumLocations}}())}
+\DoxyCodeLine{00686\ \ \ \ \ \{}
+\DoxyCodeLine{00687\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ tamanio\ incompatible"{}});}
+\DoxyCodeLine{00688\ \ \ \ \ \}}
+\DoxyCodeLine{00689\ \ \ \ \ \textcolor{keywordflow}{if}\ (doReductionDimensionality\ \&\&\ K1\ <=\ 0)}
+\DoxyCodeLine{00690\ \ \ \ \ \{}
+\DoxyCodeLine{00691\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ K1\ invalido"{}});}
+\DoxyCodeLine{00692\ \ \ \ \ \}}
+\DoxyCodeLine{00693\ \ \ \ \ \textcolor{keywordflow}{if}\ (K2\ <\ 1)}
+\DoxyCodeLine{00694\ \ \ \ \ \{}
+\DoxyCodeLine{00695\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ K2\ invalido"{}});}
+\DoxyCodeLine{00696\ \ \ \ \ \}}
+\DoxyCodeLine{00697\ \ \ \ \ \textcolor{keywordflow}{if}\ (K2\ >\ datasetModel.\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}())}
+\DoxyCodeLine{00698\ \ \ \ \ \{}
+\DoxyCodeLine{00699\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}classify:\ K2\ demasiado\ grande"{}});}
+\DoxyCodeLine{00700\ \ \ \ \ \}}
+\DoxyCodeLine{00701\ }
+\DoxyCodeLine{00702\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ dsM(datasetModel);}
+\DoxyCodeLine{00703\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ dsC(datasetToClassify);}
+\DoxyCodeLine{00704\ }
+\DoxyCodeLine{00705\ \ \ \ \ \textcolor{keywordflow}{if}\ (doReductionDimensionality)}
+\DoxyCodeLine{00706\ \ \ \ \ \{}
+\DoxyCodeLine{00707\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classClustering}{Clustering}}\ clustering;}
+\DoxyCodeLine{00708\ \ \ \ \ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_ad14c6ffc56cbdcfe2b2a2c6d5e08218d}{set}}(dsM.getVectorLocation(),\ K1);}
+\DoxyCodeLine{00709\ \ \ \ \ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}}();}
+\DoxyCodeLine{00710\ }
+\DoxyCodeLine{00711\ \ \ \ \ \ \ \ \ dsM\ =\ dsM.getReducedDataSet(clustering);}
+\DoxyCodeLine{00712\ \ \ \ \ \ \ \ \ dsC\ =\ dsC.getReducedDataSet(clustering);}
+\DoxyCodeLine{00713\ \ \ \ \ \}}
+\DoxyCodeLine{00714\ }
+\DoxyCodeLine{00715\ \ \ \ \ \textcolor{keywordtype}{int}\ numInstances\ =\ dsC.getNumInstances();}
+\DoxyCodeLine{00716\ \ \ \ \ \textcolor{keywordtype}{int}\ numLocations\ =\ dsC.getNumLocations();}
+\DoxyCodeLine{00717\ \ \ \ \ \textcolor{keywordtype}{int}\ modelInstances\ =\ dsM.getNumInstances();}
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00719\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ numInstances;\ ++i)}
+\DoxyCodeLine{00720\ \ \ \ \ \{}
+\DoxyCodeLine{00721\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ votes[2]\ =\ \{0,\ 0\};}
+\DoxyCodeLine{00722\ }
+\DoxyCodeLine{00723\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ *selected\ =\ \textcolor{keyword}{new}\ \textcolor{keywordtype}{bool}[modelInstances];}
+\DoxyCodeLine{00724\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ s\ =\ 0;\ s\ <\ modelInstances;\ ++s)}
+\DoxyCodeLine{00725\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00726\ \ \ \ \ \ \ \ \ \ \ \ \ selected[s]\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00727\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00728\ }
+\DoxyCodeLine{00729\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classVectorInt}{VectorInt}}\ instance(numLocations);}
+\DoxyCodeLine{00730\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ numLocations;\ ++j)}
+\DoxyCodeLine{00731\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00732\ \ \ \ \ \ \ \ \ \ \ \ \ instance.at(j)\ =\ dsC.getValue(i,\ j);}
+\DoxyCodeLine{00733\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00734\ }
+\DoxyCodeLine{00735\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ K2;\ ++k)}
+\DoxyCodeLine{00736\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00737\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nearest\ =\ dsM.nearestInstance(instance,\ selected);}
+\DoxyCodeLine{00738\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nearest\ <\ 0)}
+\DoxyCodeLine{00739\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00741\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00742\ }
+\DoxyCodeLine{00743\ \ \ \ \ \ \ \ \ \ \ \ \ selected[nearest]\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00744\ }
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ dsM.getLabel(nearest);}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (label\ ==\ 0)}
+\DoxyCodeLine{00747\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ votes[0]++;}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00750\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (label\ ==\ 1)}
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ votes[1]++;}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00755\ }
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}[]\ selected;}
+\DoxyCodeLine{00757\ }
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (votes[0]\ >=\ votes[1])}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ dsC.setLabel(i,\ 0);}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00762\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00764\ \ \ \ \ \ \ \ \ \ \ \ \ dsC.setLabel(i,\ 1);}
+\DoxyCodeLine{00765\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00766\ \ \ \ \ \}}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00768\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ datasetToClassify.\mbox{\hyperlink{classDataSet_a01ad34b38ae1207002ab1f7ae63f7bc6}{getNumInstances}}();\ ++i)}
+\DoxyCodeLine{00769\ \ \ \ \ \{}
+\DoxyCodeLine{00770\ \ \ \ \ \ \ \ \ datasetToClassify.\mbox{\hyperlink{classDataSet_a0805c336a6f7adc45531984c0c46d61f}{setLabel}}(i,\ dsC.getLabel(i));}
+\DoxyCodeLine{00771\ \ \ \ \ \}}
+\DoxyCodeLine{00772\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 2
+\Hypertarget{DataSet_8h_a02801323160452d8a6e512918ae017a1}\label{DataSet_8h_a02801323160452d8a6e512918ae017a1} 
+\index{DataSet.h@{DataSet.h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!DataSet.h@{DataSet.h}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$()}{operator<<()}}
+{\footnotesize\ttfamily std\+::ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{os,  }\item[{const \mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{dataset }\end{DoxyParamCaption})}
+
+
+
+Overloading of the stream insertion operator for \doxylink{classDataSet}{Data\+Set} class. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em os} & The output stream to be used. Input/output parameter \\
+\hline
+{\em dataset} & The \doxylink{classDataSet}{Data\+Set} object. Input parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the output stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00326}{326}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00629\ \{}
+\DoxyCodeLine{00630\ \ \ \ \ os\ <<\ dataset.\mbox{\hyperlink{classDataSet_ae19d4b2545b4e4bcfd11bcc6a5db9fd6}{toString}}();}
+\DoxyCodeLine{00631\ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{00632\ \}}
+
+\end{DoxyCode}
+\Hypertarget{DataSet_8h_ae6e46a14f8dc5a034d1ca717c77f6225}\label{DataSet_8h_ae6e46a14f8dc5a034d1ca717c77f6225} 
+\index{DataSet.h@{DataSet.h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!DataSet.h@{DataSet.h}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$()}{operator>>()}}
+{\footnotesize\ttfamily std\+::istream \& operator$>$$>$ (\begin{DoxyParamCaption}\item[{std\+::istream \&}]{is,  }\item[{\mbox{\hyperlink{classDataSet}{Data\+Set}} \&}]{dataset }\end{DoxyParamCaption})}
+
+
+
+Overloading of the stream extraction operator for \doxylink{classDataSet}{Data\+Set} class. 
+
+\begin{DoxyNote}{Note}
+Note that this operator should begin by removing any previous information that the provided object previously contained (a call to clear() method). 
+\end{DoxyNote}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations read from the file is negative. \\
+\hline
+{\em std\+::out\+\_\+of\+\_\+range} & Throws a std\+::out\+\_\+of\+\_\+range exception if the number of locations or the number of instances in the provided input stream is negative. \\
+\hline
+\end{DoxyExceptions}
+
+\begin{DoxyParams}{Parameters}
+{\em is} & The input stream to be used. Input/output parameter \\
+\hline
+{\em dataset} & The \doxylink{classDataSet}{Data\+Set} object to be filled. Input/output parameter \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the input stream 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{DataSet_8cpp_source_l00327}{327}} of file \mbox{\hyperlink{DataSet_8cpp_source}{Data\+Set.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00635\ \{}
+\DoxyCodeLine{00636\ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00637\ }
+\DoxyCodeLine{00638\ \ \ \ \ dataset.\_locations.\mbox{\hyperlink{classVectorLocation_ac7078f24c517c5ce683f7293ace5b9dd}{load}}(is);}
+\DoxyCodeLine{00639\ }
+\DoxyCodeLine{00640\ \ \ \ \ \textcolor{keywordtype}{int}\ nInstances\ =\ 0;}
+\DoxyCodeLine{00641\ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ nInstances))}
+\DoxyCodeLine{00642\ \ \ \ \ \{}
+\DoxyCodeLine{00643\ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00644\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00645\ \ \ \ \ \}}
+\DoxyCodeLine{00646\ \ \ \ \ \textcolor{keywordflow}{if}\ (nInstances\ <\ 0)}
+\DoxyCodeLine{00647\ \ \ \ \ \{}
+\DoxyCodeLine{00648\ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00649\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::out\_of\_range(\textcolor{stringliteral}{"{}DataSet::operator>>\ instancias\ negativas"{}});}
+\DoxyCodeLine{00650\ \ \ \ \ \}}
+\DoxyCodeLine{00651\ }
+\DoxyCodeLine{00652\ \ \ \ \ dataset.\_labels\ =\ \mbox{\hyperlink{classVectorInt}{VectorInt}}(nInstances);}
+\DoxyCodeLine{00653\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ nInstances;\ ++i)}
+\DoxyCodeLine{00654\ \ \ \ \ \{}
+\DoxyCodeLine{00655\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ label\ =\ 0;}
+\DoxyCodeLine{00656\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ label))}
+\DoxyCodeLine{00657\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00658\ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00659\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00660\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00661\ \ \ \ \ \ \ \ \ dataset.\_labels.\mbox{\hyperlink{classVectorInt_ab14fa45d0452cf24e55ffcc8e7d46028}{at}}(i)\ =\ label;}
+\DoxyCodeLine{00662\ \ \ \ \ \}}
+\DoxyCodeLine{00663\ }
+\DoxyCodeLine{00664\ \ \ \ \ dataset.reservar(nInstances,\ dataset.\_locations.\mbox{\hyperlink{classVectorLocation_a0c681e3b6626273809594914ff2612fe}{getSize}}());}
+\DoxyCodeLine{00665\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ dataset.\_nInstances;\ ++i)}
+\DoxyCodeLine{00666\ \ \ \ \ \{}
+\DoxyCodeLine{00667\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ dataset.\_nLocations;\ ++j)}
+\DoxyCodeLine{00668\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ value\ =\ 0;}
+\DoxyCodeLine{00670\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(is\ >>\ value))}
+\DoxyCodeLine{00671\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\mbox{\hyperlink{classDataSet_a26aba451d80b3f13ad2815ff65d1f8f7}{clear}}();}
+\DoxyCodeLine{00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::ios\_base::failure(\textcolor{stringliteral}{"{}DataSet::operator>>\ error\ de\ lectura"{}});}
+\DoxyCodeLine{00674\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00675\ \ \ \ \ \ \ \ \ \ \ \ \ dataset.\_values[i][j]\ =\ value;}
+\DoxyCodeLine{00676\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00677\ \ \ \ \ \}}
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00679\ \ \ \ \ \textcolor{keywordflow}{return}\ is;}
+\DoxyCodeLine{00680\ \}}
+
+\end{DoxyCode}

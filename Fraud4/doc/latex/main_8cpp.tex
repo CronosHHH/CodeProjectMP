@@ -1,0 +1,163 @@
+\doxysection{src/main.cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{src/main.cpp@{src/main.cpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include "{}Data\+Set.\+h"{}}\newline
+{\ttfamily \#include "{}Clustering.\+h"{}}\newline
+Include dependency graph for main.\+cpp\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a537edd2a05b776d4b66c38940708826c}{show\+Help}} (std\+::ostream \&output\+Stream, const string \&message)
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Renato Ramirez Vida 
+\end{DoxyAuthor}
+
+
+Definition in file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char \texorpdfstring{$\ast$}{*}}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+The purpose of this program is to read a dataset from a dts file, to reduce its dimensionality using clustering, and to save the resulting dataset in another dts file.
+
+The number of clusters K to be used in the clustering process can be provided as an optional argument (if not provided, K=5 is used). The name of the output dts file can be provided to the program as an optional argument (if not provided, the output file is tests/output/output.\+dts). The name of the input dts file is passed as the last argument to the program. See below the Running sintax.
+
+The program begins by processing the command line arguments. Then, it loads the input dataset from the given dts file. After that, it performs a ~\newline
+ clustering of the locations in the dataset using the K-\/means algorithm with the provided K value. Then, using the calculated clustering, it obtains a new dataset with reduced dimensionality. Finally, it saves the resulting dataset in the given output dts file.
+
+Running sintax\+: \begin{quote}
+build/\+Fraud3 \mbox{[}-\/K $<$\+K$>$\mbox{]} \mbox{[}-\/o \texorpdfstring{$<$}{<}output\+File.\+dts\texorpdfstring{$>$}{>}\mbox{]} \texorpdfstring{$<$}{<}input\+File.\+dts\texorpdfstring{$>$}{>} ~\newline
+ \end{quote}
+Running example\+: \begin{quote}
+build/\+Fraud3 -\/K 5 -\/o /tmp/princeton\+\_\+training\+\_\+reduced.dts ../\+Datasets/princeton\+\_\+training.dts \end{quote}
+por si faltan parametros
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00066}{66}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classDataSet}{DataSet}}\ inputDataset,\ \textcolor{comment}{//\ Input\ dataset}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ outputDataset;\ \textcolor{comment}{//\ Output\ dataset\ with\ reduced\ dimensionality}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ Name\ of\ the\ output\ file\ (tests/output/output.dts\ by\ default)}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{string}\ outputFileName=\textcolor{stringliteral}{"{}tests/output/output.dts"{}};}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ K\ =\ 5;\ \textcolor{comment}{//\ Number\ of\ clusters\ (5\ by\ default)}}
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{classClustering}{Clustering}}\ clustering;\ \textcolor{comment}{//\ Clustering\ object}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ Indicates\ if\ all\ the\ parameters\ starting\ with\ -\/\ has\ been\ read}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ hasBeenReadInitialParameters\ =\ \textcolor{keyword}{false};\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{int}\ indexInputFile\ =\ -\/1;\ \textcolor{comment}{//\ index\ of\ the\ input\ file\ in\ argv}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ Loop\ to\ process\ program\ arguments}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 1;\ i\ <\ argc;\ ++i)}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ arg\ =\ argv[i];}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!hasBeenReadInitialParameters\ \&\&\ arg\ ==\ \textcolor{stringliteral}{"{}-\/K"{}})}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 1\ >=\ argc)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a537edd2a05b776d4b66c38940708826c}{showHelp}}(cerr,\ \textcolor{stringliteral}{"{}Number\ of\ clusters\ not\ provided\ after\ -\/K"{}});}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ K\ =\ stoi(argv[++i]);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!hasBeenReadInitialParameters\ \&\&\ arg\ ==\ \textcolor{stringliteral}{"{}-\/o"{}})}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ +\ 1\ >=\ argc)}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a537edd2a05b776d4b66c38940708826c}{showHelp}}(cerr,\ \textcolor{stringliteral}{"{}Output\ file\ not\ provided\ after\ -\/o"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ outputFileName\ =\ argv[++i];}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ hasBeenReadInitialParameters\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (indexInputFile\ !=\ -\/1)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a537edd2a05b776d4b66c38940708826c}{showHelp}}(cerr,\ \textcolor{stringliteral}{"{}Too\ many\ parameters"{}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ indexInputFile\ =\ i;}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordflow}{if}\ (indexInputFile\ ==\ -\/1)}
+\DoxyCodeLine{00116\ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{main_8cpp_a537edd2a05b776d4b66c38940708826c}{showHelp}}(cerr,\ \textcolor{stringliteral}{"{}Input\ file\ not\ provided"{}});}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{00119\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{comment}{//\ Load\ the\ input\ dataset\ from\ the\ given\ file}}
+\DoxyCodeLine{00122\ \ \ \ \ inputDataset.\mbox{\hyperlink{classDataSet_a30ffd407d3bc05ace6f304922f2d38b6}{load}}(argv[indexInputFile]);}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//\ Set\ the\ location\ vector\ and\ K\ in\ the\ clustering\ object.\ Use\ the\ default}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ seed\ value.}}
+\DoxyCodeLine{00126\ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_ad14c6ffc56cbdcfe2b2a2c6d5e08218d}{set}}(inputDataset.\mbox{\hyperlink{classDataSet_a2459c87fcbbe6f4c74bb5cc78fc47397}{getVectorLocation}}(),\ K\textcolor{comment}{/*\ ,\ 1761560597U\ */});}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{comment}{//\ Run\ the\ clustering\ algorithm}}
+\DoxyCodeLine{00129\ \ \ \ \ clustering.\mbox{\hyperlink{classClustering_a17977c6467960744c8bc71ffb97aa9fc}{run}}();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{comment}{//\ Get\ the\ dataset\ with\ reduced\ dimensionality}}
+\DoxyCodeLine{00132\ \ \ \ \ outputDataset\ =\ inputDataset.\mbox{\hyperlink{classDataSet_adcd86bd27fa2a65212508dac9d7dce06}{getReducedDataSet}}(clustering);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//\ Save\ the\ output\ dataset\ in\ the\ given\ file}}
+\DoxyCodeLine{00135\ \ \ \ \ outputDataset.\mbox{\hyperlink{classDataSet_a8fd62e3e6d1dd770964798cd01c7db82}{save}}(outputFileName);}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00137\ \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+% FIG 1
+\Hypertarget{main_8cpp_a537edd2a05b776d4b66c38940708826c}\label{main_8cpp_a537edd2a05b776d4b66c38940708826c} 
+\index{main.cpp@{main.cpp}!showHelp@{showHelp}}
+\index{showHelp@{showHelp}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{showHelp()}{showHelp()}}
+{\footnotesize\ttfamily void show\+Help (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{output\+Stream,  }\item[{const string \&}]{message }\end{DoxyParamCaption})}
+
+Shows help about the use of this program in the given output stream 
+\begin{DoxyParams}{Parameters}
+{\em output\+Stream} & The output stream where the help will be shown (for example, cout, cerr, etc) \\
+\hline
+{\em message} & Additional message to show with the help \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00026}{26}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}ERROR\ in\ Fraud3\ parameters.\ "{}}\ <<\ message\ <<\ endl;}
+\DoxyCodeLine{00028\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}Run\ with\ the\ following\ arguments:"{}}\ <<\ endl;}
+\DoxyCodeLine{00029\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}Fraud3\ [-\/K\ <K>]\ [-\/o\ <outputFile.dts>]\ <inputFile.dts>"{}}\ <<\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ endl;}
+\DoxyCodeLine{00031\ \ \ \ \ outputStream\ <<\ endl;}
+\DoxyCodeLine{00032\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}Parameters:"{}}\ <<\ endl;}
+\DoxyCodeLine{00033\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}-\/K\ <K>:\ an\ integer\ with\ the\ number\ of\ clusters\ to\ use\ "{}}\ <<\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}(5\ by\ default)"{}}\ <<\ endl;}
+\DoxyCodeLine{00035\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}-\/o\ <outputFile.dts>:\ name\ of\ the\ output\ dataset\ file\ "{}}\ <<\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}(tests/output/output.dts\ by\ default)"{}}\ <<\ endl;}
+\DoxyCodeLine{00037\ \ \ \ \ outputStream\ <<\ \textcolor{stringliteral}{"{}<inputFile.dts>:\ name\ of\ the\ input\ dataset\ file"{}}\ <<\ endl;}
+\DoxyCodeLine{00038\ \ \ \ \ outputStream\ <<\ endl;}
+\DoxyCodeLine{00039\ \}}
+
+\end{DoxyCode}
