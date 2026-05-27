@@ -104,12 +104,95 @@ int main(int argc, char* argv[]) {
     int indexInputFile = -1; // index of the input file in argv
 
     // Loop to process program arguments
+    for (int i = 1; i < argc; ++i)
+    {
+        string arg = argv[i];
+
+        if (!hasBeenReadInitialParameters && arg == "-K1")
+        {
+            if (i + 1 >= argc)
+            {
+                showHelp(cerr, "K1 value not provided after -K1");
+                return 1;
+            }
+            K1 = stoi(argv[++i]);
+        }
+        else if (!hasBeenReadInitialParameters && arg == "-K2")
+        {
+            if (i + 1 >= argc)
+            {
+                showHelp(cerr, "K2 value not provided after -K2");
+                return 1;
+            }
+            K2 = stoi(argv[++i]);
+        }
+        else if (!hasBeenReadInitialParameters && arg == "-nr")
+        {
+            doReduction = false;
+        }
+        else if (!hasBeenReadInitialParameters && arg == "-o")
+        {
+            if (i + 1 >= argc)
+            {
+                showHelp(cerr, "Output filename not provided after -o");
+                return 1;
+            }
+            outputFileName = argv[++i];
+        }
+        else if (!arg.empty() && arg[0] == '-')
+        {
+            showHelp(cerr, "Invalid option " + arg);
+            return 1;
+        }
+        else
+        {
+            hasBeenReadInitialParameters = true;
+            if (indexInputFile == -1)
+            {
+                indexInputFile = i;
+            }
+            else if (indexInputFile != -1)
+            {
+                if (i == indexInputFile + 1)
+                {
+                    // Second positional argument: the test dataset.
+                }
+                else
+                {
+                    showHelp(cerr, "Too many parameters");
+                    return 1;
+                }
+            }
+        }
+    }
+
+    if (indexInputFile == -1)
+    {
+        showHelp(cerr, "Name of training dataset not provided");
+        return 1;
+    }
+
+    if (indexInputFile + 1 >= argc)
+    {
+        showHelp(cerr, "Name of test dataset not provided");
+        return 1;
+    }
+
+    if (indexInputFile + 2 < argc)
+    {
+        showHelp(cerr, "Too many parameters");
+        return 1;
+    }
 
     // Load training and test datasets
+    trainingDataset.load(argv[indexInputFile]);
+    testDataset.load(argv[indexInputFile + 1]);
 
     // Classify the test dataset
+    classify(trainingDataset, testDataset, K1, K2, doReduction);
 
     // Save the classified test dataset in the given output file
+    testDataset.save(outputFileName);
 
     return 0;
 }

@@ -408,6 +408,7 @@ void DataSet::save(std::string fileName)
 
     os << MAGIC_STRING_T << "\n";
     os << toString();
+    os << "\n";
 
     if (!os)
     {
