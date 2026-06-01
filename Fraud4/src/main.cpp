@@ -98,7 +98,6 @@ int main(int argc, char* argv[]) {
     int K1 = 5, // Number of clusters for dimensionality reduction
         K2 = 6; // Number of nearest neighbours for KNN
     bool doReduction = true; // Indicates whether or not to do reduction dimensionality
-
     // Indicates if all the parameters starting with - has been read
     bool hasBeenReadInitialParameters = false; 
     int indexInputFile = -1; // index of the input file in argv
@@ -139,7 +138,7 @@ int main(int argc, char* argv[]) {
             }
             outputFileName = argv[++i];
         }
-        else if (!arg.empty() && arg[0] == '-')
+        else if (arg[0] == '-')
         {
             showHelp(cerr, "Invalid option " + arg);
             return 1;
